@@ -136,7 +136,17 @@
     .hero-name { position: relative; z-index: 2; margin: 0; color: var(--paper); font-size: clamp(44px,7vw,118px); line-height: .88; font-weight: 780; letter-spacing: -.085em; text-transform: uppercase; white-space: nowrap; }
     .hero-name-first { justify-self: end; color: var(--paper); animation: name-from-left .95s var(--ease) both; }
     .hero-name-last { justify-self: start; color: var(--gold); animation: name-from-right .95s var(--ease) .16s both; }
-    .hero-portrait { grid-column: 2; grid-row: 1; justify-self: center; align-self: end; width: auto; height: min(57vh,560px); max-width: none; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 16px 28px rgba(23,49,59,.17)); animation: hero-portrait-rise 1.15s var(--ease) .12s both, portrait-float 4.4s ease-in-out 1.3s infinite; }
+    .hero-hologram { grid-column: 2; grid-row: 1; justify-self: center; align-self: end; position: relative; isolation: isolate; width: auto; height: min(57vh,560px); aspect-ratio: 3 / 5; perspective: 1050px; transform-style: preserve-3d; animation: hero-portrait-rise 1.15s var(--ease) .12s both, portrait-float 4.4s ease-in-out 1.3s infinite; }
+    .hero-hologram::before { content: ""; position: absolute; z-index: 0; inset: 16% -18% 10%; border: 1px solid rgba(68,202,232,.34); border-radius: 50%; transform: translateZ(-35px) rotateX(68deg) rotateZ(-18deg); box-shadow: 0 0 24px rgba(58,205,237,.2), inset 0 0 24px rgba(75,111,230,.1); animation: hologram-orbit 18s linear infinite; pointer-events: none; }
+    .hero-hologram::after { content: ""; position: absolute; z-index: 0; left: 18%; right: 18%; bottom: 5%; height: 9%; border-radius: 50%; background: rgba(78,111,234,.2); filter: blur(24px); transform: translateZ(-40px); pointer-events: none; }
+    .hero-hologram-stage { position: relative; z-index: 1; width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateX(var(--holo-tilt-y,0deg)) rotateY(var(--holo-tilt-x,0deg)); transition: transform .22s var(--ease); will-change: transform; }
+    .hero-portrait { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 16px 28px rgba(23,49,59,.2)); transform: translateZ(20px); }
+    .hero-hologram-layer { position: absolute; z-index: 2; inset: 0; pointer-events: none; transform: translateZ(30px); mask-image: url("assets/profile/mayush-portrait.png"); mask-mode: alpha; mask-size: 100% 100%; mask-position: center bottom; mask-repeat: no-repeat; -webkit-mask-image: url("assets/profile/mayush-portrait.png"); -webkit-mask-size: 100% 100%; -webkit-mask-position: center bottom; -webkit-mask-repeat: no-repeat; }
+    .hero-hologram-sheen { opacity: .1; background: radial-gradient(ellipse at var(--holo-shine-x,50%) var(--holo-shine-y,38%), rgba(255,255,255,.82), rgba(85,235,255,.5) 16%, rgba(91,124,255,.22) 34%, rgba(231,107,255,.2) 52%, transparent 72%); mix-blend-mode: screen; transition: opacity .25s ease; }
+    .hero-hologram-scan { opacity: .13; background: repeating-linear-gradient(0deg, rgba(65,218,245,.58) 0 1px, transparent 1px 6px); mix-blend-mode: screen; transition: opacity .25s ease; }
+    .hero-hologram-edge { opacity: .18; background: linear-gradient(115deg, transparent 30%, rgba(84,246,255,.84) 46%, rgba(255,255,255,.46) 50%, rgba(215,107,255,.58) 54%, transparent 70%); background-size: 240% 180%; animation: hologram-flare 4.8s ease-in-out infinite; mix-blend-mode: screen; }
+    .hero-hologram.is-tracking .hero-hologram-sheen { opacity: .78; }
+    .hero-hologram.is-tracking .hero-hologram-scan { opacity: .22; }
     .hero-content { width: min(680px, var(--page)); margin: -2px auto 0; text-align: center; }
     .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--accent-light); font-size: 10px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
     .hero .eyebrow { justify-content: center; margin-bottom: 12px; }
@@ -353,6 +363,8 @@
     @keyframes card-rise { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: none; } }
     @keyframes chip-rise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
     @keyframes card-sweep { from { opacity: 0; transform: translateY(38px) rotateX(8deg) scale(.94); filter: blur(7px); } to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); filter: blur(0); } }
+    @keyframes hologram-orbit { to { rotate: 0 0 1 360deg; } }
+    @keyframes hologram-flare { 0%,100% { background-position: 0% 50%; opacity: .12; } 50% { background-position: 100% 50%; opacity: .42; } }
     @keyframes portrait-float { 0%,100% { translate: 0 0; } 50% { translate: 0 -18px; } }
     @keyframes name-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
     @keyframes color-drift { to { background-position: 220% center; } }
@@ -362,7 +374,7 @@
     @keyframes intro-portrait-rise { from { opacity: 0; transform: translateY(13%) scale(.96); filter: blur(8px); } to { opacity: 1; transform: translateY(0) scale(1); filter: drop-shadow(0 16px 28px rgba(23,49,59,.17)); } }
     body.intro-reveal .site-header { animation: portfolio-enter .72s var(--ease) .06s both; }
     body.intro-reveal .hero-name-first { animation: intro-name-left .9s var(--ease) .12s both; }
-    body.intro-reveal .hero-portrait { animation: intro-portrait-rise .95s var(--ease) .2s both, portrait-float 4.4s ease-in-out 1.2s infinite; }
+    body.intro-reveal .hero-hologram { animation: intro-portrait-rise .95s var(--ease) .2s both, portrait-float 4.4s ease-in-out 1.2s infinite; }
     body.intro-reveal .hero-name-last { animation: intro-name-right .9s var(--ease) .24s both; }
     body.intro-reveal .hero-content { animation: portfolio-enter .85s var(--ease) .48s both; }
     body.intro-reveal .hero-index { animation: title-in .65s ease .75s both; }
@@ -374,7 +386,7 @@
       .hero { min-height: 820px; padding: 116px 0 56px; }
       .hero-showcase { min-height: min(520px,52vh); grid-template-columns: minmax(0,1fr) minmax(220px,34%) minmax(0,1fr); }
       .hero-name { font-size: clamp(34px,5.8vw,70px); }
-      .hero-portrait { height: min(52vh,500px); }
+      .hero-hologram { height: min(52vh,500px); }
       .hero-index { display: none; }
       .hero-cube { top: 17%; right: 8vw; width: 54px; }
       .about-wrap { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); gap: 35px; }
@@ -402,7 +414,7 @@
       .hero-showcase { min-height: 0; grid-template-columns: 1fr; grid-template-rows: auto minmax(250px,42vh) auto; gap: 0; }
       .hero-name { justify-self: center; font-size: clamp(48px,14vw,76px); }
       .hero-name-first { grid-column: 1; grid-row: 1; }
-      .hero-portrait { grid-column: 1; grid-row: 2; align-self: end; height: min(42vh,390px); max-width: 100%; }
+      .hero-hologram { grid-column: 1; grid-row: 2; align-self: end; height: min(42vh,390px); max-width: 100%; }
       .hero-name-last { grid-column: 1; grid-row: 3; }
       .hero-content { width: var(--page); margin: 20px auto 0; }
       .hero-copy { max-width: 460px; font-size: 14px; }
@@ -491,7 +503,14 @@
       </div>
       <div class="hero-showcase" aria-label="Mayush Tripathi">
         <h1 class="hero-name hero-name-first" id="hero-title" tabindex="-1"><span>Mayush</span></h1>
-        <img class="hero-portrait" src="assets/profile/mayush-portrait.png" alt="Illustrated portrait of Mayush Tripathi" fetchpriority="high" decoding="async">
+        <div class="hero-hologram" id="hero-hologram" role="group" aria-label="Cursor-responsive holographic portrait of Mayush Tripathi">
+          <div class="hero-hologram-stage" id="hero-hologram-stage">
+            <img class="hero-portrait" src="assets/profile/mayush-portrait.png" alt="Illustrated portrait of Mayush Tripathi" fetchpriority="high" decoding="async">
+            <span class="hero-hologram-layer hero-hologram-sheen" aria-hidden="true"></span>
+            <span class="hero-hologram-layer hero-hologram-scan" aria-hidden="true"></span>
+            <span class="hero-hologram-layer hero-hologram-edge" aria-hidden="true"></span>
+          </div>
+        </div>
         <p class="hero-name hero-name-last"><span>Tripathi</span></p>
       </div>
       <div class="hero-content">
@@ -1192,6 +1211,41 @@
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && !opening.hidden) closeOpening();
     });
+    const heroHologram = document.getElementById("hero-hologram");
+    const heroHologramStage = document.getElementById("hero-hologram-stage");
+    const heroReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (heroHologram && heroHologramStage && !heroReducedMotion.matches) {
+      const resetHologram = function () {
+        heroHologramStage.style.setProperty("--holo-tilt-x", "0deg");
+        heroHologramStage.style.setProperty("--holo-tilt-y", "0deg");
+        heroHologramStage.style.setProperty("--holo-shine-x", "50%");
+        heroHologramStage.style.setProperty("--holo-shine-y", "38%");
+        heroHologram.classList.remove("is-tracking");
+      };
+      window.addEventListener("pointermove", function (event) {
+        if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
+        const bounds = heroHologram.getBoundingClientRect();
+        if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) {
+          resetHologram();
+          return;
+        }
+        const clamp = function (value) { return Math.max(-1, Math.min(1, value)); };
+        const nx = clamp((event.clientX - window.innerWidth / 2) / (window.innerWidth / 2));
+        const ny = clamp((event.clientY - window.innerHeight / 2) / (window.innerHeight / 2));
+        const localX = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+        const localY = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
+        heroHologramStage.style.setProperty("--holo-tilt-x", (nx * 11).toFixed(1) + "deg");
+        heroHologramStage.style.setProperty("--holo-tilt-y", (ny * -8).toFixed(1) + "deg");
+        heroHologramStage.style.setProperty("--holo-shine-x", (localX * 100).toFixed(1) + "%");
+        heroHologramStage.style.setProperty("--holo-shine-y", (localY * 100).toFixed(1) + "%");
+        heroHologram.classList.add("is-tracking");
+      }, { passive: true });
+      window.addEventListener("pointerleave", resetHologram, { passive: true });
+      window.addEventListener("scroll", function () {
+        const bounds = heroHologram.getBoundingClientRect();
+        if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) resetHologram();
+      }, { passive: true });
+    }
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>

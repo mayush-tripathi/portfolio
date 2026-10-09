@@ -1,158 +1,948 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mayush Tripathi | Portfolio</title>
-<style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#101010;color:#f5f5f5;font-family:Arial,sans-serif}
-header{position:sticky;top:0;z-index:5;background:#111f;padding:20px 7%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:900;font-size:23px}.logo span{color:#e50914}
-nav{display:flex;gap:20px}a{color:inherit;text-decoration:none}
-.hero{min-height:570px;padding:120px 8%;display:flex;align-items:center;background:radial-gradient(ellipse at 80% 40%,#8c171c,transparent 35%),linear-gradient(110deg,#101010,#241416,#101010)}
-.label{color:#ff646b;letter-spacing:3px;font-size:12px;font-weight:bold}
-h1{font-size:clamp(45px,8vw,86px);line-height:1;margin:22px 0;letter-spacing:-3px}
-h1 span{color:#e50914}
-p{line-height:1.8;color:#bbb}
-.hero p{max-width:580px}
-.btn{display:inline-block;padding:13px 19px;border-radius:4px;background:#e50914;color:white;font-weight:bold;margin:12px 8px 0 0}
-.btn.light{background:white;color:#111}
-section{padding:60px 7%;scroll-margin-top:70px}
-h2{font-size:32px;margin-top:0}
-.sub{font-size:13px;color:#999;margin-top:-12px;margin-bottom:25px}
-.filters,.skills{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
-.filter,.skill{border:1px solid #383838;background:#202020;color:#eee;padding:10px 14px;border-radius:20px;cursor:pointer}
-.filter.active,.filter:hover{background:#e50914;border-color:#e50914}
-.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.card{border:1px solid #292929;background:#191919;border-radius:7px;overflow:hidden}
-.art{height:190px;display:flex;align-items:center;justify-content:center;font-size:60px;font-weight:900;color:#ffffffdd;background:radial-gradient(circle at center,var(--glow),#171717 70%)}
-.info{padding:18px}.info h3{margin:0 0 8px}.info p{font-size:13px}
-.tag{font-size:11px;color:#ff737a;letter-spacing:1px}
-.about{display:grid;grid-template-columns:1.2fr .8fr;gap:30px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.stat{background:#1c1c1c;padding:20px;border-left:3px solid #e50914}
-.stat small{display:block;color:#999;margin-top:8px}
-.contact{background:linear-gradient(110deg,#381216,#1b1b1b);padding:30px;border-radius:8px}
-footer{padding:25px 7%;border-top:1px solid #292929;color:#888;font-size:12px}
-@media(max-width:800px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}.about{grid-template-columns:1fr}}
-@media(max-width:520px){header{padding:16px 5%}nav{gap:10px;font-size:12px}nav a:nth-child(2){display:none}.projects{grid-template-columns:1fr}section{padding:45px 5%}.hero{padding:90px 6%;min-height:520px}h1{letter-spacing:-2px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0d">
+  <meta name="description" content="Mayush Tripathi — 3D artist, environment artist, and lead game designer with 1.5+ years of experience. Explore game-ready props, environments, and professional experience.">
+  <title>Mayush Tripathi — The Portfolio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090a0d;
+      --surface: #111318;
+      --surface-2: #171a20;
+      --paper: #f2eee9;
+      --muted: #aaa7a2;
+      --line: rgba(255,255,255,.12);
+      --accent: #e3563c;
+      --accent-light: #ff9b70;
+      --gold: #e2c186;
+      --page: min(1220px, calc(100% - 9vw));
+      --ease: cubic-bezier(.2,.75,.2,1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--paper);
+      font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+    body.is-opening { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; font: inherit; }
+    img { display: block; max-width: 100%; }
+    ::selection { color: #fff; background: var(--accent); }
+    .skip-link {
+      position: fixed; z-index: 100; top: 8px; left: 8px; padding: 10px 14px;
+      color: #111; background: #fff; transform: translateY(-150%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .progress-track { position: fixed; inset: 0 0 auto; z-index: 30; height: 2px; background: transparent; }
+    .progress-bar { height: 100%; width: 0; background: var(--accent); box-shadow: 0 0 18px rgba(227,86,60,.7); }
+
+    /* Opening title card */
+    .opening {
+      position: fixed; inset: 0; z-index: 50; display: grid; place-items: center;
+      padding: 24px; overflow: hidden; background: #08090b;
+    }
+    .opening[hidden] { display: none; }
+    .opening::before, .opening::after {
+      content: ""; position: absolute; width: min(68vw, 780px); aspect-ratio: 1;
+      border: 1px solid rgba(227,86,60,.17); border-radius: 50%;
+      animation: orbit 11s linear infinite;
+    }
+    .opening::after { width: min(47vw, 520px); animation-direction: reverse; border-color: rgba(226,193,134,.14); }
+    .opening-copy { position: relative; z-index: 1; text-align: center; animation: title-in 1.15s var(--ease) both; }
+    .opening-mark {
+      display: inline-grid; place-items: center; width: 52px; height: 52px; margin-bottom: 18px;
+      border: 1px solid rgba(226,193,134,.55); color: var(--gold); font-weight: 800; letter-spacing: -.08em;
+      transform: rotate(-8deg);
+    }
+    .opening-overline { color: var(--accent-light); font-size: 10px; letter-spacing: .38em; text-transform: uppercase; }
+    .opening h2 { margin: 9px 0 0; font-size: clamp(38px, 8vw, 82px); line-height: .92; letter-spacing: -.07em; }
+    .opening h2 span { display: block; color: var(--muted); font-size: .54em; letter-spacing: .32em; text-transform: uppercase; margin-top: 15px; }
+    .opening-skip {
+      position: absolute; z-index: 2; right: 5vw; bottom: 5vh; padding: 9px 13px;
+      border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer;
+      font-size: 11px; letter-spacing: .13em; text-transform: uppercase;
+    }
+    .opening-skip:hover, .opening-skip:focus-visible { border-color: var(--accent-light); color: #fff; }
+
+    /* Navigation */
+    .site-header {
+      position: fixed; z-index: 20; inset: 0 0 auto; padding: 20px 0;
+      transition: background .3s ease, padding .3s ease, border-color .3s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .site-header.scrolled { padding: 12px 0; background: rgba(9,10,13,.88); border-color: var(--line); backdrop-filter: blur(16px); }
+    .nav-inner { width: var(--page); margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 760; letter-spacing: .09em; text-transform: uppercase; }
+    .brand-mark {
+      width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid rgba(226,193,134,.65);
+      color: var(--gold); font-size: 11px; letter-spacing: -.08em; transform: rotate(-7deg);
+    }
+    .brand-dot { color: var(--accent); }
+    .site-nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 38px); }
+    .site-nav a {
+      position: relative; padding: 7px 0; color: #c6c2bc; font-size: 11px;
+      letter-spacing: .13em; text-transform: uppercase; transition: color .2s ease;
+    }
+    .site-nav a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+    .site-nav a:hover, .site-nav a.active { color: #fff; }
+    .site-nav a:hover::after, .site-nav a.active::after { transform: scaleX(1); }
+    .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid var(--line); background: transparent; cursor: pointer; }
+    .menu-toggle span { display: block; width: 16px; height: 1px; margin: 5px auto; background: #fff; }
+
+    /* Hero */
+    .hero {
+      position: relative; isolation: isolate; min-height: min(900px, 100svh); display: flex; align-items: center;
+      padding: 138px max(4.5vw, calc((100vw - 1220px)/2)) 100px; overflow: hidden; background: #0b0c10;
+    }
+    .hero-art { position: absolute; z-index: -2; inset: 0; }
+    .hero-art img { width: 100%; height: 100%; object-fit: cover; object-position: 58% 48%; opacity: .64; filter: saturate(.72) contrast(1.05); transform: scale(1.025); }
+    .hero-art::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, #090a0d 1%, rgba(9,10,13,.93) 22%, rgba(9,10,13,.62) 48%, rgba(9,10,13,.06) 100%),
+        linear-gradient(0deg, #090a0d 0%, transparent 30%, rgba(9,10,13,.12) 100%);
+    }
+    .hero-art .frame-line { position: absolute; right: 8.5%; top: 17%; bottom: 18%; width: 1px; background: linear-gradient(transparent, rgba(226,193,134,.7), transparent); opacity: .6; }
+    .hero-content { max-width: 670px; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--accent-light); font-size: 10px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 27px; height: 1px; background: var(--accent); }
+    .hero h1 { margin: 22px 0 20px; max-width: 780px; font-size: clamp(48px, 8vw, 104px); line-height: .89; letter-spacing: -.075em; font-weight: 730; }
+    .hero h1 .name { display: block; margin-top: 23px; color: #d6d1ca; font-size: .35em; line-height: 1.2; letter-spacing: .06em; text-transform: uppercase; }
+    .hero h1 .accent-word { color: var(--accent-light); }
+    .hero-copy { max-width: 520px; margin: 0; color: #cfcbc4; font-size: clamp(15px, 1.4vw, 18px); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 18px;
+      border: 1px solid rgba(255,255,255,.26); background: rgba(255,255,255,.06); cursor: pointer;
+      font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
+    }
+    .button:hover, .button:focus-visible { transform: translateY(-2px); border-color: #fff; background: rgba(255,255,255,.14); }
+    .button.primary { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .button.primary:hover, .button.primary:focus-visible { border-color: #f37b5b; background: #f37b5b; }
+    .button .arrow { font-size: 16px; line-height: 1; }
+    .hero-note { display: flex; align-items: center; gap: 13px; margin-top: 52px; color: #c1bcb5; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
+    .hero-note strong { color: var(--gold); font-weight: 700; }
+    .hero-note .divider { width: 28px; height: 1px; background: rgba(226,193,134,.55); }
+    .hero-index { position: absolute; right: max(4.5vw, calc((100vw - 1220px)/2)); bottom: 46px; writing-mode: vertical-rl; color: rgba(255,255,255,.62); font-size: 9px; letter-spacing: .26em; text-transform: uppercase; }
+
+    /* Common sections */
+    .section { padding: clamp(76px, 10vw, 132px) 0; }
+    .section-inner { width: var(--page); margin: auto; }
+    .section-kicker { color: var(--accent-light); font-size: 10px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
+    .section-title { margin: 12px 0 12px; font-size: clamp(34px, 5vw, 57px); line-height: 1; letter-spacing: -.055em; font-weight: 690; }
+    .section-intro { max-width: 670px; margin: 0; color: var(--muted); font-size: 15px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 34px; }
+    .heading-side { color: #817e79; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+    .section-divider { width: var(--page); height: 1px; margin: 0 auto; background: linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent); }
+
+    /* Collection */
+    .collection { padding-top: 83px; }
+    .collection-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 23px; }
+    .collection-head h2 { margin: 0; font-size: clamp(24px, 3vw, 34px); letter-spacing: -.04em; }
+    .collection-head p { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+    .collection-stamp { color: var(--gold); font-size: 10px; letter-spacing: .17em; text-transform: uppercase; white-space: nowrap; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+    .filter {
+      padding: 8px 12px; border: 1px solid var(--line); background: transparent; color: #aaa7a2; cursor: pointer;
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase; transition: all .2s ease;
+    }
+    .filter:hover, .filter[aria-pressed="true"] { border-color: var(--accent); background: rgba(227,86,60,.13); color: #fff; }
+    .project-rail {
+      display: grid; grid-auto-columns: minmax(255px, 30.5%); grid-auto-flow: column; gap: 15px;
+      overflow-x: auto; padding: 1px 0 18px; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+      scrollbar-color: #37343a transparent; scrollbar-width: thin;
+    }
+    .project-card {
+      min-width: 0; scroll-snap-align: start; border: 1px solid rgba(255,255,255,.1);
+      background: linear-gradient(165deg, #171a20, #0e1014 70%); cursor: pointer;
+      text-align: left; transition: border-color .25s ease, transform .25s var(--ease), box-shadow .25s ease;
+    }
+    .project-card:hover, .project-card:focus-visible { z-index: 1; transform: translateY(-5px); border-color: rgba(227,86,60,.7); box-shadow: 0 18px 40px rgba(0,0,0,.32); outline: none; }
+    .project-poster { position: relative; aspect-ratio: 1.33 / 1; overflow: hidden; background: #202126; }
+    .project-poster img, .project-poster video { width: 100%; height: 100%; object-fit: cover; transition: transform .55s var(--ease), filter .4s ease; }
+    .project-card:hover .project-poster img, .project-card:hover .project-poster video { transform: scale(1.045); filter: saturate(1.12); }
+    .poster-shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,9,12,.82), transparent 46%); }
+    .poster-number { position: absolute; top: 13px; left: 14px; color: rgba(255,255,255,.76); font-size: 9px; letter-spacing: .15em; }
+    .poster-category { position: absolute; right: 12px; bottom: 12px; padding: 5px 8px; background: rgba(9,10,13,.72); color: #f2d0b2; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+    .poster-missing {
+      display: grid; place-items: center; width: 100%; height: 100%; position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 70% 30%, var(--glow), transparent 42%), linear-gradient(145deg, #292522, #111318 67%);
+    }
+    .poster-missing::before, .poster-missing::after { content: ""; position: absolute; inset: 13%; border: 1px solid rgba(226,193,134,.22); transform: skewY(-8deg); }
+    .poster-missing::after { inset: 23% 17%; border-color: rgba(255,255,255,.11); transform: skewY(8deg); }
+    .poster-glyph { position: relative; z-index: 1; color: rgba(255,255,255,.83); font-size: clamp(44px, 7vw, 86px); font-weight: 750; letter-spacing: -.11em; text-shadow: 0 8px 35px rgba(0,0,0,.6); }
+    .poster-missing-note { position: absolute; z-index: 2; left: 12px; bottom: 11px; color: #e2c186; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+    .project-info { padding: 15px 16px 17px; }
+    .project-type { color: var(--accent-light); font-size: 9px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+    .project-info h3 { margin: 5px 0 5px; font-size: 16px; line-height: 1.25; letter-spacing: -.025em; }
+    .project-info p { margin: 0; color: #a6a29d; font-size: 11px; line-height: 1.6; }
+    .card-open { display: inline-flex; align-items: center; gap: 7px; margin-top: 14px; color: #e9e3dc; font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .card-open span { color: var(--accent-light); font-size: 15px; transition: transform .2s ease; }
+    .project-card:hover .card-open span { transform: translateX(4px); }
+    .rail-hint { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; color: #77746f; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+
+    /* Artist profile */
+    .about-wrap { display: grid; grid-template-columns: minmax(240px,.85fr) minmax(0,1.35fr); gap: clamp(32px,7vw,100px); align-items: center; }
+    .profile-card {
+      position: relative; min-height: 380px; padding: 22px; overflow: hidden; border: 1px solid rgba(226,193,134,.28);
+      background:
+        radial-gradient(ellipse at 25% 100%, rgba(227,86,60,.18), transparent 48%),
+        radial-gradient(ellipse at 100% 0, rgba(226,193,134,.11), transparent 45%), #121419;
+    }
+    .profile-card::before { content: ""; position: absolute; inset: 16px; border: 1px solid rgba(255,255,255,.09); pointer-events: none; }
+    .profile-portrait {
+      position: absolute; inset: 48px 34px 82px; display: grid; place-items: center;
+      background: linear-gradient(155deg, rgba(255,255,255,.05), rgba(0,0,0,.24));
+    }
+    .profile-portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; filter: saturate(.9) contrast(1.02); }
+    .profile-portrait::before, .profile-portrait::after { content: ""; position: absolute; z-index: 1; border-radius: 50%; pointer-events: none; }
+    .profile-portrait::before { width: min(68%,220px); aspect-ratio: 1; border: 1px solid rgba(226,193,134,.44); box-shadow: 0 0 70px rgba(227,86,60,.1); }
+    .profile-portrait::after { width: min(54%,170px); aspect-ratio: 1; border: 1px solid rgba(255,255,255,.14); }
+    .profile-initials { position: relative; z-index: 1; color: #ece6dd; font-size: clamp(70px, 12vw, 118px); line-height: 1; font-weight: 680; letter-spacing: -.12em; text-shadow: 0 10px 40px #000; }
+    .profile-label { position: absolute; left: 34px; bottom: 29px; color: var(--gold); font-size: 9px; letter-spacing: .19em; text-transform: uppercase; }
+    .profile-index { position: absolute; right: 31px; bottom: 29px; color: #85817a; font-size: 9px; letter-spacing: .15em; }
+    .about-copy .section-title { max-width: 600px; }
+    .about-copy > p { color: #bcb8b2; font-size: 15px; }
+    .about-copy > p strong { color: #f6f1e8; font-weight: 600; }
+    .focus-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin-top: 26px; }
+    .focus-item { min-height: 94px; padding: 15px; border: 1px solid var(--line); background: rgba(255,255,255,.018); }
+    .focus-item span { display: block; margin-bottom: 6px; color: var(--accent-light); font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
+    .focus-item strong { font-size: 12px; font-weight: 600; }
+
+    /* Experience */
+    .experience-section { background: linear-gradient(180deg, transparent, rgba(255,255,255,.018) 45%, transparent); }
+    .experience-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; margin-top: 34px; }
+    .experience-card { position: relative; min-height: 220px; padding: 22px; border: 1px solid var(--line); background: rgba(16,18,23,.74); transition: border-color .25s ease, transform .25s ease; }
+    .experience-card:hover { transform: translateY(-4px); border-color: rgba(226,193,134,.46); }
+    .experience-card::before { content: ""; position: absolute; top: -1px; left: 22px; width: 37px; height: 2px; background: var(--accent); }
+    .experience-no { color: #7c7974; font-size: 9px; letter-spacing: .19em; }
+    .experience-card h3 { margin: 28px 0 7px; font-size: 18px; line-height: 1.22; letter-spacing: -.035em; }
+    .experience-card p { margin: 0; color: #aaa6a0; font-size: 12px; }
+    .experience-tag { display: inline-block; margin-top: 18px; color: var(--gold); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+
+    /* Skills */
+    .skills-layout { display: grid; grid-template-columns: minmax(230px,.72fr) minmax(0,1.6fr); gap: clamp(35px,7vw,100px); align-items: start; }
+    .skills-aside { position: sticky; top: 110px; }
+    .skills-aside p { max-width: 320px; color: var(--muted); font-size: 14px; }
+    .tool-groups { display: grid; gap: 12px; }
+    .tool-group { display: grid; grid-template-columns: minmax(145px,.55fr) 1.45fr; gap: 18px; padding: 19px 0; border-top: 1px solid var(--line); }
+    .tool-group h3 { margin: 1px 0; color: #ddd7ce; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .tool-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tool-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.025); color: #bdb9b2; font-size: 11px; }
+    .tool-chip::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+    /* Education & courses */
+    .credentials-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-top: 32px; }
+    .credential-card { min-height: 142px; padding: 22px; border: 1px solid var(--line); background: rgba(16,18,23,.74); transition: border-color .25s ease, transform .25s ease; }
+    .credential-card:hover { transform: translateY(-3px); border-color: rgba(226,193,134,.46); }
+    .credential-type { color: var(--accent-light); font-size: 9px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+    .credential-card h3 { margin: 16px 0 5px; font-size: 17px; line-height: 1.25; letter-spacing: -.03em; }
+    .credential-card p { margin: 0; color: #aaa6a0; font-size: 12px; }
+
+    /* Contact */
+    .contact-panel {
+      position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px;
+      padding: clamp(28px,6vw,66px); overflow: hidden; border: 1px solid rgba(226,193,134,.28);
+      background:
+        radial-gradient(ellipse at 90% 0, rgba(227,86,60,.18), transparent 45%),
+        linear-gradient(130deg, #17181c, #111216 68%);
+    }
+    .contact-panel::after { content: "MT"; position: absolute; right: 18%; bottom: -58px; color: rgba(255,255,255,.025); font-size: clamp(130px,22vw,260px); line-height: 1; font-weight: 800; letter-spacing: -.13em; pointer-events: none; }
+    .contact-copy, .contact-actions { position: relative; z-index: 1; }
+    .contact-copy .section-title { margin-bottom: 12px; }
+    .contact-copy p { max-width: 580px; margin: 0; color: #b3afa9; font-size: 14px; }
+    .contact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .contact-note { color: #89857f; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+    footer { padding: 24px 0; border-top: 1px solid var(--line); color: #7d7a75; font-size: 10px; }
+    .footer-inner { width: var(--page); margin: auto; display: flex; justify-content: space-between; gap: 18px; }
+    .footer-credit { color: #aca79f; }
+
+    /* Motion and dialog */
+    .motion-ready .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .motion-ready .reveal.visible { opacity: 1; transform: none; }
+    dialog {
+      width: min(960px, calc(100% - 30px)); max-width: none; max-height: min(90vh, 900px); padding: 0;
+      border: 1px solid rgba(255,255,255,.15); background: #101216; color: var(--paper); box-shadow: 0 30px 120px rgba(0,0,0,.72);
+    }
+    dialog::backdrop { background: rgba(4,5,7,.84); backdrop-filter: blur(8px); }
+    .dialog-inner { padding: clamp(18px,4vw,36px); overflow: auto; max-height: min(90vh,900px); }
+    .dialog-top { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+    .dialog-kicker { color: var(--accent-light); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+    .dialog-title { margin: 7px 0 9px; font-size: clamp(26px,4vw,42px); line-height: 1; letter-spacing: -.05em; }
+    .dialog-desc { max-width: 680px; margin: 0; color: #b3afa9; font-size: 13px; }
+    .dialog-close { flex: none; width: 40px; height: 40px; border: 1px solid var(--line); background: transparent; cursor: pointer; font-size: 21px; }
+    .dialog-close:hover { border-color: var(--accent); }
+    .dialog-feature { margin-top: 24px; }
+    .dialog-feature img, .dialog-feature video { width: 100%; max-height: 500px; object-fit: contain; background: #08090b; }
+    .dialog-caption { display: flex; justify-content: space-between; gap: 15px; margin-top: 8px; color: #8d8983; font-size: 9px; letter-spacing: .11em; text-transform: uppercase; }
+    .dialog-thumbs { display: flex; gap: 9px; margin-top: 13px; overflow-x: auto; padding-bottom: 4px; }
+    .dialog-thumb { flex: 0 0 116px; padding: 0; border: 1px solid var(--line); background: #090a0d; cursor: pointer; opacity: .64; }
+    .dialog-thumb[aria-current="true"], .dialog-thumb:hover { border-color: var(--accent-light); opacity: 1; }
+    .dialog-thumb img { width: 100%; aspect-ratio: 1.4/1; object-fit: cover; }
+    .dialog-empty { display: grid; min-height: 230px; place-items: center; margin-top: 24px; border: 1px dashed rgba(226,193,134,.4); background: #131419; color: #c3b8a9; text-align: center; }
+    .dialog-empty span { display: block; color: var(--gold); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
+    .dialog-empty strong { display: block; margin-top: 7px; font-size: 13px; font-weight: 500; }
+    .dialog-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .dialog-meta span { padding: 7px 9px; border: 1px solid var(--line); color: #bbb6ae; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @keyframes title-in { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+    @media (max-width: 860px) {
+      :root { --page: min(100% - 40px, 680px); }
+      .hero { min-height: 780px; align-items: end; padding: 170px 7vw 115px; }
+      .hero-art img { object-position: 60% center; }
+      .hero-art::after { background: linear-gradient(0deg, #090a0d 6%, rgba(9,10,13,.8) 36%, rgba(9,10,13,.2) 100%), linear-gradient(90deg, rgba(9,10,13,.7), transparent); }
+      .hero-index { display: none; }
+      .about-wrap { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); gap: 35px; }
+      .profile-card { min-height: 320px; }
+      .experience-grid { grid-template-columns: 1fr; }
+      .experience-card { min-height: 0; }
+      .experience-card h3 { margin-top: 17px; }
+      .skills-layout { grid-template-columns: 1fr; gap: 20px; }
+      .skills-aside { position: static; }
+    }
+    @media (max-width: 620px) {
+      :root { --page: calc(100% - 36px); }
+      .site-header { padding: 13px 0; }
+      .site-header.scrolled { padding: 10px 0; }
+      .menu-toggle { display: block; }
+      .site-nav {
+        position: absolute; top: calc(100% + 8px); right: 18px; left: 18px; display: none;
+        flex-direction: column; align-items: stretch; gap: 0; padding: 8px 16px;
+        border: 1px solid var(--line); background: rgba(12,13,17,.97); box-shadow: 0 18px 44px rgba(0,0,0,.45);
+      }
+      .site-nav.open { display: flex; }
+      .site-nav a { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+      .site-nav a:last-child { border: 0; }
+      .hero { min-height: 740px; padding: 150px 18px 100px; }
+      .hero-art img { object-position: 57% center; }
+      .hero h1 { font-size: clamp(49px,14vw,78px); }
+      .hero-copy { max-width: 460px; font-size: 14px; }
+      .hero-note { margin-top: 38px; flex-wrap: wrap; font-size: 8px; }
+      .section-heading, .collection-head { align-items: start; flex-direction: column; gap: 10px; }
+      .collection { padding-top: 66px; }
+      .project-rail { grid-auto-columns: minmax(250px, 82%); gap: 11px; }
+      .about-wrap { grid-template-columns: 1fr; }
+      .profile-card { min-height: 330px; max-width: 430px; }
+      .about-copy { order: -1; }
+      .focus-grid { grid-template-columns: 1fr 1fr; }
+      .credentials-grid { grid-template-columns: 1fr; }
+      .tool-group { grid-template-columns: 1fr; gap: 10px; }
+      .contact-panel { grid-template-columns: 1fr; }
+      .contact-actions { flex-direction: row; flex-wrap: wrap; align-items: center; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .motion-ready .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <a class="logo" href="#home">MAYUSH<span>.</span></a>
-  <nav><a href="#home">Home</a><a href="#about">About</a><a href="#work">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
-</header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
 
-<main>
-<section class="hero" id="home">
-  <div>
-    <div class="label">3D ART · GAME DEV · DIGITAL DESIGN</div>
-    <h1>Mayush<br>Tripathi<span>.</span></h1>
-    <p>3D & Multimedia Faculty · Game Developer · Designer<br>
-    Creating detailed 3D assets, immersive environments and digital experiences.</p>
-    <a class="btn light" href="#work">▶ Explore My Work</a>
-    <a class="btn" href="#about">About Me ↓</a>
-  </div>
-</section>
-
-<section id="work">
-  <h2>Featured Projects</h2>
-  <p class="sub">Selected work in 3D art, game assets and environments.</p>
-  <div class="filters">
-    <button class="filter active" data-filter="all">All</button>
-    <button class="filter" data-filter="3d">3D Assets</button>
-    <button class="filter" data-filter="game">Game Art</button>
-    <button class="filter" data-filter="environment">Environments</button>
-  </div>
-  <div class="projects" id="projects"></div>
-</section>
-
-<section id="about">
-  <h2>About Me</h2>
-  <div class="about">
-    <p>I am Mayush Tripathi, a 3D & Multimedia Faculty, Game Developer and Designer. I work across 3D modeling, texturing, real-time game assets, environment creation, visual design and multimedia production. I also enjoy teaching creative tools and helping learners turn ideas into digital projects.</p>
-    <div class="stats">
-      <div class="stat"><b>3D ART</b><small>Modeling & Texturing</small></div>
-      <div class="stat"><b>GAME DEV</b><small>Real-time Workflows</small></div>
-      <div class="stat"><b>MULTIMEDIA</b><small>Design & Motion</small></div>
-      <div class="stat"><b>FACULTY</b><small>Teaching & Mentoring</small></div>
+  <div class="opening" id="opening" hidden>
+    <div class="opening-copy">
+      <div class="opening-mark" aria-hidden="true">MT</div>
+      <div class="opening-overline">A creative portfolio</div>
+      <h2>Mayush Tripathi<span>Artist · Developer · Educator</span></h2>
     </div>
+    <button class="opening-skip" id="skip-opening" type="button">Skip intro <span aria-hidden="true">↗</span></button>
   </div>
-</section>
 
-<section id="skills">
-  <h2>Tools & Software</h2>
-  <p class="sub">My creative toolkit</p>
-  <div class="skills">
-    <span class="skill">Blender</span><span class="skill">Maya</span>
-    <span class="skill">Unreal Engine 5</span><span class="skill">Unity</span>
-    <span class="skill">Substance Painter</span><span class="skill">Photoshop</span>
-    <span class="skill">Illustrator</span><span class="skill">InDesign</span>
-    <span class="skill">Premiere Pro</span><span class="skill">After Effects</span>
-    <span class="skill">MetaHuman</span><span class="skill">Figma</span>
-    <span class="skill">Substance 3D Stager</span><span class="skill">Marvelous Designer</span>
-    <span class="skill">Cloud Tools</span>
-  </div>
-</section>
+  <header class="site-header" id="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="#home" aria-label="Mayush Tripathi, home">
+        <span class="brand-mark" aria-hidden="true">MT</span>
+        <span>Mayush<span class="brand-dot">.</span></span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#work">Projects</a>
+        <a href="#about">Profile</a>
+        <a href="#journey">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<section id="contact">
-  <div class="contact">
-    <div class="label">LET'S CREATE SOMETHING</div>
-    <h2 style="margin-top:15px">Have a project in mind?</h2>
-    <p>For 3D art, game development, design and multimedia opportunities, let's connect.</p>
-    <p>Email and social links will be added here.</p>
-  </div>
-</section>
-</main>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true">
+        <img src="assets/projects/willys-mb-front-3q.webp" alt="">
+        <span class="frame-line"></span>
+      </div>
+      <div class="hero-content">
+        <div class="eyebrow">3D art · environment art · game design</div>
+        <h1 id="hero-title" tabindex="-1"><span class="accent-word">Crafting</span><br>worlds with<br>character<span class="accent-word">.</span><span class="name">Mayush Tripathi</span></h1>
+        <p class="hero-copy">3D Artist, Environment Artist and Lead Game Designer with 1.5+ years of experience. I create game-ready props and environments, lead creative workflows, and teach 3D art.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work"><span class="arrow" aria-hidden="true">▶</span> Explore the work</a>
+          <a class="button" href="#about">Meet the artist <span class="arrow" aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-note"><strong>1.5+ years experience</strong><span class="divider"></span><span>Game art · Environment design · Team leadership</span></div>
+      </div>
+      <div class="hero-index" aria-hidden="true">Portfolio · 2026</div>
+    </section>
 
-<footer>© <span id="year"></span> Mayush Tripathi · Portfolio</footer>
+    <section class="section collection" id="work" aria-labelledby="work-title">
+      <div class="section-inner">
+        <div class="collection-head reveal">
+          <div>
+            <div class="section-kicker">Featured collection</div>
+            <h2 id="work-title">Originals by Mayush</h2>
+            <p>Each project is a study in form, materials and atmosphere.</p>
+          </div>
+          <div class="collection-stamp">01 — 06 <span aria-hidden="true">/</span> Selected projects</div>
+        </div>
+        <div class="filters reveal" role="group" aria-label="Filter projects">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">All projects</button>
+          <button class="filter" type="button" data-filter="asset" aria-pressed="false">3D assets</button>
+          <button class="filter" type="button" data-filter="character" aria-pressed="false">Characters</button>
+          <button class="filter" type="button" data-filter="environment" aria-pressed="false">Environments</button>
+        </div>
+        <div class="project-rail reveal" id="project-rail" aria-label="Project gallery"></div>
+        <div class="rail-hint"><span>Choose a title to explore the renders</span><span>Drag or scroll <span aria-hidden="true">→</span></span></div>
+      </div>
+    </section>
 
-<script>
-const projects=[
- {title:"Willys MB",cat:"3d",mark:"MB",glow:"#746144",desc:"Military vehicle 3D asset. Add final renders and texturing breakdown."},
- {title:"Game Ready Horse – Real-Time Character",cat:"game",mark:"3D",glow:"#77503b",desc:"Real-time horse character. Add model, UV and texture screenshots."},
- {title:"Stylized Fantasy Axe",cat:"3d",mark:"AXE",glow:"#743b4c",desc:"Stylized fantasy prop with detailed modeling and materials."},
- {title:"M 18 SMOKE GRENADE",cat:"3d",mark:"M18",glow:"#526045",desc:"Hard-surface 3D asset. Add your final render and breakdown."},
- {title:"GTA V STREET – Unreal Engine 5.6.1",cat:"environment",mark:"UE5",glow:"#315d6a",desc:"Street environment created in Unreal Engine 5.6.1."},
- {title:"NATURE",cat:"environment",mark:"N",glow:"#315d40",desc:"Nature environment showcasing foliage, atmosphere and lighting."}
-];
-const grid=document.getElementById("projects");
-function render(filter="all"){
- grid.innerHTML="";
- projects.filter(p=>filter==="all"||p.cat===filter).forEach(p=>{
-  const el=document.createElement("article");
-  el.className="card";
-  const art=document.createElement("div");
-  art.className="art";
-  art.style.setProperty("--glow",p.glow);
-  art.textContent=p.mark;
-  const info=document.createElement("div");
-  info.className="info";
-  const title=document.createElement("h3");
-  title.textContent=p.title;
-  const desc=document.createElement("p");
-  desc.textContent=p.desc;
-  const tag=document.createElement("span");
-  tag.className="tag";
-  tag.textContent=p.cat.toUpperCase();
-  info.append(title,desc,tag);
-  el.append(art,info);
-  grid.append(el);
- });
-}
-document.querySelectorAll(".filter").forEach(btn=>{
- btn.addEventListener("click",()=>{
-  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  render(btn.dataset.filter);
- });
-});
-document.getElementById("year").textContent=new Date().getFullYear();
-render();
-</script>
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section-inner about-wrap">
+        <div class="profile-card reveal" aria-label="Mayush Tripathi profile">
+          <div class="profile-portrait"><img src="assets/profile/mayush-portrait.png" alt="Illustrated portrait of Mayush Tripathi" loading="lazy" decoding="async"></div>
+          <div class="profile-label">Artist profile</div>
+          <div class="profile-index">01 / CREATIVE</div>
+        </div>
+        <div class="about-copy reveal">
+          <div class="section-kicker">The artist</div>
+          <h2 class="section-title" id="about-title">Ideas made tangible.</h2>
+          <p><strong>I’m Mayush Tripathi</strong>, a 3D Artist, Environment Artist and Lead Game Designer with 1.5+ years of experience in game design, 3D asset creation and team leadership. I build props and immersive environments for games and real-time scenes.</p>
+          <p>I’m currently a 3D Faculty member at Arena Animation Ahmedabad and work with Eminatti Synergies LLP as a Studio Head and Game Design Consultant. My practice includes environment art, Unreal Engine Blueprints, PBR texturing, scene composition and project delivery.</p>
+          <div class="focus-grid">
+            <div class="focus-item"><span>01 · Game art</span><strong>Props &amp; environments</strong></div>
+            <div class="focus-item"><span>02 · Production</span><strong>Real-time 3D &amp; PBR</strong></div>
+            <div class="focus-item"><span>03 · Leadership</span><strong>Team &amp; delivery</strong></div>
+            <div class="focus-item"><span>04 · Faculty</span><strong>Teaching 3D workflows</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="section experience-section" id="journey" aria-labelledby="journey-title">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-kicker">Experience &amp; practice</div>
+            <h2 class="section-title" id="journey-title">A creative journey.</h2>
+            <p class="section-intro">Current roles in teaching, studio leadership and game design, alongside freelance environment and prop work.</p>
+          </div>
+          <div class="heading-side">Professional focus</div>
+        </div>
+        <div class="experience-grid">
+          <article class="experience-card reveal">
+            <div class="experience-no">CURRENT · ARENA ANIMATION</div>
+            <h3>3D Faculty</h3>
+            <p>Training students in industry-standard 3D workflows at Arena Animation, Ahmedabad.</p>
+            <span class="experience-tag">Teaching · 3D workflows</span>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-no">APR 2026 – PRESENT · EMINATTI SYNERGIES LLP</div>
+            <h3>Studio Head &amp; Lead Game Designer</h3>
+            <p>Leading studio operations and game design workflows, coordinating delivery, and creating environment art with Unreal Engine Blueprints.</p>
+            <span class="experience-tag">Game Design Consultant · 3D / Environment Artist</span>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-no">ONGOING · FREELANCE</div>
+            <h3>3D Artist · Environment &amp; Props</h3>
+            <p>Creating props and environments for games and real-time scenes, with optimized assets shaped around client requirements.</p>
+            <span class="experience-tag">Environment design · Asset creation</span>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-no">4 MONTHS · TECHNOGIC IT SOLUTIONS</div>
+            <h3>3D Artist Intern</h3>
+            <p>Supported 3D modeling, texturing, environment assets, and visualization projects in Indore.</p>
+            <span class="experience-tag">Environment Artist Intern</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="section-inner skills-layout">
+        <div class="skills-aside reveal">
+          <div class="section-kicker">Tools &amp; software</div>
+          <h2 class="section-title" id="skills-title">The creative toolkit.</h2>
+          <p>Game environment design, real-time 3D asset production, PBR materials, level detailing and visualization.</p>
+        </div>
+        <div class="tool-groups reveal">
+          <div class="tool-group">
+            <h3>Game art &amp; production</h3>
+            <div class="tool-chips"><span class="tool-chip">Environment design</span><span class="tool-chip">Props &amp; environments</span><span class="tool-chip">Real-time 3D modeling</span><span class="tool-chip">Asset optimization</span><span class="tool-chip">Scene composition</span><span class="tool-chip">Level detailing</span></div>
+          </div>
+          <div class="tool-group">
+            <h3>Modeling &amp; animation</h3>
+            <div class="tool-chips"><span class="tool-chip">Autodesk Maya</span><span class="tool-chip">3ds Max</span><span class="tool-chip">Blender</span><span class="tool-chip">ZBrush</span><span class="tool-chip">UV mapping</span><span class="tool-chip">Basic animation</span><span class="tool-chip">Rig animation</span><span class="tool-chip">Lighting &amp; rendering</span></div>
+          </div>
+          <div class="tool-group">
+            <h3>Materials &amp; engines</h3>
+            <div class="tool-chips"><span class="tool-chip">Substance Painter</span><span class="tool-chip">PBR texturing</span><span class="tool-chip">Material creation</span><span class="tool-chip">Unreal Engine Blueprints</span><span class="tool-chip">Unity · C#</span></div>
+          </div>
+          <div class="tool-group">
+            <h3>Design &amp; visualization</h3>
+            <div class="tool-chips"><span class="tool-chip">Adobe Photoshop</span><span class="tool-chip">Adobe Illustrator</span><span class="tool-chip">Product visualization</span><span class="tool-chip">Architectural visualization</span><span class="tool-chip">Character design</span></div>
+          </div>
+          <div class="tool-group">
+            <h3>Languages</h3>
+            <div class="tool-chips"><span class="tool-chip">English</span><span class="tool-chip">Hindi</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="section" id="education" aria-labelledby="education-title">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-kicker">Education &amp; courses</div>
+            <h2 class="section-title" id="education-title">Learning the craft.</h2>
+            <p class="section-intro">Academic study and focused training in computer applications and 3D art.</p>
+          </div>
+          <div class="heading-side">Ahmedabad · India</div>
+        </div>
+        <div class="credentials-grid">
+          <article class="credential-card reveal">
+            <div class="credential-type">Education · Current</div>
+            <h3>B.Sc. · 2nd Year</h3>
+            <p>Doctor Preeti Global University</p>
+          </article>
+          <article class="credential-card reveal">
+            <div class="credential-type">Education</div>
+            <h3>12th Grade · 79%</h3>
+            <p>BOSSE Board</p>
+          </article>
+          <article class="credential-card reveal">
+            <div class="credential-type">Certification</div>
+            <h3>Advanced Diploma in Computer Applications</h3>
+            <p>ADCA</p>
+          </article>
+          <article class="credential-card reveal">
+            <div class="credential-type">3D Art Training</div>
+            <h3>3D Artist Course</h3>
+            <p>MAAC</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="section-inner">
+        <div class="contact-panel reveal">
+          <div class="contact-copy">
+            <div class="section-kicker">The next chapter starts here</div>
+            <h2 class="section-title" id="contact-title">Let’s create something.</h2>
+            <p>For 3D art, environment design, game design, teaching, or freelance opportunities, get in touch. Based in Ahmedabad, Gujarat.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="button primary" href="mailto:workwithayush7905@gmail.com">Email me <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="button" href="tel:+917905226298">Call 79052 26298</a>
+            <a class="button" href="https://ayushtripathi016.artstation.com" target="_blank" rel="noreferrer">ArtStation <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="button" href="https://drive.google.com/drive/folders/1ARyAPtBUorPHSFOLl1T6p3q4Mvh9Wm3t?usp=drive_link" target="_blank" rel="noreferrer">Portfolio folder <span class="arrow" aria-hidden="true">↗</span></a>
+            <span class="contact-note">workwithayush7905@gmail.com · Ahmedabad, Gujarat</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner"><span>© <span id="year"></span> Mayush Tripathi</span><span class="footer-credit">3D art · Game development · Digital design</span></div>
+  </footer>
+
+  <dialog id="project-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-top">
+        <div>
+          <div class="dialog-kicker" id="dialog-kicker"></div>
+          <h2 class="dialog-title" id="dialog-title"></h2>
+          <p class="dialog-desc" id="dialog-desc"></p>
+        </div>
+        <button class="dialog-close" type="button" id="dialog-close" aria-label="Close project details">×</button>
+      </div>
+      <div id="dialog-art"></div>
+      <div class="dialog-meta" id="dialog-meta"></div>
+    </div>
+  </dialog>
+
+  <script>
+    const projects = [
+      {
+        id: "camera", title: "Vintage Analog Camera", category: "asset", label: "3D asset",
+        description: "A vintage camera study focused on its classic silhouette, small mechanical details and aged materials.",
+        glyph: "VC", glow: "#947548",
+        images: [
+          { src: "assets/projects/vintage-camera-front.webp", alt: "Front view of a vintage analog camera render", caption: "Front view" },
+          { src: "assets/projects/vintage-camera-back.webp", alt: "Back view of a vintage analog camera render", caption: "Back view" }
+        ],
+        facts: ["Vintage prop", "Front & back renders", "Modeling & materials"]
+      },
+      {
+        id: "horse", title: "Game Ready Horse", category: "character", label: "Character · game art",
+        description: "A real-time horse character with a modeled coat, mane and tail, presented with UV layout and a complete PBR texture breakdown.",
+        glyph: "H", glow: "#674c38",
+        images: [
+          { src: "assets/projects/horse-turntable.webp", alt: "Game-ready horse model, side view", caption: "Character render" },
+          { src: "assets/projects/horse-top.webp", alt: "Horse model viewed from above", caption: "Top view" },
+          { src: "assets/projects/horse-underbody.webp", alt: "Horse model viewed from below", caption: "Underside view" },
+          { src: "assets/projects/horse-uv-pbr-board.webp", alt: "Horse UV layout and PBR texture maps", caption: "UV layout & 4K PBR maps" }
+        ],
+        facts: ["UDIM 1001 · single tile", "4K texture maps", "Metallic / roughness workflow"]
+      },
+      {
+        id: "willys", title: "Willys MB", category: "asset", label: "3D asset",
+        description: "A detailed military vehicle model, shown through exterior views and an interior cockpit render.",
+        glyph: "MB", glow: "#6e6949",
+        images: [
+          { src: "assets/projects/willys-mb-front-3q.webp", alt: "Willys MB three-quarter render with headlights on", caption: "Three-quarter view" },
+          { src: "assets/projects/willys-mb-side.webp", alt: "Willys MB side profile", caption: "Side profile" },
+          { src: "assets/projects/willys-mb-front.webp", alt: "Willys MB front view", caption: "Front view" },
+          { src: "assets/projects/willys-mb-interior.webp", alt: "Willys MB cockpit and dashboard", caption: "Cockpit detail" },
+          { src: "assets/projects/willys-mb-rear.webp", alt: "Willys MB rear view", caption: "Rear view" }
+        ],
+        facts: ["Hard-surface modeling", "Vehicle asset", "Five-view render set"]
+      },
+      {
+        id: "axe", title: "Stylized Fantasy Axe", category: "asset", label: "3D asset",
+        description: "A stylized fantasy weapon combining carved wood, wrapped fabric and engraved metal forms.",
+        glyph: "AX", glow: "#70494d",
+        images: [{ src: "assets/projects/fantasy-axe-hero.webp", alt: "Stylized fantasy axe with engraved blade and red wraps", caption: "Hero render" }],
+        facts: ["Stylized prop", "Carved wood & metal", "Material storytelling"]
+      },
+      {
+        id: "street", title: "GTA V Street", category: "environment", label: "Environment · Unreal Engine 5.6.1",
+        description: "A cinematic street environment made in Unreal Engine 5.6.1, designed to feel like a lived-in game world.",
+        glyph: "01", glow: "#3f6670", images: [],
+        video: { src: "assets/projects/gta-v-street.mp4", alt: "GTA V-style street environment flythrough", caption: "Street environment video" },
+        facts: ["Unreal Engine 5.6.1", "Environment art"]
+      },
+      {
+        id: "nature", title: "Nature Environment", category: "environment", label: "Environment",
+        description: "A nature scene exploring foliage, atmosphere, lighting and a strong sense of place.",
+        glyph: "N", glow: "#466348", images: [],
+        video: { src: "assets/projects/nature-environment.mp4", alt: "Mountain nature environment video", caption: "Nature environment video" },
+        facts: ["Environment art", "Foliage · atmosphere · lighting"]
+      }
+    ];
+
+    const rail = document.getElementById("project-rail");
+    const projectDialog = document.getElementById("project-dialog");
+    const dialogArt = document.getElementById("dialog-art");
+    const dialogMeta = document.getElementById("dialog-meta");
+    let projectVideoObserver = null;
+
+    function renderProjects(filter) {
+      if (projectVideoObserver) projectVideoObserver.disconnect();
+      projectVideoObserver = "IntersectionObserver" in window ? new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            if (!video.dataset.loaded) {
+              video.src = video.dataset.src;
+              video.dataset.loaded = "true";
+              video.load();
+            }
+            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              const playing = video.play();
+              if (playing && typeof playing.catch === "function") playing.catch(function () {});
+            }
+          } else {
+            video.pause();
+          }
+        });
+      }, { root: rail, rootMargin: "40px", threshold: .15 }) : null;
+      const visibleProjects = projects.filter(function (project) {
+        return filter === "all" || project.category === filter;
+      });
+      rail.querySelectorAll("video").forEach(function (video) {
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
+      });
+      rail.replaceChildren();
+      visibleProjects.forEach(function (project, visibleIndex) {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "project-card";
+        card.setAttribute("aria-label", "Open " + project.title + " project details");
+        card.dataset.projectId = project.id;
+
+        const poster = document.createElement("div");
+        poster.className = "project-poster";
+        if (project.images.length) {
+          const img = document.createElement("img");
+          img.src = project.images[0].src;
+          img.alt = project.images[0].alt;
+          img.loading = "lazy";
+          poster.append(img);
+          const shade = document.createElement("span");
+          shade.className = "poster-shade";
+          shade.setAttribute("aria-hidden", "true");
+          poster.append(shade);
+        } else if (project.video) {
+          const preview = document.createElement("video");
+          preview.className = "project-video";
+          preview.dataset.src = project.video.src;
+          preview.muted = true;
+          preview.loop = true;
+          preview.playsInline = true;
+          preview.preload = "none";
+          preview.setAttribute("aria-hidden", "true");
+          poster.append(preview);
+          const shade = document.createElement("span");
+          shade.className = "poster-shade";
+          shade.setAttribute("aria-hidden", "true");
+          poster.append(shade);
+          if (projectVideoObserver) projectVideoObserver.observe(preview);
+          else {
+            preview.src = project.video.src;
+            preview.load();
+          }
+        } else {
+          const empty = document.createElement("div");
+          empty.className = "poster-missing";
+          empty.style.setProperty("--glow", project.glow);
+          const glyph = document.createElement("span");
+          glyph.className = "poster-glyph";
+          glyph.textContent = project.glyph;
+          const note = document.createElement("span");
+          note.className = "poster-missing-note";
+          note.textContent = "Render preview to add";
+          empty.append(glyph, note);
+          poster.append(empty);
+        }
+        const number = document.createElement("span");
+        number.className = "poster-number";
+        number.textContent = String(projects.indexOf(project) + 1).padStart(2, "0") + " / 06";
+        const category = document.createElement("span");
+        category.className = "poster-category";
+        category.textContent = project.category === "environment" ? "Environment" : project.category === "character" ? "Character" : "3D asset";
+        poster.append(number, category);
+
+        const info = document.createElement("div");
+        info.className = "project-info";
+        const type = document.createElement("div");
+        type.className = "project-type";
+        type.textContent = project.label;
+        const title = document.createElement("h3");
+        title.textContent = project.title;
+        const description = document.createElement("p");
+        description.textContent = project.description;
+        const open = document.createElement("span");
+        open.className = "card-open";
+        open.innerHTML = "View the project <span aria-hidden=\"true\">→</span>";
+        info.append(type, title, description, open);
+        card.append(poster, info);
+        card.addEventListener("click", function () { openProject(project); });
+        rail.append(card);
+      });
+    }
+
+    function openProject(project) {
+      document.getElementById("dialog-kicker").textContent = project.label;
+      document.getElementById("dialog-title").textContent = project.title;
+      document.getElementById("dialog-desc").textContent = project.description;
+      dialogArt.replaceChildren();
+      dialogMeta.replaceChildren();
+
+      if (project.video) {
+        const feature = document.createElement("figure");
+        feature.className = "dialog-feature";
+        const video = document.createElement("video");
+        video.src = project.video.src;
+        video.controls = true;
+        video.preload = "metadata";
+        video.playsInline = true;
+        video.setAttribute("aria-label", project.video.alt);
+        const caption = document.createElement("figcaption");
+        caption.className = "dialog-caption";
+        caption.innerHTML = "<span>" + project.video.caption + "</span><span>Project video</span>";
+        feature.append(video, caption);
+        dialogArt.append(feature);
+      } else if (project.images.length) {
+        const feature = document.createElement("figure");
+        feature.className = "dialog-feature";
+        const featureImage = document.createElement("img");
+        featureImage.src = project.images[0].src;
+        featureImage.alt = project.images[0].alt;
+        featureImage.id = "dialog-feature-image";
+        const caption = document.createElement("figcaption");
+        caption.className = "dialog-caption";
+        caption.innerHTML = "<span>" + project.images[0].caption + "</span><span>Render " + String(1).padStart(2, "0") + " / " + String(project.images.length).padStart(2, "0") + "</span>";
+        feature.append(featureImage, caption);
+        dialogArt.append(feature);
+
+        if (project.images.length > 1) {
+          const thumbs = document.createElement("div");
+          thumbs.className = "dialog-thumbs";
+          thumbs.setAttribute("aria-label", "Project renders");
+          project.images.forEach(function (image, index) {
+            const thumb = document.createElement("button");
+            thumb.type = "button";
+            thumb.className = "dialog-thumb";
+            thumb.setAttribute("aria-label", image.caption);
+            thumb.setAttribute("aria-current", index === 0 ? "true" : "false");
+            const thumbImage = document.createElement("img");
+            thumbImage.src = image.src;
+            thumbImage.alt = "";
+            thumbImage.loading = "lazy";
+            thumb.append(thumbImage);
+            thumb.addEventListener("click", function () {
+              featureImage.src = image.src;
+              featureImage.alt = image.alt;
+              caption.innerHTML = "<span>" + image.caption + "</span><span>Render " + String(index + 1).padStart(2, "0") + " / " + String(project.images.length).padStart(2, "0") + "</span>";
+              thumbs.querySelectorAll(".dialog-thumb").forEach(function (button) { button.setAttribute("aria-current", "false"); });
+              thumb.setAttribute("aria-current", "true");
+            });
+            thumbs.append(thumb);
+          });
+          dialogArt.append(thumbs);
+        }
+      } else {
+        const empty = document.createElement("div");
+        empty.className = "dialog-empty";
+        const inner = document.createElement("div");
+        const title = document.createElement("span");
+        title.textContent = "Artwork preview needed";
+        const note = document.createElement("strong");
+        note.textContent = "Render preview coming soon.";
+        inner.append(title, note);
+        empty.append(inner);
+        dialogArt.append(empty);
+      }
+
+      project.facts.forEach(function (fact) {
+        const item = document.createElement("span");
+        item.textContent = fact;
+        dialogMeta.append(item);
+      });
+      projectDialog.showModal();
+    }
+
+    renderProjects("all");
+    document.querySelectorAll(".filter").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.querySelectorAll(".filter").forEach(function (item) { item.setAttribute("aria-pressed", "false"); });
+        button.setAttribute("aria-pressed", "true");
+        renderProjects(button.dataset.filter);
+      });
+    });
+
+    document.getElementById("dialog-close").addEventListener("click", function () { projectDialog.close(); });
+    projectDialog.addEventListener("close", function () {
+      projectDialog.querySelectorAll("video").forEach(function (video) { video.pause(); });
+    });
+    projectDialog.addEventListener("click", function (event) {
+      if (event.target === projectDialog) projectDialog.close();
+    });
+
+    const header = document.getElementById("site-header");
+    const progressBar = document.getElementById("progress-bar");
+    function updateScrollState() {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + "%";
+      header.classList.toggle("scrolled", window.scrollY > 24);
+    }
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    updateScrollState();
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const siteNav = document.getElementById("site-nav");
+    menuToggle.addEventListener("click", function () {
+      const open = !siteNav.classList.contains("open");
+      siteNav.classList.toggle("open", open);
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    });
+    siteNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        siteNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("motion-ready");
+      const revealObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+      document.querySelectorAll(".reveal").forEach(function (element) { revealObserver.observe(element); });
+
+      const sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            document.querySelectorAll(".site-nav a").forEach(function (link) {
+              link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+            });
+          }
+        });
+      }, { rootMargin: "-35% 0px -55% 0px" });
+      document.querySelectorAll("main > section[id]").forEach(function (section) { sectionObserver.observe(section); });
+    }
+
+    const opening = document.getElementById("opening");
+    const skipOpening = document.getElementById("skip-opening");
+    const closeOpening = function () {
+      const returnFocus = opening.contains(document.activeElement);
+      opening.hidden = true;
+      document.body.classList.remove("is-opening");
+      try { sessionStorage.setItem("mayush-portfolio-intro", "seen"); } catch (error) { /* private browsing can disable storage */ }
+      if (returnFocus) document.getElementById("hero-title").focus({ preventScroll: true });
+    };
+    const hasSeenOpening = (function () {
+      try { return sessionStorage.getItem("mayush-portfolio-intro") === "seen"; } catch (error) { return true; }
+    }());
+    if (hasSeenOpening || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      opening.hidden = true;
+    } else {
+      opening.hidden = false;
+      document.body.classList.add("is-opening");
+      skipOpening.focus({ preventScroll: true });
+      window.setTimeout(closeOpening, 1850);
+    }
+    skipOpening.addEventListener("click", closeOpening);
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !opening.hidden) closeOpening();
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

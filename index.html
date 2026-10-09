@@ -43,27 +43,37 @@
     .progress-track { position: fixed; inset: 0 0 auto; z-index: 30; height: 2px; background: transparent; }
     .progress-bar { height: 100%; width: 0; background: var(--accent); box-shadow: 0 0 18px rgba(227,86,60,.7); }
 
-    /* Opening title card */
+    /* Full-screen portrait and split-name opening */
     .opening {
       position: fixed; inset: 0; z-index: 50; display: grid; place-items: center;
-      padding: 24px; overflow: hidden; background: #08090b;
+      padding: 24px; overflow: hidden; isolation: isolate; background: #08090b; opacity: 1;
+      transition: opacity .42s ease;
     }
+    .opening.is-closing { opacity: 0; pointer-events: none; }
     .opening[hidden] { display: none; }
     .opening::before, .opening::after {
-      content: ""; position: absolute; width: min(68vw, 780px); aspect-ratio: 1;
-      border: 1px solid rgba(227,86,60,.17); border-radius: 50%;
-      animation: orbit 11s linear infinite;
+      content: ""; position: absolute; z-index: -1; width: min(62vw, 700px); aspect-ratio: 1;
+      border: 1px solid rgba(227,86,60,.15); border-radius: 50%; animation: orbit 24s linear infinite;
     }
-    .opening::after { width: min(47vw, 520px); animation-direction: reverse; border-color: rgba(226,193,134,.14); }
-    .opening-copy { position: relative; z-index: 1; text-align: center; animation: title-in 1.15s var(--ease) both; }
-    .opening-mark {
-      display: inline-grid; place-items: center; width: 52px; height: 52px; margin-bottom: 18px;
-      border: 1px solid rgba(226,193,134,.55); color: var(--gold); font-weight: 800; letter-spacing: -.08em;
-      transform: rotate(-8deg);
+    .opening::after { width: min(44vw, 490px); animation-direction: reverse; border-color: rgba(226,193,134,.12); }
+    .opening-scene { position: absolute; inset: 0; display: grid; place-items: center; }
+    .opening-portrait {
+      position: absolute; z-index: 1; bottom: 0; left: 50%; width: auto; height: min(88vh, 850px); max-width: none;
+      transform: translate(-50%, 4%); object-fit: contain; object-position: center bottom;
+      filter: drop-shadow(0 14px 42px rgba(0,0,0,.3)); animation: portrait-rise 1.15s var(--ease) .12s both;
     }
-    .opening-overline { color: var(--accent-light); font-size: 10px; letter-spacing: .38em; text-transform: uppercase; }
-    .opening h2 { margin: 9px 0 0; font-size: clamp(38px, 8vw, 82px); line-height: .92; letter-spacing: -.07em; }
-    .opening h2 span { display: block; color: var(--muted); font-size: .54em; letter-spacing: .32em; text-transform: uppercase; margin-top: 15px; }
+    .opening-name {
+      position: absolute; z-index: 2; top: 46%; color: #f5f1e9; font-size: clamp(40px, 7.3vw, 100px);
+      line-height: .88; font-weight: 850; letter-spacing: -.085em; text-transform: uppercase; white-space: nowrap;
+      text-shadow: 0 4px 25px rgba(0,0,0,.6); animation-duration: .95s; animation-timing-function: var(--ease); animation-fill-mode: both;
+    }
+    .opening-name-first { left: max(5vw, calc((100vw - 1420px)/2)); color: #fff; animation-name: name-from-left; }
+    .opening-name-last { right: max(5vw, calc((100vw - 1420px)/2)); color: var(--gold); animation-name: name-from-right; animation-delay: .16s; }
+    .opening-role {
+      position: absolute; z-index: 2; bottom: 7vh; left: 50%; transform: translateX(-50%); color: #c8c0b4;
+      font-size: 10px; letter-spacing: .28em; text-transform: uppercase; white-space: nowrap; animation: title-in .8s ease .55s both;
+    }
+    .opening-role::before { content: ""; display: block; width: 1px; height: 30px; margin: 0 auto 12px; background: linear-gradient(var(--accent), transparent); }
     .opening-skip {
       position: absolute; z-index: 2; right: 5vw; bottom: 5vh; padding: 9px 13px;
       border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer;
@@ -198,11 +208,8 @@
         radial-gradient(ellipse at 100% 0, rgba(226,193,134,.11), transparent 45%), #121419;
     }
     .profile-card::before { content: ""; position: absolute; inset: 16px; border: 1px solid rgba(255,255,255,.09); pointer-events: none; }
-    .profile-portrait {
-      position: absolute; inset: 48px 34px 82px; display: grid; place-items: center;
-      background: linear-gradient(155deg, rgba(255,255,255,.05), rgba(0,0,0,.24));
-    }
-    .profile-portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; filter: saturate(.9) contrast(1.02); }
+    .profile-portrait { position: absolute; inset: 30px 20px 42px; display: grid; place-items: center; background: transparent; }
+    .profile-portrait img { position: absolute; bottom: 0; left: 50%; width: auto; height: 112%; max-width: none; transform: translateX(-50%); object-fit: contain; object-position: center bottom; filter: saturate(.9) contrast(1.02); }
     .profile-portrait::before, .profile-portrait::after { content: ""; position: absolute; z-index: 1; border-radius: 50%; pointer-events: none; }
     .profile-portrait::before { width: min(68%,220px); aspect-ratio: 1; border: 1px solid rgba(226,193,134,.44); box-shadow: 0 0 70px rgba(227,86,60,.1); }
     .profile-portrait::after { width: min(54%,170px); aspect-ratio: 1; border: 1px solid rgba(255,255,255,.14); }
@@ -268,6 +275,15 @@
     /* Motion and dialog */
     .motion-ready .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
     .motion-ready .reveal.visible { opacity: 1; transform: none; }
+    .motion-ready .project-rail.visible .project-card { animation: card-rise .58s var(--ease) both; animation-delay: calc(var(--card-index, 0) * 75ms); }
+    .motion-ready .tool-groups.visible .tool-chip { animation: chip-rise .42s var(--ease) both; }
+    .motion-ready .tool-groups.visible .tool-chip:nth-child(2) { animation-delay: 45ms; }
+    .motion-ready .tool-groups.visible .tool-chip:nth-child(3) { animation-delay: 90ms; }
+    .motion-ready .tool-groups.visible .tool-chip:nth-child(4) { animation-delay: 135ms; }
+    .motion-ready .tool-groups.visible .tool-chip:nth-child(5) { animation-delay: 180ms; }
+    .motion-ready .tool-groups.visible .tool-chip:nth-child(6) { animation-delay: 225ms; }
+    .motion-ready .tool-groups.visible .tool-chip:nth-child(7) { animation-delay: 270ms; }
+    .motion-ready .tool-groups.visible .tool-chip:nth-child(8) { animation-delay: 315ms; }
     dialog {
       width: min(960px, calc(100% - 30px)); max-width: none; max-height: min(90vh, 900px); padding: 0;
       border: 1px solid rgba(255,255,255,.15); background: #101216; color: var(--paper); box-shadow: 0 30px 120px rgba(0,0,0,.72);
@@ -294,7 +310,12 @@
     .dialog-meta span { padding: 7px 9px; border: 1px solid var(--line); color: #bbb6ae; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
 
     @keyframes orbit { to { transform: rotate(360deg); } }
-    @keyframes title-in { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+    @keyframes title-in { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+    @keyframes portrait-rise { from { opacity: 0; transform: translate(-50%, 9%) scale(.98); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
+    @keyframes name-from-left { from { opacity: 0; translate: -7vw 0; } to { opacity: 1; translate: 0 0; } }
+    @keyframes name-from-right { from { opacity: 0; translate: 7vw 0; } to { opacity: 1; translate: 0 0; } }
+    @keyframes card-rise { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: none; } }
+    @keyframes chip-rise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
     @media (max-width: 860px) {
       :root { --page: min(100% - 40px, 680px); }
       .hero { min-height: 780px; align-items: end; padding: 170px 7vw 115px; }
@@ -327,6 +348,12 @@
       .hero h1 { font-size: clamp(49px,14vw,78px); }
       .hero-copy { max-width: 460px; font-size: 14px; }
       .hero-note { margin-top: 38px; flex-wrap: wrap; font-size: 8px; }
+      .opening-portrait { height: min(63vh, 560px); bottom: 18vh; }
+      .opening-name { top: auto; left: 50%; right: auto; font-size: clamp(44px, 14vw, 66px); }
+      .opening-name-first { top: 15vh; transform: translateX(-50%); }
+      .opening-name-last { bottom: 17vh; top: auto; transform: translateX(-50%); }
+      .opening-role { bottom: 7vh; font-size: 8px; letter-spacing: .18em; }
+      .opening-skip { right: 18px; bottom: 17px; }
       .section-heading, .collection-head { align-items: start; flex-direction: column; gap: 10px; }
       .collection { padding-top: 66px; }
       .project-rail { grid-auto-columns: minmax(250px, 82%); gap: 11px; }
@@ -351,10 +378,11 @@
   <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
 
   <div class="opening" id="opening" hidden>
-    <div class="opening-copy">
-      <div class="opening-mark" aria-hidden="true">MT</div>
-      <div class="opening-overline">A creative portfolio</div>
-      <h2>Mayush Tripathi<span>Artist · Developer · Educator</span></h2>
+    <div class="opening-scene" role="group" aria-label="Mayush Tripathi portfolio introduction">
+      <span class="opening-name opening-name-first">Mayush</span>
+      <img class="opening-portrait" src="assets/profile/mayush-portrait.png" alt="" fetchpriority="high" decoding="async">
+      <span class="opening-name opening-name-last">Tripathi</span>
+      <div class="opening-role">3D artist · Environment artist · Game designer</div>
     </div>
     <button class="opening-skip" id="skip-opening" type="button">Skip intro <span aria-hidden="true">↗</span></button>
   </div>
@@ -652,7 +680,7 @@
         id: "nature", title: "Nature Environment", category: "environment", label: "Environment",
         description: "A nature scene exploring foliage, atmosphere, lighting and a strong sense of place.",
         glyph: "N", glow: "#466348", images: [],
-        video: { src: "assets/projects/nature-environment.mp4", alt: "Mountain nature environment video", caption: "Nature environment video" },
+        video: { parts: ["assets/projects/nature-environment.mp4.part1", "assets/projects/nature-environment.mp4.part2"], alt: "Mountain nature environment video", caption: "Nature environment video" },
         facts: ["Environment art", "Foliage · atmosphere · lighting"]
       }
     ];
@@ -663,21 +691,48 @@
     const dialogMeta = document.getElementById("dialog-meta");
     let projectVideoObserver = null;
 
+    function loadProjectVideo(video, source) {
+      if (video.dataset.loaded === "true") return Promise.resolve();
+      if (video.loadPromise) return video.loadPromise;
+      video.loadPromise = (source.parts
+        ? Promise.all(source.parts.map(function (part) {
+            return fetch(part).then(function (response) {
+              if (!response.ok) throw new Error("Video part could not be loaded.");
+              return response.arrayBuffer();
+            });
+          })).then(function (parts) {
+            const totalBytes = parts.reduce(function (total, part) { return total + part.byteLength; }, 0);
+            const joined = new Uint8Array(totalBytes);
+            let offset = 0;
+            parts.forEach(function (part) { joined.set(new Uint8Array(part), offset); offset += part.byteLength; });
+            const objectUrl = URL.createObjectURL(new Blob([joined], { type: "video/mp4" }));
+            video.dataset.objectUrl = objectUrl;
+            return objectUrl;
+          })
+        : Promise.resolve(source.src)
+      ).then(function (url) {
+        video.src = url;
+        video.dataset.loaded = "true";
+        video.load();
+      }).catch(function (error) {
+        video.dataset.loadFailed = "true";
+        console.warn("Project video could not be loaded.", error);
+      }).finally(function () { video.loadPromise = null; });
+      return video.loadPromise;
+    }
+
     function renderProjects(filter) {
       if (projectVideoObserver) projectVideoObserver.disconnect();
       projectVideoObserver = "IntersectionObserver" in window ? new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           const video = entry.target;
+          video.dataset.visible = String(entry.isIntersecting);
           if (entry.isIntersecting) {
-            if (!video.dataset.loaded) {
-              video.src = video.dataset.src;
-              video.dataset.loaded = "true";
-              video.load();
-            }
-            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            loadProjectVideo(video, video.projectVideo).then(function () {
+              if (video.dataset.visible !== "true" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
               const playing = video.play();
               if (playing && typeof playing.catch === "function") playing.catch(function () {});
-            }
+            });
           } else {
             video.pause();
           }
@@ -688,6 +743,7 @@
       });
       rail.querySelectorAll("video").forEach(function (video) {
         video.pause();
+        if (video.dataset.objectUrl) URL.revokeObjectURL(video.dataset.objectUrl);
         video.removeAttribute("src");
         video.load();
       });
@@ -696,6 +752,7 @@
         const card = document.createElement("button");
         card.type = "button";
         card.className = "project-card";
+        card.style.setProperty("--card-index", visibleIndex);
         card.setAttribute("aria-label", "Open " + project.title + " project details");
         card.dataset.projectId = project.id;
 
@@ -714,7 +771,7 @@
         } else if (project.video) {
           const preview = document.createElement("video");
           preview.className = "project-video";
-          preview.dataset.src = project.video.src;
+          preview.projectVideo = project.video;
           preview.muted = true;
           preview.loop = true;
           preview.playsInline = true;
@@ -726,10 +783,7 @@
           shade.setAttribute("aria-hidden", "true");
           poster.append(shade);
           if (projectVideoObserver) projectVideoObserver.observe(preview);
-          else {
-            preview.src = project.video.src;
-            preview.load();
-          }
+          else loadProjectVideo(preview, project.video);
         } else {
           const empty = document.createElement("div");
           empty.className = "poster-missing";
@@ -786,6 +840,7 @@
         video.preload = "metadata";
         video.playsInline = true;
         video.setAttribute("aria-label", project.video.alt);
+        loadProjectVideo(video, project.video);
         const caption = document.createElement("figcaption");
         caption.className = "dialog-caption";
         caption.innerHTML = "<span>" + project.video.caption + "</span><span>Project video</span>";
@@ -862,7 +917,16 @@
 
     document.getElementById("dialog-close").addEventListener("click", function () { projectDialog.close(); });
     projectDialog.addEventListener("close", function () {
-      projectDialog.querySelectorAll("video").forEach(function (video) { video.pause(); });
+      projectDialog.querySelectorAll("video").forEach(function (video) {
+        video.pause();
+        if (video.dataset.objectUrl) {
+          URL.revokeObjectURL(video.dataset.objectUrl);
+          video.removeAttribute("src");
+          video.load();
+          delete video.dataset.objectUrl;
+          delete video.dataset.loaded;
+        }
+      });
     });
     projectDialog.addEventListener("click", function (event) {
       if (event.target === projectDialog) projectDialog.close();
@@ -921,22 +985,27 @@
     const opening = document.getElementById("opening");
     const skipOpening = document.getElementById("skip-opening");
     const closeOpening = function () {
+      if (opening.hidden || opening.classList.contains("is-closing")) return;
       const returnFocus = opening.contains(document.activeElement);
-      opening.hidden = true;
+      opening.classList.add("is-closing");
+      opening.setAttribute("aria-hidden", "true");
+      skipOpening.disabled = true;
       document.body.classList.remove("is-opening");
-      try { sessionStorage.setItem("mayush-portfolio-intro", "seen"); } catch (error) { /* private browsing can disable storage */ }
       if (returnFocus) document.getElementById("hero-title").focus({ preventScroll: true });
+      window.setTimeout(function () {
+        opening.hidden = true;
+        opening.classList.remove("is-closing");
+        opening.removeAttribute("aria-hidden");
+        skipOpening.disabled = false;
+      }, 430);
     };
-    const hasSeenOpening = (function () {
-      try { return sessionStorage.getItem("mayush-portfolio-intro") === "seen"; } catch (error) { return true; }
-    }());
-    if (hasSeenOpening || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       opening.hidden = true;
     } else {
       opening.hidden = false;
       document.body.classList.add("is-opening");
       skipOpening.focus({ preventScroll: true });
-      window.setTimeout(closeOpening, 1850);
+      window.setTimeout(closeOpening, 2850);
     }
     skipOpening.addEventListener("click", closeOpening);
     document.addEventListener("keydown", function (event) {

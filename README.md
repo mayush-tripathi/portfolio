@@ -21,4 +21,4 @@ The image paths are relative, so preserve the `assets/projects/` and `assets/pro
 - CV-based profile, skills, work experience, education, courses, language, and contact details.
 - Vintage camera, Willys MB jeep, horse with UV/PBR views, fantasy axe, and nature/street environment video previews.
 
-The project videos load on demand; their full controls appear when a project card is opened. No M18 Smoke Grenade is included.
+The project videos load on demand; their full controls appear when a project card is opened. The nature video is stored as two small binary parts so it can be uploaded through GitHub's browser file picker; the page joins them before playback. No M18 Smoke Grenade is included.

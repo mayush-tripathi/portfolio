@@ -8,16 +8,16 @@
   <title>Mayush Tripathi — The Portfolio</title>
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f1f5fb;
-      --surface: #fbfdff;
-      --surface-2: #e8eef8;
-      --paper: #18253d;
-      --muted: #566680;
-      --line: rgba(24,37,61,.16);
-      --accent: #ee6847;
-      --accent-light: #c85032;
-      --gold: #3964ed;
+      color-scheme: dark;
+      --bg: #08090c;
+      --surface: #111319;
+      --surface-2: #191c24;
+      --paper: #f4f1eb;
+      --muted: #a0a3ad;
+      --line: rgba(244,241,235,.14);
+      --accent: #ff6548;
+      --accent-light: #ff8b70;
+      --gold: #d8b56d;
       --page: min(1220px, calc(100% - 9vw));
       --ease: cubic-bezier(.2,.75,.2,1);
     }
@@ -543,6 +543,55 @@
     .dialog-close { border-color: var(--line); background: #181818; color: var(--paper); }
     footer { border-color: var(--line); }
     .footer-credit { color: #888; }
+  
+    /* Cinematic dark art direction */
+    body {
+      background:
+        radial-gradient(ellipse at 78% 3%, rgba(255,101,72,.10), transparent 32%),
+        radial-gradient(ellipse at 10% 32%, rgba(216,181,109,.055), transparent 30%),
+        #08090c;
+      color: var(--paper);
+    }
+    .opening { background: #08090c; }
+    .opening::before { border-color: rgba(216,181,109,.20); }
+    .opening::after { border-color: rgba(255,101,72,.22); }
+    .cursor-glow {
+      background: radial-gradient(circle, rgba(255,101,72,.20), rgba(216,181,109,.10) 36%, transparent 72%);
+    }
+    header, .site-header, nav, .nav-shell {
+      background-color: rgba(8,9,12,.78);
+      border-color: var(--line);
+      backdrop-filter: blur(18px);
+    }
+    section { scroll-margin-top: 92px; }
+    .hero, .hero-section, .intro-section { background: transparent; }
+    .project-card, .project-tile, .experience-card, .skill-card, .education-card,
+    .course-card, .contact-card, .timeline-card, .info-card {
+      background: linear-gradient(145deg, rgba(24,26,33,.96), rgba(13,14,18,.96));
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    .project-card:hover, .project-tile:hover {
+      border-color: rgba(255,101,72,.56);
+      box-shadow: 0 26px 80px rgba(0,0,0,.42), 0 0 0 1px rgba(255,101,72,.08);
+      transform: translateY(-5px);
+    }
+    img { background-color: #111319; }
+    button, .filter-button, .project-filter, .chip { border-color: var(--line); }
+    button:hover, .filter-button:hover, .project-filter:hover, .chip:hover {
+      border-color: rgba(255,101,72,.65);
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+    .progress-track { background: rgba(255,255,255,.04); }
+    .progress-bar { background: linear-gradient(90deg, var(--gold), var(--accent)); }
+    footer { border-color: var(--line); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+
   </style>
 </head>
 <body>

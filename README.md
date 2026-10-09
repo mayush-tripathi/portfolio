@@ -22,3 +22,12 @@ The image paths are relative, so preserve the `assets/projects/` and `assets/pro
 - Vintage camera, Willys MB jeep, horse with UV/PBR views, fantasy axe, and nature/street environment video previews.
 
 The project videos load on demand; their full controls appear when a project card is opened. The nature video is stored as two small binary parts so it can be uploaded through GitHub's browser file picker; the page joins them before playback. No M18 Smoke Grenade is included.
+
+
+## GitHub upload notes
+
+This package keeps the website and image assets separate from large video files so the main site is easier to upload through GitHub's browser interface.
+
+- Upload the contents of this folder (`index.html`, `README.md`, and `assets/`) to the root of your repository.
+- Large videos are intentionally not included in this website bundle. They are provided in the separate `portfolio-videos-separate.zip` package.
+- If you want videos embedded on the live site, host them on a video/CDN service and update the video sources in `index.html` to the hosted URLs. Do not upload duplicate `.part1`/`.part2` files.

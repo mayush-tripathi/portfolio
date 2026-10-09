@@ -316,9 +316,12 @@
     .motion-ready .reveal { opacity: 0; transform: translateY(38px) scale(.975); filter: blur(5px); transition: opacity .86s var(--ease), transform .86s var(--ease), filter .86s ease; will-change: opacity, transform, filter; }
     .motion-ready .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
     .motion-ready .reveal.visible { filter: none; }
+    .motion-ready .reveal.from-top:not(.visible) { transform: translateY(-38px) scale(.975); }
     .motion-ready .scroll-reveal { opacity: 0; translate: 0 34px; filter: blur(4px); transition: opacity .82s var(--ease), translate .82s var(--ease), filter .82s ease; transition-delay: var(--reveal-delay,0ms); will-change: opacity, translate, filter; }
     .motion-ready .scroll-reveal.visible { opacity: 1; translate: 0 0; filter: none; }
+    .motion-ready .scroll-reveal.from-top:not(.visible) { translate: 0 -34px; }
     .motion-ready .project-rail.cards-entering .project-card { animation: card-sweep .9s var(--ease) both; animation-delay: calc(var(--card-index, 0) * 130ms); }
+    .motion-ready .project-rail.cards-entering-up .project-card { animation-name: card-sweep-up; }
     .motion-ready .tool-groups.visible .tool-chip { animation: chip-rise .42s var(--ease) both; }
     .motion-ready .tool-groups.visible .tool-chip:nth-child(2) { animation-delay: 45ms; }
     .motion-ready .tool-groups.visible .tool-chip:nth-child(3) { animation-delay: 90ms; }
@@ -363,6 +366,7 @@
     @keyframes card-rise { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: none; } }
     @keyframes chip-rise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
     @keyframes card-sweep { from { opacity: 0; transform: translateY(38px) rotateX(8deg) scale(.94); filter: blur(7px); } to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); filter: blur(0); } }
+    @keyframes card-sweep-up { from { opacity: 0; transform: translateY(-38px) rotateX(-8deg) scale(.94); filter: blur(7px); } to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); filter: blur(0); } }
     @keyframes hologram-orbit { to { rotate: 0 0 1 360deg; } }
     @keyframes hologram-flare { 0%,100% { background-position: 0% 50%; opacity: .12; } 50% { background-position: 100% 50%; opacity: .42; } }
     @keyframes portrait-float { 0%,100% { translate: 0 0; } 50% { translate: 0 -18px; } }
@@ -678,7 +682,7 @@
           </article>
           <article class="credential-card reveal">
             <div class="credential-type">Education</div>
-            <h3>12th Grade · 79%</h3>
+            <h3>12th Grade</h3>
             <p>BOSSE Board</p>
           </article>
           <article class="credential-card reveal">
@@ -687,9 +691,9 @@
             <p>ADCA</p>
           </article>
           <article class="credential-card reveal">
-            <div class="credential-type">3D Art Training</div>
-            <h3>3D Artist Course</h3>
-            <p>MAAC</p>
+            <div class="credential-type">Professional Course</div>
+            <h3>Advanced Program in Interactive Design &amp; Games</h3>
+            <p>Maya Academy of Advanced Creativity (MAAC)</p>
           </article>
         </div>
       </div>
@@ -709,7 +713,6 @@
             <a class="button primary" href="mailto:workwithayush7905@gmail.com">Email me <span class="arrow" aria-hidden="true">↗</span></a>
             <a class="button" href="tel:+917905226298">Call 79052 26298</a>
             <a class="button" href="https://ayushtripathi016.artstation.com" target="_blank" rel="noreferrer">ArtStation <span class="arrow" aria-hidden="true">↗</span></a>
-            <a class="button" href="https://drive.google.com/drive/folders/1ARyAPtBUorPHSFOLl1T6p3q4Mvh9Wm3t?usp=drive_link" target="_blank" rel="noreferrer">Portfolio folder <span class="arrow" aria-hidden="true">↗</span></a>
             <span class="contact-note">workwithayush7905@gmail.com · Ahmedabad, Gujarat</span>
           </div>
         </div>
@@ -1145,6 +1148,13 @@
     });
 
     if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      let lastRevealScrollY = window.scrollY;
+      let revealDirection = "down";
+      window.addEventListener("scroll", function () {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY !== lastRevealScrollY) revealDirection = currentScrollY < lastRevealScrollY ? "up" : "down";
+        lastRevealScrollY = currentScrollY;
+      }, { passive: true });
       let revealIndex = 0;
       document.querySelectorAll("main section:not(#home) h2, main section:not(#home) h3, main section:not(#home) p, main section:not(#home) li, main section:not(#home) .focus-item, main section:not(#home) .tool-group, main section:not(#home) .tool-chip, main section:not(#home) .credential-card, main section:not(#home) .experience-card").forEach(function (element) {
         if (element.closest(".reveal")) return;
@@ -1157,15 +1167,17 @@
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             const enteringNow = !entry.target.classList.contains("visible");
+            entry.target.classList.toggle("from-top", revealDirection === "up");
             entry.target.classList.add("visible");
             if (entry.target === rail && enteringNow) {
-              rail.classList.remove("cards-entering");
+              rail.classList.remove("cards-entering", "cards-entering-up");
               void rail.offsetWidth;
               rail.classList.add("cards-entering");
+              if (revealDirection === "up") rail.classList.add("cards-entering-up");
             }
-          } else if (entry.boundingClientRect.top > window.innerHeight) {
+          } else if ((revealDirection === "down" && entry.boundingClientRect.bottom < 0) || (revealDirection === "up" && entry.boundingClientRect.top > window.innerHeight)) {
             entry.target.classList.remove("visible");
-            if (entry.target === rail) rail.classList.remove("cards-entering");
+            if (entry.target === rail) rail.classList.remove("cards-entering", "cards-entering-up");
           }
         });
       }, { threshold: .12 });

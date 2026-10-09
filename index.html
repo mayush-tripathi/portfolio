@@ -45,9 +45,9 @@
 
     /* A soft pointer-following studio light; never replaces the real cursor. */
     .cursor-glow {
-      position: fixed; z-index: 8; top: 0; left: 0; width: 340px; aspect-ratio: 1; border-radius: 50%;
+      position: fixed; z-index: 8; top: 0; left: 0; width: 400px; aspect-ratio: 1; border-radius: 50%;
       pointer-events: none; opacity: 0; transform: translate3d(var(--cursor-x,-500px),var(--cursor-y,-500px),0) translate(-50%,-50%);
-      background: radial-gradient(circle, rgba(57,100,237,.16), rgba(238,104,71,.1) 34%, transparent 70%);
+      background: radial-gradient(circle, rgba(57,100,237,.24), rgba(238,104,71,.16) 36%, transparent 72%);
       transition: opacity .35s ease; will-change: transform;
     }
     .cursor-glow.is-visible { opacity: 1; }
@@ -78,7 +78,7 @@
     }
     .opening-name-first { left: max(5vw, calc((100vw - 1420px)/2)); color: var(--paper); animation-name: name-from-left; }
     .opening-name-last { right: max(5vw, calc((100vw - 1420px)/2)); color: var(--gold); animation-name: name-from-right; animation-delay: .16s; }
-    .opening-name-first > span, .opening-name-last > span, .hero-name-first > span, .hero-name-last > span { display: inline-block; color: transparent; background: linear-gradient(110deg,var(--gold),var(--accent),#e3a93f,var(--gold)); background-size: 240% auto; background-clip: text; -webkit-background-clip: text; animation: name-float 5.8s ease-in-out 1.3s infinite, color-drift 8s linear infinite; }
+    .opening-name-first > span, .opening-name-last > span, .hero-name-first > span, .hero-name-last > span { display: inline-block; color: transparent; background: linear-gradient(110deg,var(--gold),var(--accent),#e3a93f,var(--gold)); background-size: 240% auto; background-clip: text; -webkit-background-clip: text; animation: name-float 4.2s ease-in-out 1.3s infinite, color-drift 4.6s linear infinite; }
     .opening-name-last > span, .hero-name-last > span { animation-delay: 1.65s, 0s; }
     .opening-role {
       position: absolute; z-index: 2; bottom: 7vh; left: 50%; transform: translateX(-50%); color: var(--muted);
@@ -136,7 +136,7 @@
     .hero-name { position: relative; z-index: 2; margin: 0; color: var(--paper); font-size: clamp(44px,7vw,118px); line-height: .88; font-weight: 780; letter-spacing: -.085em; text-transform: uppercase; white-space: nowrap; }
     .hero-name-first { justify-self: end; color: var(--paper); animation: name-from-left .95s var(--ease) both; }
     .hero-name-last { justify-self: start; color: var(--gold); animation: name-from-right .95s var(--ease) .16s both; }
-    .hero-portrait { grid-column: 2; grid-row: 1; justify-self: center; align-self: end; width: auto; height: min(57vh,560px); max-width: none; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 16px 28px rgba(23,49,59,.17)); animation: hero-portrait-rise 1.15s var(--ease) .12s both, portrait-float 5.2s ease-in-out 1.3s infinite; }
+    .hero-portrait { grid-column: 2; grid-row: 1; justify-self: center; align-self: end; width: auto; height: min(57vh,560px); max-width: none; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 16px 28px rgba(23,49,59,.17)); animation: hero-portrait-rise 1.15s var(--ease) .12s both, portrait-float 4.4s ease-in-out 1.3s infinite; }
     .hero-content { width: min(680px, var(--page)); margin: -2px auto 0; text-align: center; }
     .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--accent-light); font-size: 10px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
     .hero .eyebrow { justify-content: center; margin-bottom: 12px; }
@@ -191,8 +191,8 @@
       background: var(--surface); cursor: pointer; transform-style: preserve-3d;
       text-align: left; transition: border-color .25s ease, transform .3s var(--ease), box-shadow .3s ease;
     }
-    .project-card:hover, .project-card:focus-visible { z-index: 1; transform: translateY(-6px); border-color: rgba(238,104,71,.72); box-shadow: 0 20px 42px rgba(24,37,61,.16); outline: none; }
-    .project-card.is-tilting { z-index: 2; transform: perspective(950px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg)) translateY(-6px) scale(1.012); border-color: rgba(57,100,237,.7); box-shadow: 0 24px 48px rgba(24,37,61,.18); }
+    .project-card:hover, .project-card:focus-visible { z-index: 1; transform: perspective(900px) translateY(-10px) rotateX(2deg) scale(1.02); border-color: rgba(238,104,71,.82); box-shadow: 0 26px 52px rgba(24,37,61,.22); outline: none; }
+    .project-card.is-tilting { z-index: 2; transform: perspective(850px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg)) translateY(-10px) scale(1.025); border-color: rgba(57,100,237,.82); box-shadow: 0 28px 58px rgba(24,37,61,.24); }
     .project-poster { position: relative; aspect-ratio: 1.33 / 1; overflow: hidden; background: #202126; }
     .project-poster img, .project-poster video { width: 100%; height: 100%; object-fit: cover; transition: transform .55s var(--ease), filter .4s ease; }
     .project-card:hover .project-poster img, .project-card:hover .project-poster video { transform: scale(1.045); filter: saturate(1.12); }
@@ -303,12 +303,12 @@
     .footer-credit { color: #565851; }
 
     /* Motion and dialog */
-    .motion-ready .reveal { opacity: 0; transform: translateY(18px) scale(.99); filter: blur(1.5px); transition: opacity .68s var(--ease), transform .68s var(--ease), filter .68s ease; }
-    .motion-ready .reveal.visible { opacity: 1; transform: none; }
+    .motion-ready .reveal { opacity: 0; transform: translateY(38px) scale(.975); filter: blur(5px); transition: opacity .86s var(--ease), transform .86s var(--ease), filter .86s ease; will-change: opacity, transform, filter; }
+    .motion-ready .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
     .motion-ready .reveal.visible { filter: none; }
-    .motion-ready .scroll-reveal { opacity: 0; translate: 0 14px; transition: opacity .58s var(--ease), translate .58s var(--ease); transition-delay: var(--reveal-delay,0ms); }
-    .motion-ready .scroll-reveal.visible { opacity: 1; translate: 0 0; }
-    .motion-ready .project-rail.cards-entering .project-card { animation: card-sweep .7s var(--ease) both; animation-delay: calc(var(--card-index, 0) * 100ms); }
+    .motion-ready .scroll-reveal { opacity: 0; translate: 0 34px; filter: blur(4px); transition: opacity .82s var(--ease), translate .82s var(--ease), filter .82s ease; transition-delay: var(--reveal-delay,0ms); will-change: opacity, translate, filter; }
+    .motion-ready .scroll-reveal.visible { opacity: 1; translate: 0 0; filter: none; }
+    .motion-ready .project-rail.cards-entering .project-card { animation: card-sweep .9s var(--ease) both; animation-delay: calc(var(--card-index, 0) * 130ms); }
     .motion-ready .tool-groups.visible .tool-chip { animation: chip-rise .42s var(--ease) both; }
     .motion-ready .tool-groups.visible .tool-chip:nth-child(2) { animation-delay: 45ms; }
     .motion-ready .tool-groups.visible .tool-chip:nth-child(3) { animation-delay: 90ms; }
@@ -352,9 +352,9 @@
     @keyframes name-from-right { from { opacity: 0; translate: 7vw 0; } to { opacity: 1; translate: 0 0; } }
     @keyframes card-rise { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: none; } }
     @keyframes chip-rise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
-    @keyframes card-sweep { from { opacity: 0; transform: translateY(26px) rotateX(5deg) scale(.96); filter: blur(5px); } to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); filter: blur(0); } }
-    @keyframes portrait-float { 0%,100% { translate: 0 0; } 50% { translate: 0 -11px; } }
-    @keyframes name-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    @keyframes card-sweep { from { opacity: 0; transform: translateY(38px) rotateX(8deg) scale(.94); filter: blur(7px); } to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); filter: blur(0); } }
+    @keyframes portrait-float { 0%,100% { translate: 0 0; } 50% { translate: 0 -18px; } }
+    @keyframes name-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
     @keyframes color-drift { to { background-position: 220% center; } }
     @keyframes portfolio-enter { from { opacity: 0; transform: translateY(22px) scale(.985); filter: blur(5px); } to { opacity: 1; transform: none; filter: blur(0); } }
     @keyframes intro-name-left { from { opacity: 0; translate: -5vw 0; filter: blur(7px); } to { opacity: 1; translate: 0 0; filter: blur(0); } }
@@ -362,7 +362,7 @@
     @keyframes intro-portrait-rise { from { opacity: 0; transform: translateY(13%) scale(.96); filter: blur(8px); } to { opacity: 1; transform: translateY(0) scale(1); filter: drop-shadow(0 16px 28px rgba(23,49,59,.17)); } }
     body.intro-reveal .site-header { animation: portfolio-enter .72s var(--ease) .06s both; }
     body.intro-reveal .hero-name-first { animation: intro-name-left .9s var(--ease) .12s both; }
-    body.intro-reveal .hero-portrait { animation: intro-portrait-rise .95s var(--ease) .2s both, portrait-float 5.2s ease-in-out 1.2s infinite; }
+    body.intro-reveal .hero-portrait { animation: intro-portrait-rise .95s var(--ease) .2s both, portrait-float 4.4s ease-in-out 1.2s infinite; }
     body.intro-reveal .hero-name-last { animation: intro-name-right .9s var(--ease) .24s both; }
     body.intro-reveal .hero-content { animation: portfolio-enter .85s var(--ease) .48s both; }
     body.intro-reveal .hero-index { animation: title-in .65s ease .75s both; }
@@ -1134,15 +1134,23 @@
         revealIndex += 1;
       });
       document.documentElement.classList.add("motion-ready");
-      const revealObserver = new IntersectionObserver(function (entries, observer) {
+      const revealObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
+            const enteringNow = !entry.target.classList.contains("visible");
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
+            if (entry.target === rail && enteringNow) {
+              rail.classList.remove("cards-entering");
+              void rail.offsetWidth;
+              rail.classList.add("cards-entering");
+            }
+          } else if (entry.boundingClientRect.top > window.innerHeight) {
+            entry.target.classList.remove("visible");
+            if (entry.target === rail) rail.classList.remove("cards-entering");
           }
         });
       }, { threshold: .12 });
-      document.querySelectorAll(".reveal, .scroll-reveal").forEach(function (element) { revealObserver.observe(element); });
+      document.querySelectorAll(".reveal, .scroll-reveal, #project-rail").forEach(function (element) { revealObserver.observe(element); });
 
       const sectionObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {

@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayush Tripathi | Portfolio</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#101010;color:#f5f5f5;font-family:Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#111f;padding:20px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:23px}.logo span{color:#e50914}
+nav{display:flex;gap:20px}a{color:inherit;text-decoration:none}
+.hero{min-height:570px;padding:120px 8%;display:flex;align-items:center;background:radial-gradient(ellipse at 80% 40%,#8c171c,transparent 35%),linear-gradient(110deg,#101010,#241416,#101010)}
+.label{color:#ff646b;letter-spacing:3px;font-size:12px;font-weight:bold}
+h1{font-size:clamp(45px,8vw,86px);line-height:1;margin:22px 0;letter-spacing:-3px}
+h1 span{color:#e50914}
+p{line-height:1.8;color:#bbb}
+.hero p{max-width:580px}
+.btn{display:inline-block;padding:13px 19px;border-radius:4px;background:#e50914;color:white;font-weight:bold;margin:12px 8px 0 0}
+.btn.light{background:white;color:#111}
+section{padding:60px 7%;scroll-margin-top:70px}
+h2{font-size:32px;margin-top:0}
+.sub{font-size:13px;color:#999;margin-top:-12px;margin-bottom:25px}
+.filters,.skills{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.filter,.skill{border:1px solid #383838;background:#202020;color:#eee;padding:10px 14px;border-radius:20px;cursor:pointer}
+.filter.active,.filter:hover{background:#e50914;border-color:#e50914}
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{border:1px solid #292929;background:#191919;border-radius:7px;overflow:hidden}
+.art{height:190px;display:flex;align-items:center;justify-content:center;font-size:60px;font-weight:900;color:#ffffffdd;background:radial-gradient(circle at center,var(--glow),#171717 70%)}
+.info{padding:18px}.info h3{margin:0 0 8px}.info p{font-size:13px}
+.tag{font-size:11px;color:#ff737a;letter-spacing:1px}
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:30px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:#1c1c1c;padding:20px;border-left:3px solid #e50914}
+.stat small{display:block;color:#999;margin-top:8px}
+.contact{background:linear-gradient(110deg,#381216,#1b1b1b);padding:30px;border-radius:8px}
+footer{padding:25px 7%;border-top:1px solid #292929;color:#888;font-size:12px}
+@media(max-width:800px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}.about{grid-template-columns:1fr}}
+@media(max-width:520px){header{padding:16px 5%}nav{gap:10px;font-size:12px}nav a:nth-child(2){display:none}.projects{grid-template-columns:1fr}section{padding:45px 5%}.hero{padding:90px 6%;min-height:520px}h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#home">MAYUSH<span>.</span></a>
+  <nav><a href="#home">Home</a><a href="#about">About</a><a href="#work">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="label">3D ART · GAME DEV · DIGITAL DESIGN</div>
+    <h1>Mayush<br>Tripathi<span>.</span></h1>
+    <p>3D & Multimedia Faculty · Game Developer · Designer<br>
+    Creating detailed 3D assets, immersive environments and digital experiences.</p>
+    <a class="btn light" href="#work">▶ Explore My Work</a>
+    <a class="btn" href="#about">About Me ↓</a>
+  </div>
+</section>
+
+<section id="work">
+  <h2>Featured Projects</h2>
+  <p class="sub">Selected work in 3D art, game assets and environments.</p>
+  <div class="filters">
+    <button class="filter active" data-filter="all">All</button>
+    <button class="filter" data-filter="3d">3D Assets</button>
+    <button class="filter" data-filter="game">Game Art</button>
+    <button class="filter" data-filter="environment">Environments</button>
+  </div>
+  <div class="projects" id="projects"></div>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="about">
+    <p>I am Mayush Tripathi, a 3D & Multimedia Faculty, Game Developer and Designer. I work across 3D modeling, texturing, real-time game assets, environment creation, visual design and multimedia production. I also enjoy teaching creative tools and helping learners turn ideas into digital projects.</p>
+    <div class="stats">
+      <div class="stat"><b>3D ART</b><small>Modeling & Texturing</small></div>
+      <div class="stat"><b>GAME DEV</b><small>Real-time Workflows</small></div>
+      <div class="stat"><b>MULTIMEDIA</b><small>Design & Motion</small></div>
+      <div class="stat"><b>FACULTY</b><small>Teaching & Mentoring</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Tools & Software</h2>
+  <p class="sub">My creative toolkit</p>
+  <div class="skills">
+    <span class="skill">Blender</span><span class="skill">Maya</span>
+    <span class="skill">Unreal Engine 5</span><span class="skill">Unity</span>
+    <span class="skill">Substance Painter</span><span class="skill">Photoshop</span>
+    <span class="skill">Illustrator</span><span class="skill">InDesign</span>
+    <span class="skill">Premiere Pro</span><span class="skill">After Effects</span>
+    <span class="skill">MetaHuman</span><span class="skill">Figma</span>
+    <span class="skill">Substance 3D Stager</span><span class="skill">Marvelous Designer</span>
+    <span class="skill">Cloud Tools</span>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <div class="label">LET'S CREATE SOMETHING</div>
+    <h2 style="margin-top:15px">Have a project in mind?</h2>
+    <p>For 3D art, game development, design and multimedia opportunities, let's connect.</p>
+    <p>Email and social links will be added here.</p>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="year"></span> Mayush Tripathi · Portfolio</footer>
+
+<script>
+const projects=[
+ {title:"Willys MB",cat:"3d",mark:"MB",glow:"#746144",desc:"Military vehicle 3D asset. Add final renders and texturing breakdown."},
+ {title:"Game Ready Horse – Real-Time Character",cat:"game",mark:"3D",glow:"#77503b",desc:"Real-time horse character. Add model, UV and texture screenshots."},
+ {title:"Stylized Fantasy Axe",cat:"3d",mark:"AXE",glow:"#743b4c",desc:"Stylized fantasy prop with detailed modeling and materials."},
+ {title:"M 18 SMOKE GRENADE",cat:"3d",mark:"M18",glow:"#526045",desc:"Hard-surface 3D asset. Add your final render and breakdown."},
+ {title:"GTA V STREET – Unreal Engine 5.6.1",cat:"environment",mark:"UE5",glow:"#315d6a",desc:"Street environment created in Unreal Engine 5.6.1."},
+ {title:"NATURE",cat:"environment",mark:"N",glow:"#315d40",desc:"Nature environment showcasing foliage, atmosphere and lighting."}
+];
+const grid=document.getElementById("projects");
+function render(filter="all"){
+ grid.innerHTML="";
+ projects.filter(p=>filter==="all"||p.cat===filter).forEach(p=>{
+  const el=document.createElement("article");
+  el.className="card";
+  const art=document.createElement("div");
+  art.className="art";
+  art.style.setProperty("--glow",p.glow);
+  art.textContent=p.mark;
+  const info=document.createElement("div");
+  info.className="info";
+  const title=document.createElement("h3");
+  title.textContent=p.title;
+  const desc=document.createElement("p");
+  desc.textContent=p.desc;
+  const tag=document.createElement("span");
+  tag.className="tag";
+  tag.textContent=p.cat.toUpperCase();
+  info.append(title,desc,tag);
+  el.append(art,info);
+  grid.append(el);
+ });
+}
+document.querySelectorAll(".filter").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  render(btn.dataset.filter);
+ });
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>

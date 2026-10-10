@@ -91,6 +91,23 @@
       font-size: 11px; letter-spacing: .13em; text-transform: uppercase;
     }
     .opening-skip:hover, .opening-skip:focus-visible { border-color: var(--accent-light); color: var(--paper); }
+    .opening-scene.profile-selection { position: relative; inset: auto; z-index: 1; display: grid; place-items: center; width: min(100%, 1040px); }
+    .profile-picker { width: 100%; text-align: center; animation: portfolio-enter .7s var(--ease) both; }
+    .profile-picker-kicker { color: var(--accent); font-size: 9px; letter-spacing: .24em; text-transform: uppercase; }
+    .profile-picker-title { margin: 12px 0 9px; color: var(--paper); font-size: clamp(34px,6vw,64px); line-height: 1; letter-spacing: -.06em; }
+    .profile-picker-copy { margin: 0; color: var(--muted); font-size: 13px; }
+    .profile-options { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; margin: 38px auto 0; }
+    .profile-option { display: grid; justify-items: center; gap: 9px; min-width: 0; padding: 20px 12px 18px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(155deg,rgba(22,32,33,.94),rgba(10,14,15,.9)); color: var(--paper); cursor: pointer; text-align: center; transition: transform .32s var(--ease),border-color .28s ease,box-shadow .32s ease,background .28s ease; }
+    .profile-option:hover, .profile-option:focus-visible { transform: translateY(-8px) scale(1.025); border-color: var(--accent); box-shadow: 0 20px 42px rgba(0,0,0,.36),0 0 28px rgba(var(--accent-rgb),.14); outline: none; }
+    .profile-avatar { display: grid; place-items: center; width: clamp(68px,10vw,104px); aspect-ratio: 1; overflow: hidden; border: 1px solid rgba(var(--accent-rgb),.4); border-radius: 18px; background: radial-gradient(circle at 50% 18%,rgba(var(--accent-rgb),.22),rgba(12,18,19,.96) 72%); box-shadow: inset 0 0 22px rgba(var(--accent-rgb),.08); transition: border-radius .32s var(--ease),transform .32s var(--ease); }
+    .profile-option:hover .profile-avatar, .profile-option:focus-visible .profile-avatar { transform: rotate(-3deg) scale(1.05); border-radius: 24px; }
+    .profile-avatar img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; background: transparent; }
+    .profile-avatar-letter { color: var(--accent); font-size: 34px; font-weight: 800; letter-spacing: -.08em; }
+    .profile-option strong { font-size: 13px; letter-spacing: .02em; }
+    .profile-option small { color: var(--muted); font-size: 9px; line-height: 1.4; }
+    .profile-picker-note { margin-top: 22px; color: #71827e; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+    .site-nav-switch { padding: 8px 11px; border: 1px solid var(--line); border-radius: 999px; background: rgba(15,22,22,.8); color: var(--accent); font: inherit; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: border-color .2s ease,background .2s ease,transform .2s ease; }
+    .site-nav-switch:hover, .site-nav-switch:focus-visible { transform: translateY(-2px); border-color: var(--accent); background: rgba(var(--accent-rgb),.1); outline: none; }
 
     /* Navigation */
     .site-header {
@@ -296,6 +313,19 @@
     .credential-type { color: var(--accent-light); font-size: 9px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
     .credential-card h3 { margin: 16px 0 5px; font-size: 17px; line-height: 1.25; letter-spacing: -.03em; }
     .credential-card p { margin: 0; color: #62635d; font-size: 12px; }
+    .certificate-section { background: radial-gradient(ellipse at 50% 0,rgba(var(--accent-rgb),.07),transparent 52%); }
+    .certificate-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin-top: 34px; }
+    .certificate-card { display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(155deg,#172122,#0d1213); color: var(--paper); cursor: pointer; text-align: left; box-shadow: 0 14px 32px rgba(0,0,0,.22); transition: transform .35s var(--ease),border-color .28s ease,box-shadow .35s ease; }
+    .certificate-card:hover, .certificate-card:focus-visible { transform: translateY(-7px) scale(1.015); border-color: var(--accent); box-shadow: 0 24px 45px rgba(0,0,0,.34),0 0 22px rgba(var(--accent-rgb),.1); outline: none; }
+    .certificate-preview { position: relative; display: grid; place-items: center; aspect-ratio: 1.48 / 1; overflow: hidden; padding: 10px; background: radial-gradient(ellipse at 50% 100%,rgba(var(--accent-rgb),.1),transparent 55%),#080b0c; }
+    .certificate-preview img { width: 100%; height: 100%; object-fit: contain; transition: transform .55s var(--ease),filter .4s ease; }
+    .certificate-card:hover .certificate-preview img, .certificate-card:focus-visible .certificate-preview img { transform: scale(1.035); filter: brightness(1.07); }
+    .certificate-view { position: absolute; right: 12px; bottom: 12px; padding: 7px 9px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; background: rgba(7,10,11,.78); color: var(--accent); font-size: 8px; letter-spacing: .13em; text-transform: uppercase; }
+    .certificate-copy { padding: 17px 18px 19px; }
+    .certificate-provider { color: var(--accent); font-size: 8px; letter-spacing: .16em; text-transform: uppercase; }
+    .certificate-title { display: block; margin: 9px 0 7px; font-size: 16px; font-weight: 720; line-height: 1.25; letter-spacing: -.025em; }
+    .certificate-detail { display: block; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .certificate-note { margin-top: 12px !important; color: var(--gold) !important; font-size: 8px !important; letter-spacing: .08em; text-transform: uppercase; }
 
     /* Contact */
     .contact-panel {
@@ -432,6 +462,11 @@
       .opening-name-last { bottom: 17vh; top: auto; transform: translateX(-50%); }
       .opening-role { bottom: 7vh; font-size: 8px; letter-spacing: .18em; }
       .opening-skip { right: 18px; bottom: 17px; }
+      .profile-options { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; max-width: 520px; margin-top: 25px; }
+      .profile-option { gap: 6px; padding: 13px 8px 12px; border-radius: 13px; }
+      .profile-option small { font-size: 8px; }
+      .profile-picker-note { margin-top: 14px; font-size: 8px; }
+      .opening:has(.profile-selection) { padding: 20px 18px 62px; }
       .hero-cube { display: none; }
       .hero::after { width: 110vw; height: 48vw; }
       .section-heading, .collection-head { align-items: start; flex-direction: column; gap: 10px; }
@@ -467,6 +502,8 @@
       --accent: #5ce2c5;
       --accent-light: #a0f4df;
       --gold: #f5bb74;
+      --accent-rgb: 92,226,197;
+      --gold-rgb: 245,187,116;
     }
     html, body { background-color: var(--bg); color: var(--paper); }
     body {
@@ -606,11 +643,30 @@
     .dialog-slide-controls { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; pointer-events: none; }
     .dialog-slide-controls button { width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.26); border-radius: 50%; background: rgba(7,10,11,.76); color: white; font-size: 22px; cursor: pointer; pointer-events: auto; backdrop-filter: blur(7px); transition: transform .22s var(--ease),background .22s ease,border-color .22s ease; }
     .dialog-slide-controls button:hover { transform: scale(1.12); border-color: var(--accent); background: rgba(92,226,197,.88); color: #07100e; }
+    .dialog-fullscreen { position: absolute; z-index: 2; top: 12px; right: 12px; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.26); border-radius: 50%; background: rgba(7,10,11,.78); color: white; font-size: 21px; line-height: 1; cursor: pointer; backdrop-filter: blur(7px); transition: transform .22s var(--ease),background .22s ease,border-color .22s ease; }
+    .dialog-fullscreen:hover, .dialog-fullscreen:focus-visible { transform: scale(1.1); border-color: var(--accent); background: var(--accent); color: #07100e; outline: none; }
+    .dialog-slide-stage:fullscreen { width: 100vw; height: 100vh; min-height: 0; max-height: none; border: 0; border-radius: 0; background: #050708; }
+    .dialog-slide-stage:fullscreen img { object-fit: contain; }
+    .dialog-slide-stage:fullscreen .dialog-slide-controls { padding: 0 26px; }
+    .dialog-slide-stage:fullscreen .dialog-fullscreen { top: 24px; right: 24px; width: 50px; height: 50px; }
     .dialog-slide-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 13px; border-top: 1px solid var(--line); }
     .dialog-slide-count { color: var(--accent); font-size: 10px; letter-spacing: .15em; }
     .dialog-slide-toggle { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
     .dialog-slide-toggle:hover { color: var(--gold); }
     .dialog-thumbs .dialog-thumb { flex-basis: 130px; }
+    .hover-gallery { position: fixed; z-index: 1000; width: min(420px,calc(100vw - 24px)); padding: 12px; border: 1px solid rgba(var(--accent-rgb),.45); border-radius: 14px; background: radial-gradient(ellipse at 50% 0,rgba(var(--accent-rgb),.1),transparent 48%),rgba(8,12,13,.97); box-shadow: 0 24px 68px rgba(0,0,0,.64),0 0 26px rgba(var(--accent-rgb),.11); color: var(--paper); opacity: 0; transform: translateY(12px) scale(.965); transform-origin: center center; pointer-events: none; transition: opacity .2s ease,transform .28s var(--ease); backdrop-filter: blur(18px); }
+    .hover-gallery.is-open { opacity: 1; transform: translateY(0) scale(1); }
+    .hover-gallery-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 9px; }
+    .hover-gallery-title { overflow: hidden; color: var(--paper); font-size: 12px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+    .hover-gallery-count { flex: none; color: var(--accent); font-size: 8px; letter-spacing: .13em; text-transform: uppercase; }
+    .hover-gallery-image-wrap { display: grid; place-items: center; height: clamp(120px,25vh,190px); overflow: hidden; border: 1px solid rgba(255,255,255,.08); border-radius: 8px; background: #050708; }
+    .hover-gallery-image { width: 100%; height: 100%; object-fit: contain; transition: opacity .2s ease,transform .45s var(--ease); }
+    .hover-gallery-image.slide-next { animation: slide-next .42s var(--ease) both; }
+    .hover-gallery-caption { margin-top: 8px; color: var(--muted); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
+    .hover-gallery-thumbs { display: flex; gap: 5px; margin-top: 9px; overflow: hidden; }
+    .hover-gallery-thumb { flex: 1 1 0; min-width: 0; height: 34px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 4px; opacity: .55; transition: opacity .2s ease,border-color .2s ease,transform .2s ease; }
+    .hover-gallery-thumb[aria-current="true"] { border-color: var(--accent); opacity: 1; transform: translateY(-2px); }
+    .hover-gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
     @keyframes live-pulse { 0% { box-shadow: 0 0 0 0 rgba(245,187,116,.5); } 75%,100% { box-shadow: 0 0 0 9px rgba(245,187,116,0); } }
     @keyframes modal-pop { from { opacity: 0; transform: translateY(18px) scale(.975); filter: blur(7px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
     @keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
@@ -619,11 +675,22 @@
     @media (max-width: 700px) {
       .viewer-tabs { margin-top: 16px; }
       .project-rail { grid-auto-columns: minmax(255px,84%); }
+      .certificate-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .dialog-slide-stage { height: min(48vh,430px); min-height: 210px; }
       .dialog-slide-controls { padding: 0 8px; }
       .dialog-slide-controls button { width: 38px; height: 38px; }
       .brand-series { font-size: 6px; }
     }
+    @media (max-width: 480px) { .certificate-grid { grid-template-columns: 1fr; } .hover-gallery { display: none; } }
+    body[data-audience] .hero { background-image: radial-gradient(ellipse at 50% 52%,rgba(var(--accent-rgb),.1),transparent 34%),radial-gradient(ellipse at 82% 24%,rgba(var(--gold-rgb),.08),transparent 26%),#070a0b; }
+    body[data-audience] .hero::before { border-color: rgba(var(--accent-rgb),.24); box-shadow: 0 0 0 36px rgba(var(--accent-rgb),.025),0 0 0 72px rgba(var(--gold-rgb),.025),0 0 100px rgba(var(--accent-rgb),.09); }
+    body[data-audience] .hero::after { border-color: rgba(var(--gold-rgb),.28); box-shadow: 0 0 0 18px rgba(var(--accent-rgb),.025); }
+    body[data-audience] .collection { border-color: rgba(var(--accent-rgb),.14); }
+    body[data-audience] .collection-stamp, body[data-audience] .heading-side { color: var(--accent); }
+    body[data-audience] .hero-hologram::before { border-color: rgba(var(--accent-rgb),.42); box-shadow: 0 0 30px rgba(var(--accent-rgb),.2),inset 0 0 24px rgba(var(--accent-rgb),.11); }
+    body[data-audience] .hero-hologram-edge { background: linear-gradient(115deg,transparent 30%,rgba(var(--accent-rgb),.82) 46%,rgba(255,255,255,.48) 50%,rgba(var(--gold-rgb),.65) 54%,transparent 70%); }
+    body[data-audience] .project-card:hover, body[data-audience] .project-card.is-tilting { border-color: rgba(var(--accent-rgb),.72); box-shadow: 0 26px 52px rgba(0,0,0,.46),0 0 28px rgba(var(--accent-rgb),.11); }
+    body[data-audience] .certificate-section { background: radial-gradient(ellipse at 50% 0,rgba(var(--accent-rgb),.07),transparent 52%); }
     @media (prefers-reduced-motion: reduce) {
       .streaming-dot { animation: none; }
       .dialog, .dialog::backdrop { animation: none; }
@@ -637,14 +704,33 @@
   <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
   <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
-  <div class="opening" id="opening" hidden>
-    <div class="opening-scene" role="group" aria-label="Mayush Tripathi portfolio introduction">
-      <span class="opening-name opening-name-first"><span>Mayush</span></span>
-      <img class="opening-portrait" src="assets/profile/mayush-portrait.png" alt="" fetchpriority="high" decoding="async">
-      <span class="opening-name opening-name-last"><span>Tripathi</span></span>
-      <div class="opening-role">A MAYUSH ORIGINAL · THE CREATIVE SERIES</div>
+  <div class="opening" id="opening" role="dialog" aria-modal="true" aria-labelledby="profile-picker-title">
+    <div class="opening-scene profile-selection">
+      <div class="profile-picker">
+        <div class="profile-picker-kicker">Mayush Tripathi · Portfolio</div>
+        <h2 class="profile-picker-title" id="profile-picker-title">Who’s watching?</h2>
+        <p class="profile-picker-copy">Choose a view to explore the work in the way that suits you.</p>
+        <div class="profile-options" role="group" aria-label="Choose a portfolio view">
+          <button class="profile-option" type="button" data-audience="personal" aria-label="Continue as Mayush Tripathi">
+            <span class="profile-avatar"><img src="assets/profile/mayush-portrait.png" alt="" fetchpriority="high" decoding="async"></span>
+            <strong>Mayush</strong><small>Personal portfolio</small>
+          </button>
+          <button class="profile-option" type="button" data-audience="recruiter">
+            <span class="profile-avatar"><span class="profile-avatar-letter" aria-hidden="true">R</span></span>
+            <strong>Recruiter</strong><small>Experience · skills · contact</small>
+          </button>
+          <button class="profile-option" type="button" data-audience="developer">
+            <span class="profile-avatar"><span class="profile-avatar-letter" aria-hidden="true">D</span></span>
+            <strong>Developer</strong><small>Assets · engines · workflow</small>
+          </button>
+          <button class="profile-option" type="button" data-audience="creative">
+            <span class="profile-avatar"><span class="profile-avatar-letter" aria-hidden="true">C</span></span>
+            <strong>Creative</strong><small>Design · worlds · art direction</small>
+          </button>
+        </div>
+        <div class="profile-picker-note">Select a profile to enter</div>
+      </div>
     </div>
-    <button class="opening-skip" id="skip-opening" type="button">Skip intro <span aria-hidden="true">↗</span></button>
   </div>
 
   <header class="site-header" id="site-header">
@@ -670,7 +756,9 @@
         <a href="#journey">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
+        <a href="#certificates">Certificates</a>
         <a href="#contact">Contact</a>
+        <button class="site-nav-switch" id="switch-audience" type="button">Switch view</button>
       </nav>
     </div>
   </header>
@@ -705,8 +793,8 @@
           <button type="button" data-hero-mode="teaching" aria-pressed="false">TEACHING</button>
         </div>
         <div class="hero-actions">
-          <a class="button primary" href="#work"><span class="arrow" aria-hidden="true">▶</span> Explore the work</a>
-          <a class="button" href="#about">Meet the artist <span class="arrow" aria-hidden="true">↓</span></a>
+          <a class="button primary" id="hero-primary-action" href="#work"><span class="arrow" aria-hidden="true">▶</span> <span class="action-label">Explore the work</span></a>
+          <a class="button" id="hero-secondary-action" href="#about"><span class="action-label">Meet the artist</span> <span class="arrow" aria-hidden="true">↓</span></a>
         </div>
         <div class="hero-note"><strong>3D &amp; Multimedia Faculty</strong><span class="divider"></span><span>Game art · Environment design · Real-time 3D</span></div>
       </div>
@@ -721,7 +809,7 @@
             <h2 id="work-title">Originals by Mayush</h2>
             <p>Each project is a study in form, materials and atmosphere.</p>
           </div>
-          <div class="collection-stamp">SEASON 01 <span aria-hidden="true">/</span> 11 ORIGINAL PROJECTS</div>
+          <div class="collection-stamp">SEASON 01 <span aria-hidden="true">/</span> <span id="project-count">10</span> ORIGINAL PROJECTS</div>
         </div>
         <div class="filters reveal" role="group" aria-label="Filter projects">
           <button class="filter" type="button" data-filter="all" aria-pressed="true">All projects</button>
@@ -730,7 +818,6 @@
           <button class="filter" type="button" data-filter="environment" aria-pressed="false">Environments</button>
           <button class="filter" type="button" data-filter="design" aria-pressed="false">Poster design</button>
           <button class="filter" type="button" data-filter="artwork" aria-pressed="false">Digital art</button>
-          <button class="filter" type="button" data-filter="certificate" aria-pressed="false">Certificates</button>
         </div>
         <div class="project-rail reveal" id="project-rail" aria-label="Project gallery"></div>
         <div class="rail-hint">
@@ -776,7 +863,7 @@
           <div>
             <div class="section-kicker">Experience &amp; practice</div>
             <h2 class="section-title" id="journey-title">A creative journey.</h2>
-            <p class="section-intro">Current roles in teaching, studio leadership and game design, alongside freelance environment and prop work.</p>
+            <p class="section-intro">Teaching and studio leadership experience, alongside game design, freelance environment and prop work.</p>
           </div>
           <div class="heading-side">Professional focus</div>
         </div>
@@ -788,15 +875,15 @@
             <span class="experience-tag">Faculty · 3D · Multimedia</span>
           </article>
           <article class="experience-card reveal">
-            <div class="experience-no">2 MONTHS · ARENA ANIMATION, AHMEDABAD</div>
+            <div class="experience-no">2 MONTHS · ARENA ANIMATION</div>
             <h3>3D Faculty</h3>
             <p>Trained students in foundational 3D workflows and supported hands-on learning in asset creation.</p>
             <span class="experience-tag">Teaching · 3D workflows</span>
           </article>
           <article class="experience-card reveal">
-            <div class="experience-no">APR 2026 – PRESENT · EMINATTI SYNERGIES LLP</div>
+            <div class="experience-no">10 MONTHS · EMINATTI SYNERGIES LLP</div>
             <h3>Studio Head · Lead Game Designer · 3D Artist</h3>
-            <p>Leading studio operations and game design workflows, coordinating delivery, and creating environment art with Unreal Engine Blueprints.</p>
+            <p>Led studio operations and game design workflows, coordinated delivery, and created environment art with Unreal Engine Blueprints.</p>
             <span class="experience-tag">Game Design Consultant · Environment Artist</span>
           </article>
           <article class="experience-card reveal">
@@ -859,7 +946,7 @@
             <h2 class="section-title" id="education-title">Learning the craft.</h2>
             <p class="section-intro">Academic study and focused training in computer applications and 3D art.</p>
           </div>
-          <div class="heading-side">Ahmedabad · India</div>
+          <div class="heading-side">Jhansi · Uttar Pradesh</div>
         </div>
         <div class="credentials-grid">
           <article class="credential-card reveal">
@@ -888,19 +975,35 @@
 
     <div class="section-divider" aria-hidden="true"></div>
 
+    <section class="section certificate-section" id="certificates" aria-labelledby="certificates-title">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-kicker">Courses · Practice · Progress</div>
+            <h2 class="section-title" id="certificates-title">Learning in progress.</h2>
+            <p class="section-intro">A selection of completed courses across 3D, game development, and programming.</p>
+          </div>
+          <div class="heading-side">5 certificates</div>
+        </div>
+        <div class="certificate-grid" id="certificate-grid" aria-label="Certificates"></div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="section-inner">
         <div class="contact-panel reveal">
           <div class="contact-copy">
             <div class="section-kicker">The next chapter starts here</div>
             <h2 class="section-title" id="contact-title">Let’s create something.</h2>
-            <p>For 3D art, environment design, game design, teaching, or freelance opportunities, get in touch. Based in Ahmedabad, Gujarat.</p>
+            <p>For 3D art, environment design, game design, teaching, or freelance opportunities, get in touch. Based in Jhansi, Uttar Pradesh.</p>
           </div>
           <div class="contact-actions">
             <a class="button primary" href="mailto:workwithayush7905@gmail.com">Email me <span class="arrow" aria-hidden="true">↗</span></a>
             <a class="button" href="tel:+917905226298">Call 79052 26298</a>
             <a class="button" href="https://ayushtripathi016.artstation.com" target="_blank" rel="noreferrer">ArtStation <span class="arrow" aria-hidden="true">↗</span></a>
-            <span class="contact-note">workwithayush7905@gmail.com · Ahmedabad, Gujarat</span>
+            <span class="contact-note">workwithayush7905@gmail.com · Jhansi, Uttar Pradesh</span>
           </div>
         </div>
       </div>
@@ -1026,19 +1129,6 @@
         facts: ["Matte painting", "Atmospheric environment", "Cinematic lighting"]
       },
       {
-        id: "certificates", title: "Certificates & Learning", category: "certificate", label: "Training · certificates",
-        description: "Selected certificates from coursework in Blender, Unity game development and programming.",
-        glyph: "01", glow: "#668b70",
-        images: [
-          { src: "assets/projects/certificate-blender.webp", alt: "TutorialsPoint Free Blender Crash Course certificate", caption: "Blender · TutorialsPoint" },
-          { src: "assets/projects/certificate-udemy-unity.webp", alt: "Udemy Ultimate Unity Game Development course certificate", caption: "Unity Game Development · Udemy" },
-          { src: "assets/projects/certificate-udemy-cpp.webp", alt: "Udemy Object Oriented Programming in C++ certificate", caption: "Object-Oriented C++ · Udemy" },
-          { src: "assets/projects/certificate-itronix-cpp.webp", alt: "ITronix Solutions C and C++ programming certificate", caption: "C & C++ · ITronix Solutions" },
-          { src: "assets/projects/certificate-simplilearn-cpp.webp", alt: "Simplilearn Introduction to C++ certificate", caption: "Introduction to C++ · Simplilearn" }
-        ],
-        facts: ["Blender fundamentals", "Unity game development", "Programming coursework"]
-      },
-      {
         id: "street", title: "GTA V Street", category: "environment", label: "Environment · Unreal Engine 5.6.1",
         description: "A cinematic street environment made in Unreal Engine 5.6.1, designed to feel like a lived-in game world.",
         glyph: "01", glow: "#3f6670", images: [],
@@ -1054,6 +1144,59 @@
       }
     ];
 
+    const certificates = [
+      { id: "cert-blender", provider: "TutorialsPoint", title: "Free Blender Crash Course", src: "assets/projects/certificate-blender.webp", alt: "TutorialsPoint certificate for Free Blender Crash Course", detail: "Completed a focused introduction to Blender workflows.", note: "2 hours 39 minutes · April 2026" },
+      { id: "cert-unity", provider: "Udemy · LeZit Games", title: "Ultimate Unity Game Development (2D & 3D)", src: "assets/projects/certificate-udemy-unity.webp", alt: "Udemy certificate for Ultimate Unity Game Development Course in Hindi, 2D and 3D", detail: "Course covering Unity game development for 2D and 3D projects, taught in Hindi.", note: "7 hours · July 2025" },
+      { id: "cert-oop", provider: "Udemy · Codaming", title: "Object-Oriented Programming in C++", src: "assets/projects/certificate-udemy-cpp.webp", alt: "Udemy certificate for Object Oriented Programming in C plus plus", detail: "Coursework in object-oriented programming concepts using C++.", note: "1 hour · April 2026" },
+      { id: "cert-itronix", provider: "ITronix Solutions", title: "C & C++ Programming Language", src: "assets/projects/certificate-itronix-cpp.webp", alt: "ITronix Solutions C and C plus plus Programming Language certificate", detail: "Completed the C and C++ programming language certification.", note: "November 2025" },
+      { id: "cert-simplilearn", provider: "Simplilearn SkillUp", title: "Introduction to C++", src: "assets/projects/certificate-simplilearn-cpp.webp", alt: "Simplilearn SkillUp Introduction to C plus plus certificate", detail: "Completed an introductory online course in C++.", note: "November 2025" }
+    ];
+
+    const audiences = {
+      personal: {
+        accent: "#5ce2c5", accentLight: "#a0f4df", accentRgb: "92,226,197", gold: "#f5bb74", goldRgb: "245,187,116",
+        copy: "Game-ready assets, cinematic environments, and the craft behind every world — created by 3D artist Mayush Tripathi.",
+        modes: ["3D ART", "WORLDS", "TEACHING"],
+        modeCopy: ["Game-ready assets shaped through modelling, PBR texturing, and careful attention to form and material.", "From a lived-in city street to a quiet mountain scene, I build real-time environments with mood and atmosphere.", "3D & Multimedia Faculty at Arena Animation, Jhansi — guiding students through practical creative workflows."],
+        primary: ["Explore the work", "#work"], secondary: ["Meet the artist", "#about"], profile: ["Artist profile", "01 / PERSONAL"],
+        work: ["Originals by Mayush", "Each project is a study in form, materials and atmosphere."], aboutTitle: "Ideas made tangible.",
+        aboutCopy: "I’m Mayush Tripathi, a 3D Artist, Environment Artist, Game Designer, and 3D & Multimedia Faculty. I create game-ready assets and immersive real-time environments using 3D modelling, PBR texturing, scene composition, and Unreal Engine Blueprints. I currently teach at Arena Animation, Jhansi, and bring experience from studio work, freelance projects, and teaching.",
+        contactTitle: "Let’s create something.", order: ["camera", "horse", "willys", "porsche", "axe", "skull", "posters", "matte-painting", "street", "nature"]
+      },
+      recruiter: {
+        accent: "#83aaff", accentLight: "#bdd0ff", accentRgb: "131,170,255", gold: "#e6c47e", goldRgb: "230,196,126",
+        copy: "A concise view of my experience, production skills, and selected 3D and game art work.",
+        modes: ["EXPERIENCE", "SKILLS", "CONTACT"],
+        modeCopy: ["3D artist, environment artist and game designer, with studio, freelance and teaching experience.", "3D modelling, PBR texturing, Unreal Engine Blueprints, Unity, Photoshop and real-time asset workflows.", "Based in Jhansi, Uttar Pradesh. Open to 3D art, game art, environment design and teaching opportunities."],
+        primary: ["View experience", "#journey"], secondary: ["Contact Mayush", "#contact"], profile: ["Recruiter view", "02 / EXPERIENCE"],
+        work: ["Selected production work", "A focused look at 3D assets, environments, and visual design."], aboutTitle: "3D art, built for production.",
+        aboutCopy: "I’m Mayush Tripathi, a 3D Artist, Environment Artist, Game Designer, and 3D & Multimedia Faculty based in Jhansi. My work spans game-ready props, real-time environments, PBR texturing, scene composition, and Unreal Engine Blueprints. I bring studio, freelance, and teaching experience, and currently teach at Arena Animation, Jhansi.",
+        contactTitle: "Let’s talk about the work.", order: ["horse", "porsche", "willys", "street", "nature", "matte-painting", "posters", "axe", "skull", "camera"]
+      },
+      developer: {
+        accent: "#78d6ff", accentLight: "#b4eaff", accentRgb: "120,214,255", gold: "#9ce5cd", goldRgb: "156,229,205",
+        copy: "Explore my 3D assets, material studies and interactive projects across real-time workflows.",
+        modes: ["ASSETS", "ENGINES", "WORKFLOW"],
+        modeCopy: ["Hard-surface vehicles, sculpted forms, props and a game-ready horse with a UV and PBR breakdown.", "Unreal Engine Blueprints and Unity with C# across environment and game development work.", "Modelling, UV mapping, PBR texturing, scene composition, optimization and lighting."],
+        primary: ["Browse 3D assets", "#work"], secondary: ["See my toolkit", "#skills"], profile: ["Developer view", "03 / REAL-TIME"],
+        work: ["Assets & real-time studies", "Models, materials and environments shown from multiple views."], aboutTitle: "From model to real-time scene.",
+        aboutCopy: "I’m Mayush Tripathi, a 3D Artist and Game Designer working across modelling, UV mapping, PBR texturing, environment design, and real-time workflows. I use Unreal Engine Blueprints and Unity with C#, and currently teach practical 3D and multimedia workflows at Arena Animation, Jhansi.",
+        contactTitle: "Build something together.", order: ["horse", "porsche", "willys", "camera", "axe", "skull", "street", "nature", "matte-painting", "posters"]
+      },
+      creative: {
+        accent: "#f29acb", accentLight: "#ffc6e6", accentRgb: "242,154,203", gold: "#ffc483", goldRgb: "255,196,131",
+        copy: "A visual portfolio of cinematic worlds, poster compositions, sculpted forms and art direction.",
+        modes: ["POSTERS", "WORLDS", "ART DIRECTION"],
+        modeCopy: ["Poster and product-ad concepts exploring photo compositing, typography, colour and cinematic layouts.", "Fantasy matte painting, game environments and 3D scenes shaped through light and atmosphere.", "From concept and composition to materials and final presentation, each image is built around a clear mood."],
+        primary: ["Explore visual work", "#work"], secondary: ["Meet the artist", "#about"], profile: ["Creative view", "04 / VISUALS"],
+        work: ["Images with atmosphere", "Posters, environments and 3D work arranged around visual storytelling."], aboutTitle: "A mood for every world.",
+        aboutCopy: "I’m Mayush Tripathi, a 3D Artist and visual creative interested in cinematic environments, photo manipulation, poster design, and expressive 3D forms. I work across composition, lighting, materials, and real-time scenes, and currently teach 3D and multimedia at Arena Animation, Jhansi.",
+        contactTitle: "Let’s make an idea visible.", order: ["posters", "matte-painting", "porsche", "skull", "axe", "nature", "horse", "street", "willys", "camera"]
+      }
+    };
+    let activeAudience = audiences.personal;
+    let activeAudienceId = "";
+
     const rail = document.getElementById("project-rail");
     const projectDialog = document.getElementById("project-dialog");
     const dialogArt = document.getElementById("dialog-art");
@@ -1067,6 +1210,119 @@
     const railProgressFill = document.getElementById("rail-progress-fill");
     const railPosition = document.getElementById("rail-position");
     let railScrollFrame = 0;
+    const certificateGrid = document.getElementById("certificate-grid");
+    const certificateProjects = certificates.map(function (certificate) {
+      return {
+        id: certificate.id, title: certificate.title, category: "certificate", label: certificate.provider,
+        description: certificate.detail, glyph: "CERT", glow: "#5ce2c5",
+        images: [{ src: certificate.src, alt: certificate.alt, caption: certificate.title }],
+        facts: [certificate.note]
+      };
+    });
+    function renderCertificates() {
+      if (!certificateGrid) return;
+      certificateGrid.replaceChildren();
+      certificates.forEach(function (certificate, index) {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "certificate-card reveal";
+        card.style.setProperty("--card-index", index);
+        card.setAttribute("aria-label", "Open certificate: " + certificate.title);
+        const preview = document.createElement("span");
+        preview.className = "certificate-preview";
+        const image = document.createElement("img");
+        image.src = certificate.src;
+        image.alt = certificate.alt;
+        image.loading = "lazy";
+        image.decoding = "async";
+        const view = document.createElement("span");
+        view.className = "certificate-view";
+        view.textContent = "View full size ↗";
+        preview.append(image, view);
+        const copy = document.createElement("span");
+        copy.className = "certificate-copy";
+        const provider = document.createElement("span");
+        provider.className = "certificate-provider";
+        provider.textContent = certificate.provider;
+        const title = document.createElement("span");
+        title.className = "certificate-title";
+        title.textContent = certificate.title;
+        const detail = document.createElement("span");
+        detail.className = "certificate-detail";
+        detail.textContent = certificate.detail;
+        const note = document.createElement("span");
+        note.className = "certificate-note";
+        note.textContent = certificate.note;
+        copy.append(provider, title, detail, note);
+        card.append(preview, copy);
+        card.addEventListener("click", function () { openProject(certificateProjects[index]); });
+        certificateGrid.append(card);
+      });
+    }
+
+    const hoverGallery = document.createElement("aside");
+    hoverGallery.className = "hover-gallery";
+    hoverGallery.setAttribute("aria-hidden", "true");
+    hoverGallery.innerHTML = '<div class="hover-gallery-top"><strong class="hover-gallery-title"></strong><span class="hover-gallery-count"></span></div><div class="hover-gallery-image-wrap"><img class="hover-gallery-image" alt=""></div><div class="hover-gallery-caption"></div><div class="hover-gallery-thumbs"></div>';
+    document.body.append(hoverGallery);
+    let hoverGalleryTimer = 0;
+    let hoverSlideTimer = 0;
+    let activeHoverProject = null;
+    function hideHoverGallery() {
+      window.clearTimeout(hoverGalleryTimer);
+      window.clearInterval(hoverSlideTimer);
+      activeHoverProject = null;
+      hoverGallery.classList.remove("is-open");
+      hoverGallery.setAttribute("aria-hidden", "true");
+    }
+    function showHoverGallery(project, card) {
+      hideHoverGallery();
+      if (!project.images.length || window.innerWidth <= 700 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      activeHoverProject = project;
+      hoverGalleryTimer = window.setTimeout(function () {
+        const title = hoverGallery.querySelector(".hover-gallery-title");
+        const count = hoverGallery.querySelector(".hover-gallery-count");
+        const image = hoverGallery.querySelector(".hover-gallery-image");
+        const caption = hoverGallery.querySelector(".hover-gallery-caption");
+        const thumbs = hoverGallery.querySelector(".hover-gallery-thumbs");
+        title.textContent = project.title;
+        count.textContent = project.images.length + (project.images.length === 1 ? " VIEW" : " VIEWS");
+        thumbs.replaceChildren();
+        let index = 0;
+        const showSlide = function (nextIndex) {
+          index = (nextIndex + project.images.length) % project.images.length;
+          const slide = project.images[index];
+          image.classList.remove("slide-next");
+          void image.offsetWidth;
+          image.classList.add("slide-next");
+          image.src = slide.src;
+          image.alt = slide.alt;
+          caption.textContent = slide.caption;
+          thumbs.querySelectorAll(".hover-gallery-thumb").forEach(function (button, buttonIndex) { button.setAttribute("aria-current", String(buttonIndex === index)); });
+        };
+        project.images.forEach(function (slide, slideIndex) {
+          const thumb = document.createElement("span");
+          thumb.className = "hover-gallery-thumb";
+          thumb.setAttribute("aria-current", String(slideIndex === 0));
+          const thumbImage = document.createElement("img");
+          thumbImage.src = slide.src;
+          thumbImage.alt = "";
+          thumbImage.loading = "lazy";
+          thumb.append(thumbImage);
+          thumbs.append(thumb);
+        });
+        showSlide(0);
+        if (project.images.length > 1) hoverSlideTimer = window.setInterval(function () { showSlide(index + 1); }, 1550);
+        const rect = card.getBoundingClientRect();
+        const width = Math.min(420, window.innerWidth - 24);
+        const left = Math.max(12, Math.min(window.innerWidth - width - 12, rect.left + rect.width / 2 - width / 2));
+        hoverGallery.style.width = width + "px";
+        hoverGallery.style.left = left + "px";
+        hoverGallery.style.top = Math.max(12, Math.min(window.innerHeight - 330, rect.bottom + 12)) + "px";
+        hoverGallery.classList.add("is-open");
+        hoverGallery.setAttribute("aria-hidden", "false");
+      }, 130);
+    }
 
     function updateRailControls() {
       const cards = Array.from(rail.children);
@@ -1137,7 +1393,8 @@
           }
         });
       }, { root: rail, rootMargin: "40px", threshold: .15 }) : null;
-      const visibleProjects = projects.filter(function (project) {
+      const orderedProjects = activeAudience.order.map(function (id) { return projects.find(function (project) { return project.id === id; }); }).filter(Boolean);
+      const visibleProjects = orderedProjects.filter(function (project) {
         return filter === "all" || project.category === filter;
       });
       rail.querySelectorAll("video").forEach(function (video) {
@@ -1199,7 +1456,7 @@
         }
         const number = document.createElement("span");
         number.className = "poster-number";
-        number.textContent = String(projects.indexOf(project) + 1).padStart(2, "0") + " / " + String(projects.length).padStart(2, "0");
+        number.textContent = String(orderedProjects.indexOf(project) + 1).padStart(2, "0") + " / " + String(orderedProjects.length).padStart(2, "0");
         const category = document.createElement("span");
         category.className = "poster-category";
         category.textContent = project.category === "environment" ? "Environment" : project.category === "character" ? "Character" : project.category === "design" ? "Poster design" : project.category === "artwork" ? "Digital art" : project.category === "certificate" ? "Certificate" : "3D asset";
@@ -1220,8 +1477,13 @@
         info.append(type, title, description, open);
         card.append(poster, info);
         card.addEventListener("click", function () { openProject(project); });
+        card.addEventListener("pointerenter", function (event) { if (event.pointerType === "mouse") showHoverGallery(project, card); });
+        card.addEventListener("pointerleave", hideHoverGallery);
+        card.addEventListener("focus", function () { showHoverGallery(project, card); });
+        card.addEventListener("blur", hideHoverGallery);
         rail.append(card);
       });
+      document.getElementById("project-count").textContent = String(projects.length);
       rail.scrollTo({ left: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
       if (animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         void rail.offsetWidth;
@@ -1276,8 +1538,25 @@
         next.type = "button";
         next.setAttribute("aria-label", "Next render");
         next.textContent = "›";
+        const fullscreen = document.createElement("button");
+        fullscreen.type = "button";
+        fullscreen.className = "dialog-fullscreen";
+        fullscreen.setAttribute("aria-label", "Expand render to full screen");
+        fullscreen.title = "Expand render to full screen";
+        fullscreen.textContent = "⛶";
         controls.append(previous, next);
-        stage.append(featureImage, controls);
+        stage.append(featureImage, controls, fullscreen);
+        fullscreen.addEventListener("click", function () {
+          if (document.fullscreenElement === stage) {
+            if (document.exitFullscreen) document.exitFullscreen();
+            return;
+          }
+          const request = stage.requestFullscreen || stage.webkitRequestFullscreen;
+          if (request) {
+            const result = request.call(stage);
+            if (result && typeof result.catch === "function") result.catch(function () {});
+          }
+        });
         let touchStartX = null;
         const slideFooter = document.createElement("div");
         slideFooter.className = "dialog-slide-footer";
@@ -1397,6 +1676,7 @@
     }
 
     renderProjects("all");
+    renderCertificates();
     document.querySelectorAll(".filter").forEach(function (button) {
       button.addEventListener("click", function () {
         document.querySelectorAll(".filter").forEach(function (item) { item.setAttribute("aria-pressed", "false"); });
@@ -1457,6 +1737,14 @@
     projectDialog.addEventListener("keydown", function (event) {
       if (event.key === "ArrowRight" && dialogSlideMove) { event.preventDefault(); dialogSlideMove(1); }
       if (event.key === "ArrowLeft" && dialogSlideMove) { event.preventDefault(); dialogSlideMove(-1); }
+    });
+    document.addEventListener("fullscreenchange", function () {
+      const button = projectDialog.querySelector(".dialog-fullscreen");
+      if (!button) return;
+      const expanded = Boolean(document.fullscreenElement && document.fullscreenElement.classList.contains("dialog-slide-stage"));
+      button.textContent = expanded ? "×" : "⛶";
+      button.setAttribute("aria-label", expanded ? "Exit full screen" : "Expand render to full screen");
+      button.title = expanded ? "Exit full screen" : "Expand render to full screen";
     });
 
     const header = document.getElementById("site-header");
@@ -1545,13 +1833,43 @@
     }
 
     const opening = document.getElementById("opening");
-    const skipOpening = document.getElementById("skip-opening");
-    const closeOpening = function () {
+    function applyAudience(id) {
+      const profile = audiences[id] || audiences.personal;
+      activeAudience = profile;
+      activeAudienceId = id in audiences ? id : "personal";
+      document.body.dataset.audience = activeAudienceId;
+      document.body.style.setProperty("--accent", profile.accent);
+      document.body.style.setProperty("--accent-light", profile.accentLight);
+      document.body.style.setProperty("--accent-rgb", profile.accentRgb);
+      document.body.style.setProperty("--gold", profile.gold);
+      document.body.style.setProperty("--gold-rgb", profile.goldRgb);
+      document.getElementById("hero-mode-copy").textContent = profile.copy;
+      document.querySelectorAll("[data-hero-mode]").forEach(function (button, index) {
+        button.textContent = profile.modes[index];
+        button.setAttribute("aria-pressed", String(index === 0));
+      });
+      heroModeText = profile.modeCopy;
+      const primary = document.getElementById("hero-primary-action");
+      primary.href = profile.primary[1];
+      primary.querySelector(".action-label").textContent = profile.primary[0];
+      const secondary = document.getElementById("hero-secondary-action");
+      secondary.href = profile.secondary[1];
+      secondary.querySelector(".action-label").textContent = profile.secondary[0];
+      document.querySelector(".collection-head h2").textContent = profile.work[0];
+      document.querySelector(".collection-head p").textContent = profile.work[1];
+      document.getElementById("about-title").textContent = profile.aboutTitle;
+      document.querySelector(".about-copy > p").textContent = profile.aboutCopy;
+      document.querySelector(".profile-label").textContent = profile.profile[0];
+      document.querySelector(".profile-index").textContent = profile.profile[1];
+      document.getElementById("contact-title").textContent = profile.contactTitle;
+      document.querySelectorAll(".filter").forEach(function (button) { button.setAttribute("aria-pressed", String(button.dataset.filter === "all")); });
+      renderProjects("all", true);
+    }
+    function closeAudiencePicker() {
       if (opening.hidden || opening.classList.contains("is-closing")) return;
       const returnFocus = opening.contains(document.activeElement);
       opening.classList.add("is-closing");
       opening.setAttribute("aria-hidden", "true");
-      skipOpening.disabled = true;
       document.body.classList.add("intro-reveal");
       document.body.classList.remove("is-opening");
       if (returnFocus) document.getElementById("hero-title").focus({ preventScroll: true });
@@ -1559,17 +1877,39 @@
         opening.hidden = true;
         opening.classList.remove("is-closing");
         opening.removeAttribute("aria-hidden");
-        skipOpening.disabled = false;
       }, 740);
-    };
-    opening.hidden = false;
+    }
+    function openAudiencePicker() {
+      opening.hidden = false;
+      opening.classList.remove("is-closing");
+      opening.removeAttribute("aria-hidden");
+      document.body.classList.add("is-opening");
+      siteNav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+      const selected = opening.querySelector('[data-audience="' + activeAudienceId + '"]');
+      (selected || opening.querySelector("[data-audience]")).focus({ preventScroll: true });
+    }
     document.body.classList.add("is-opening");
-    skipOpening.focus({ preventScroll: true });
-    // Keep the identity splash short, skip-ready, and animated for visitors.
-    window.setTimeout(closeOpening, 3400);
-    skipOpening.addEventListener("click", closeOpening);
+    opening.querySelector('[data-audience="personal"]').focus({ preventScroll: true });
+    opening.querySelectorAll("[data-audience]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        applyAudience(button.dataset.audience);
+        closeAudiencePicker();
+      });
+    });
+    document.getElementById("switch-audience").addEventListener("click", openAudiencePicker);
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && !opening.hidden) closeOpening();
+      if (opening.hidden) return;
+      if (event.key === "Escape" && activeAudienceId) { closeAudiencePicker(); return; }
+      if (event.key === "Tab") {
+        const options = Array.from(opening.querySelectorAll("[data-audience]:not(:disabled)"));
+        const first = options[0];
+        const last = options[options.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        else if (!opening.contains(document.activeElement)) { event.preventDefault(); first.focus(); }
+      }
     });
     const heroHologram = document.getElementById("hero-hologram");
     const heroHologramStage = document.getElementById("hero-hologram-stage");
@@ -1607,11 +1947,7 @@
       }, { passive: true });
     }
     const heroModeCopy = document.getElementById("hero-mode-copy");
-    const heroModeText = {
-      art: "Game-ready assets shaped through modelling, PBR texturing, and careful attention to form and material.",
-      worlds: "From a lived-in city street to a quiet mountain scene, I build real-time environments with mood and atmosphere.",
-      teaching: "3D & Multimedia Faculty at Arena Animation, Jhansi — guiding students through practical creative workflows."
-    };
+    let heroModeText = activeAudience.modeCopy;
     document.querySelectorAll("[data-hero-mode]").forEach(function (button) {
       button.addEventListener("click", function () {
         document.querySelectorAll("[data-hero-mode]").forEach(function (item) { item.setAttribute("aria-pressed", "false"); });
@@ -1619,7 +1955,8 @@
         if (!heroModeCopy) return;
         heroModeCopy.classList.add("mode-changing");
         window.setTimeout(function () {
-          heroModeCopy.textContent = heroModeText[button.dataset.heroMode] || heroModeText.art;
+          const modeIndex = Array.from(document.querySelectorAll("[data-hero-mode]")).indexOf(button);
+          heroModeCopy.textContent = heroModeText[modeIndex] || heroModeText[0];
           heroModeCopy.classList.remove("mode-changing");
         }, 170);
       });

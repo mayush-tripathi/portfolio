@@ -19,15 +19,10 @@ The image paths are relative, so preserve the `assets/projects/` and `assets/pro
 - Animated intro, scroll reveals, project filters, image galleries, responsive navigation, and reduced-motion support.
 - Profile illustration provided by Mayush.
 - CV-based profile, skills, work experience, education, courses, language, and contact details.
-- Vintage camera, Willys MB jeep, horse with UV/PBR views, fantasy axe, and nature/street environment video previews.
+- Vintage camera, Willys MB jeep, horse with UV/PBR views, fantasy axe, nature/street environment video previews, and scholarship campaign poster designs.
 
 The project videos load on demand; their full controls appear when a project card is opened. The nature video is stored as two small binary parts so it can be uploaded through GitHub's browser file picker; the page joins them before playback. No M18 Smoke Grenade is included.
 
-
 ## GitHub upload notes
 
-This package keeps the website and image assets separate from large video files so the main site is easier to upload through GitHub's browser interface.
-
-- Upload the contents of this folder (`index.html`, `README.md`, and `assets/`) to the root of your repository.
-- Large videos are intentionally not included in this website bundle. They are provided in the separate `portfolio-videos-separate.zip` package.
-- If you want videos embedded on the live site, host them on a video/CDN service and update the video sources in `index.html` to the hosted URLs. Do not upload duplicate `.part1`/`.part2` files.
+Upload `index.html`, `README.md`, and the complete `assets/` folder to the root of the repository. Keep the `assets/projects/` and `assets/profile/` paths intact. Include both nature video part files; the page joins them when the project is opened.

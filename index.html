@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f1f5fb">
+  <meta name="theme-color" content="#070a0b">
   <meta name="description" content="Mayush Tripathi — 3D artist, environment artist, and lead game designer with 1.5+ years of experience. Explore game-ready props, environments, and professional experience.">
-  <title>Mayush Tripathi — The Portfolio</title>
+  <title>Mayush Tripathi — The Creative Series</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #08090c;
-      --surface: #111319;
-      --surface-2: #191c24;
-      --paper: #f4f1eb;
-      --muted: #a0a3ad;
-      --line: rgba(244,241,235,.14);
-      --accent: #ff6548;
-      --accent-light: #ff8b70;
-      --gold: #d8b56d;
+      color-scheme: light;
+      --bg: #f1f5fb;
+      --surface: #fbfdff;
+      --surface-2: #e8eef8;
+      --paper: #18253d;
+      --muted: #566680;
+      --line: rgba(24,37,61,.16);
+      --accent: #ee6847;
+      --accent-light: #c85032;
+      --gold: #3964ed;
       --page: min(1220px, calc(100% - 9vw));
       --ease: cubic-bezier(.2,.75,.2,1);
     }
@@ -455,143 +455,181 @@
       .cursor-glow { display: none; }
     }
 
-    /* Cinematic black and red portfolio theme */
+    /* Art direction: a living, cinematic studio instead of a flat template. */
     :root {
       color-scheme: dark;
-      --bg: #080808;
-      --surface: #141414;
-      --surface-2: #1d1d1d;
-      --paper: #f5f5f1;
-      --muted: #b3b3b3;
-      --line: rgba(255,255,255,.13);
-      --accent: #e50914;
-      --accent-light: #ff3540;
-      --gold: #e50914;
+      --bg: #070a0b;
+      --surface: #101617;
+      --surface-2: #172122;
+      --paper: #f1f5f3;
+      --muted: #a8b4b1;
+      --line: rgba(198,235,224,.15);
+      --accent: #5ce2c5;
+      --accent-light: #a0f4df;
+      --gold: #f5bb74;
     }
+    html, body { background-color: var(--bg); color: var(--paper); }
     body {
-      background: radial-gradient(ellipse at 12% 10%, rgba(229,9,20,.13), transparent 34%), radial-gradient(ellipse at 88% 30%, rgba(229,9,20,.07), transparent 36%), var(--bg);
-      color: var(--paper);
+      background-image: radial-gradient(ellipse at 7% 4%, rgba(68,215,185,.12), transparent 32%),
+        radial-gradient(ellipse at 92% 27%, rgba(245,187,116,.08), transparent 30%), #070a0b;
     }
-    .opening { background: #080808; }
-    .opening::before { border-color: rgba(229,9,20,.35); }
-    .opening::after { border-color: rgba(255,255,255,.14); }
-    .opening-name-first { color: var(--paper); }
-    .opening-name-last { color: var(--accent-light); }
+    body::selection { background: var(--accent); color: #07100e; }
+    .progress-track { height: 3px; background: rgba(255,255,255,.04); }
+    .progress-bar { background: linear-gradient(90deg, var(--accent), var(--gold)); box-shadow: 0 0 20px rgba(92,226,197,.5); }
+    .cursor-glow { background: radial-gradient(circle, rgba(92,226,197,.2), rgba(245,187,116,.12) 36%, transparent 72%); }
+    .opening { background: radial-gradient(ellipse at 50% 84%, rgba(63,210,180,.13), transparent 42%), #070a0b; }
+    .opening::before { border-color: rgba(92,226,197,.36); box-shadow: 0 0 90px rgba(92,226,197,.08); }
+    .opening::after { border-color: rgba(245,187,116,.3); }
     .opening-name-first > span, .opening-name-last > span,
     .hero-name-first > span, .hero-name-last > span {
-      background-image: linear-gradient(110deg, #fff, #e50914, #ff6870, #fff);
+      background-image: linear-gradient(105deg, #f4f7f4 5%, var(--accent) 34%, var(--gold) 66%, #f4f7f4 92%);
+      background-size: 240% auto;
+      animation: name-float 4.2s ease-in-out 1.3s infinite, color-drift 5.2s linear infinite;
     }
     .opening-role, .hero-copy, .hero-note, .hero-index, .site-nav a,
     .collection-head p, .rail-hint, .about-copy > p, .experience-no,
     .experience-card p, .tool-group h3, .credential-card p,
     .contact-copy p, .contact-note, footer { color: var(--muted); }
-    .opening-skip { border-color: var(--line); background: rgba(20,20,20,.9); color: var(--paper); }
-    .cursor-glow { background: radial-gradient(circle, rgba(229,9,20,.25), rgba(255,53,64,.12) 36%, transparent 72%); }
-    .site-header.scrolled { background: rgba(8,8,8,.94); }
+    .opening-skip { border-color: var(--line); background: rgba(15,22,22,.88); color: var(--paper); }
+    .site-header.scrolled { background: rgba(7,10,11,.9); border-color: var(--line); backdrop-filter: blur(18px); }
+    .brand-mark { color: var(--accent); }
+    .brand-mark svg { filter: drop-shadow(0 5px 12px rgba(92,226,197,.22)); }
+    .brand-mark svg path { stroke: rgba(198,235,224,.82); }
+    .brand-mark svg path:nth-of-type(2) { fill: #42bda6; }
+    .brand-mark svg path:nth-of-type(3) { fill: #f0aa63; }
+    .brand-dot, .hero-note strong, .section-kicker, .experience-tag { color: var(--gold); }
+    .site-nav a { color: #aab8b5; }
+    .site-nav a:hover, .site-nav a.active { color: var(--paper); }
+    .site-nav a::after { height: 2px; background: linear-gradient(90deg,var(--accent),var(--gold)); }
+    .menu-toggle { background: var(--surface); border-color: var(--line); }
+    .menu-toggle span { background: var(--paper); }
     .hero {
-      background: radial-gradient(ellipse at 50% 55%, rgba(229,9,20,.12), transparent 43%), radial-gradient(ellipse at 16% 42%, rgba(255,255,255,.035), transparent 34%), var(--bg);
+      min-height: min(940px, 100svh);
+      background: radial-gradient(ellipse at 50% 52%, rgba(92,226,197,.1), transparent 34%),
+        radial-gradient(ellipse at 82% 24%, rgba(245,187,116,.08), transparent 26%), #070a0b;
     }
-    .hero::before { border-color: rgba(229,9,20,.24); box-shadow: 0 0 0 36px rgba(229,9,20,.035), 0 0 0 72px rgba(255,255,255,.018); }
-    .hero::after { border-color: rgba(229,9,20,.3); box-shadow: 0 0 0 18px rgba(229,9,20,.035); }
-    .hero-hologram::before { border-color: rgba(229,9,20,.42); box-shadow: 0 0 24px rgba(229,9,20,.22), inset 0 0 24px rgba(229,9,20,.1); }
-    .hero-hologram::after { background: rgba(229,9,20,.22); }
-    .hero-hologram-sheen { background: radial-gradient(ellipse at var(--holo-shine-x,50%) var(--holo-shine-y,38%), rgba(255,255,255,.82), rgba(255,53,64,.5) 16%, rgba(229,9,20,.24) 34%, rgba(255,107,119,.2) 52%, transparent 72%); }
-    .hero-hologram-scan { background: repeating-linear-gradient(0deg, rgba(255,53,64,.58) 0 1px, transparent 1px 6px); }
-    .hero-hologram-edge { background: linear-gradient(115deg, transparent 30%, rgba(255,53,64,.84) 46%, rgba(255,255,255,.46) 50%, rgba(229,9,20,.58) 54%, transparent 70%); }
-    .hero-cube .cube-face { border-color: rgba(229,9,20,.55); background: linear-gradient(135deg,rgba(229,9,20,.12),rgba(255,255,255,.025)); box-shadow: inset 0 0 18px rgba(229,9,20,.08); }
-    .brand-mark svg path:nth-of-type(2) { fill: #e50914; }
-    .brand-mark svg path:nth-of-type(3) { fill: #a80710; }
-    .collection { background: linear-gradient(110deg, rgba(229,9,20,.11), #111 48%, rgba(229,9,20,.06)); border-color: rgba(229,9,20,.2); }
-    .project-card, .experience-card, .credential-card, .focus-item,
-    .tool-chip, .filter, .rail-arrow, .menu-toggle, .dialog {
-      background-color: var(--surface);
-      color: var(--paper);
-      border-color: var(--line);
+    .hero::before { border-color: rgba(92,226,197,.24); box-shadow: 0 0 0 36px rgba(92,226,197,.025), 0 0 0 72px rgba(245,187,116,.025), 0 0 100px rgba(92,226,197,.09); }
+    .hero::after { border-color: rgba(245,187,116,.28); box-shadow: 0 0 0 18px rgba(92,226,197,.025); }
+    .hero-hologram, .hero-hologram-stage, .hero-portrait { background: transparent !important; }
+    .hero-hologram::before { border-color: rgba(92,226,197,.42); box-shadow: 0 0 30px rgba(92,226,197,.2), inset 0 0 24px rgba(92,226,197,.11); }
+    .hero-hologram::after { background: rgba(92,226,197,.2); }
+    .hero-portrait { filter: drop-shadow(0 18px 35px rgba(0,0,0,.38)); }
+    .hero-hologram-sheen { background: radial-gradient(ellipse at var(--holo-shine-x,50%) var(--holo-shine-y,38%), rgba(255,255,255,.75), rgba(92,226,197,.44) 18%, rgba(92,226,197,.16) 40%, rgba(245,187,116,.2) 56%, transparent 74%); }
+    .hero-hologram-scan { background: repeating-linear-gradient(0deg, rgba(92,226,197,.48) 0 1px, transparent 1px 7px); }
+    .hero-hologram-edge { background: linear-gradient(115deg, transparent 30%, rgba(92,226,197,.82) 46%, rgba(255,255,255,.48) 50%, rgba(245,187,116,.65) 54%, transparent 70%); }
+    .hero-cube .cube-face { border-color: rgba(92,226,197,.58); background: linear-gradient(135deg,rgba(92,226,197,.12),rgba(245,187,116,.04)); box-shadow: inset 0 0 18px rgba(92,226,197,.08); }
+    .hero .eyebrow { color: var(--accent); }
+    .hero-copy { color: #bac6c3; transition: opacity .28s ease, transform .28s var(--ease); }
+    .hero-copy.mode-changing { opacity: 0; transform: translateY(8px); }
+    .hero-note .divider { background: linear-gradient(90deg,var(--accent),var(--gold)); }
+    .viewer-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 19px 0 0; }
+    .viewer-tabs button { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(16,22,23,.72); color: #aab8b5; font: inherit; font-size: 9px; letter-spacing: .16em; cursor: pointer; transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s var(--ease), box-shadow .25s ease; }
+    .viewer-tabs button:hover { transform: translateY(-3px); color: var(--paper); border-color: rgba(92,226,197,.48); }
+    .viewer-tabs button[aria-pressed="true"] { color: #07100e; border-color: var(--accent); background: var(--accent); box-shadow: 0 0 24px rgba(92,226,197,.2); }
+    .button { border-color: rgba(198,235,224,.23); background: #121a1b; color: var(--paper); transition: transform .25s var(--ease), box-shadow .25s ease, background .25s ease, border-color .25s ease; }
+    .button:hover, .button:focus-visible { transform: translateY(-3px); border-color: var(--accent); background: #172525; box-shadow: 0 14px 35px rgba(0,0,0,.34), 0 0 22px rgba(92,226,197,.1); }
+    .button.primary { color: #06100d; border-color: var(--accent); background: linear-gradient(105deg,var(--accent),#a0f4df); box-shadow: 0 7px 26px rgba(92,226,197,.16); }
+    .button.primary:hover, .button.primary:focus-visible { border-color: var(--gold); background: linear-gradient(105deg,#a0f4df,var(--gold)); }
+    .section { background-color: transparent; }
+    .collection { background: linear-gradient(180deg, #0d1213 0%, #090c0d 100%); border-color: rgba(92,226,197,.12); }
+    .collection::before { opacity: .28; }
+    .collection-head h2, .section-title, .project-info h3, .experience-card h3, .credential-card h3 { color: var(--paper); }
+    .collection-stamp, .heading-side { color: var(--accent); }
+    .filter { background: #101718; color: #d4dfdc; border-color: var(--line); transition: transform .22s var(--ease), background .22s ease, border-color .22s ease, color .22s ease; }
+    .filter:hover { transform: translateY(-2px); border-color: rgba(92,226,197,.6); }
+    .filter[aria-pressed="true"] { border-color: var(--accent); background: rgba(92,226,197,.12); color: var(--accent-light); box-shadow: 0 0 22px rgba(92,226,197,.08); }
+    .project-rail { padding: 18px 6px 24px; perspective: 1200px; }
+    .project-card { overflow: hidden; border: 1px solid rgba(198,235,224,.1); border-radius: 13px; background: linear-gradient(160deg,#172122,#0f1516 62%); color: var(--paper); box-shadow: 0 15px 36px rgba(0,0,0,.22); transform: perspective(950px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg)) translateY(0) scale(1); transition: transform .5s var(--ease), box-shadow .5s ease, border-color .35s ease, filter .35s ease; }
+    .project-card:hover, .project-card.is-tilting { z-index: 3; border-color: rgba(92,226,197,.72); box-shadow: 0 26px 52px rgba(0,0,0,.46), 0 0 28px rgba(92,226,197,.11); transform: perspective(950px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg)) translateY(-9px) scale(1.035); }
+    .project-poster { aspect-ratio: 1.55 / 1; background: radial-gradient(ellipse at 50% 100%,rgba(92,226,197,.16),transparent 54%),#0a0d0e; }
+    .project-poster img, .project-poster video { transition: transform .8s var(--ease), filter .7s ease; }
+    .project-card:hover .project-poster img, .project-card:hover .project-poster video { transform: scale(1.11); filter: saturate(1.15) brightness(1.12); }
+    .poster-shade { background: linear-gradient(180deg,rgba(7,10,11,.08),transparent 34%,rgba(7,10,11,.74)); }
+    .poster-number { color: rgba(255,255,255,.82); }
+    .poster-category { color: var(--accent-light); background: rgba(7,10,11,.68); border-color: rgba(92,226,197,.24); }
+    .project-info { padding: 17px 18px 19px; }
+    .project-type { color: var(--gold); }
+    .project-info p { color: #a8b4b1; }
+    .card-open { color: var(--accent); }
+    .experience-section { background: linear-gradient(180deg,transparent,rgba(92,226,197,.055) 48%,rgba(245,187,116,.025)); }
+    .experience-card, .credential-card, .focus-item { background: linear-gradient(145deg,rgba(21,30,31,.95),rgba(12,17,18,.96)); border-color: var(--line); box-shadow: 0 14px 36px rgba(0,0,0,.2); transition: transform .38s var(--ease), border-color .3s ease, box-shadow .35s ease; }
+    .experience-card:hover, .credential-card:hover, .focus-item:hover { transform: translateY(-7px) scale(1.012); border-color: rgba(92,226,197,.48); box-shadow: 0 22px 44px rgba(0,0,0,.34),0 0 24px rgba(92,226,197,.07); }
+    .experience-card::before { background: linear-gradient(90deg,var(--accent),var(--gold)); }
+    .experience-no, .credential-type { color: var(--accent); }
+    .experience-tag { color: var(--gold); }
+    .profile-card { overflow: hidden; background: radial-gradient(ellipse at 50% 92%,rgba(92,226,197,.16),transparent 50%),linear-gradient(145deg,#172122,#0d1213); border-color: rgba(92,226,197,.24); box-shadow: 0 22px 60px rgba(0,0,0,.28); }
+    .profile-card::before { border-color: rgba(198,235,224,.17); }
+    .profile-portrait { background: transparent !important; }
+    .profile-portrait img { background: transparent !important; }
+    .profile-portrait::before { border-color: rgba(92,226,197,.52); box-shadow: 0 0 75px rgba(92,226,197,.18); }
+    .profile-portrait::after { border-color: rgba(245,187,116,.22); }
+    .profile-label { color: var(--accent); }
+    .profile-index { color: var(--gold); }
+    .focus-item { background: rgba(15,22,23,.88); }
+    .focus-item span { color: var(--accent); }
+    .tool-group { border-color: var(--line); }
+    .tool-group h3 { color: #c3d0cc; }
+    .tool-chip { background: linear-gradient(145deg,#172122,#101617); color: #e0e8e5; border-color: var(--line); box-shadow: 0 7px 18px rgba(0,0,0,.21); transition: transform .28s var(--ease), border-color .28s ease, box-shadow .28s ease, color .28s ease; }
+    .tool-chip:hover { transform: translateY(-4px) rotate(-1deg); border-color: var(--accent); color: var(--accent-light); box-shadow: 0 12px 26px rgba(0,0,0,.32),0 0 16px rgba(92,226,197,.08); }
+    .tool-chip::before { background: var(--gold); box-shadow: 0 0 12px rgba(245,187,116,.4); }
+    .contact-panel { border-color: rgba(92,226,197,.26); background: radial-gradient(ellipse at 90% 0,rgba(92,226,197,.12),transparent 42%),linear-gradient(130deg,#162021,#0a0e0f 70%); box-shadow: 0 22px 70px rgba(0,0,0,.28); }
+    .contact-panel::after { color: rgba(92,226,197,.045); }
+    .section-divider { background: linear-gradient(90deg,transparent,rgba(92,226,197,.24) 24%,rgba(245,187,116,.16) 76%,transparent); }
+    .rail-arrow { background: #101718; color: var(--paper); border-color: var(--line); transition: transform .25s var(--ease), background .25s ease, border-color .25s ease; }
+    .rail-arrow:hover:not(:disabled), .rail-arrow:focus-visible { transform: scale(1.08); border-color: var(--accent); background: var(--accent); color: #06100d; box-shadow: 0 8px 24px rgba(92,226,197,.2); }
+    .rail-progress { background: rgba(255,255,255,.14); }
+    #rail-progress-fill { background: linear-gradient(90deg,var(--accent),var(--gold)); box-shadow: 0 0 16px rgba(92,226,197,.35); }
+    .dialog { width: min(1000px,calc(100% - 24px)); max-height: 92vh; border: 1px solid rgba(92,226,197,.24); border-radius: 18px; background: radial-gradient(ellipse at 50% 0,rgba(92,226,197,.08),transparent 36%),#090d0e; color: var(--paper); box-shadow: 0 35px 100px rgba(0,0,0,.68); animation: modal-pop .38s var(--ease) both; }
+    .dialog::backdrop { background: rgba(0,0,0,.82); backdrop-filter: blur(7px); animation: backdrop-in .3s ease both; }
+    .dialog-close { border-radius: 50%; border-color: var(--line); background: #121a1b; color: var(--paper); transition: transform .25s var(--ease),background .25s ease; }
+    .dialog-close:hover { transform: rotate(90deg); border-color: var(--accent); }
+    .dialog-feature { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #070a0b; }
+    .dialog-feature img, .dialog-feature video { max-height: min(57vh,620px); background: radial-gradient(ellipse at 50% 100%,rgba(92,226,197,.08),transparent 48%),#070a0b; }
+    .dialog-thumbs { padding: 5px 0 9px; scroll-snap-type: x mandatory; }
+    .dialog-thumb { overflow: hidden; border-radius: 7px; border-color: var(--line); background: #111819; scroll-snap-align: center; transition: transform .25s var(--ease),border-color .25s ease,opacity .25s ease; }
+    .dialog-thumb:hover { transform: translateY(-3px); }
+    .dialog-thumb[aria-current="true"] { border-color: var(--accent); box-shadow: 0 0 20px rgba(92,226,197,.2); }
+    .dialog-meta span { border-color: var(--line); border-radius: 999px; color: #c0ceca; background: #101718; }
+    .dialog-caption { color: var(--muted); }
+    .footer-credit { color: #8b9b97; }
+    .site-nav.open { background: rgba(10,15,16,.98); }
+    .site-nav a:hover::after, .site-nav a.active::after { box-shadow: 0 0 14px rgba(92,226,197,.48); }
+    .streaming-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(245,187,116,.55); animation: live-pulse 1.8s ease-out infinite; }
+    .hero-content { position: relative; z-index: 3; }
+    .brand-series { display: block; margin-top: 1px; color: #91a29e; font-size: 7px; font-weight: 600; letter-spacing: .2em; line-height: 1.3; }
+    .reveal, .scroll-reveal { will-change: opacity, transform; }
+    .project-card:focus-visible, .filter:focus-visible, .viewer-tabs button:focus-visible, .rail-arrow:focus-visible, .dialog-thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .dialog-slide-stage { position: relative; display: grid; min-height: 260px; height: min(57vh,620px); place-items: center; overflow: hidden; background: radial-gradient(ellipse at 50% 100%,rgba(92,226,197,.08),transparent 48%),#070a0b; }
+    .dialog-slide-stage img { width: 100%; height: 100%; max-height: none; object-fit: contain; background: transparent; }
+    .dialog-slide-stage img.slide-next { animation: slide-next .48s var(--ease) both; }
+    .dialog-slide-stage img.slide-prev { animation: slide-prev .48s var(--ease) both; }
+    .dialog-slide-controls { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; pointer-events: none; }
+    .dialog-slide-controls button { width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.26); border-radius: 50%; background: rgba(7,10,11,.76); color: white; font-size: 22px; cursor: pointer; pointer-events: auto; backdrop-filter: blur(7px); transition: transform .22s var(--ease),background .22s ease,border-color .22s ease; }
+    .dialog-slide-controls button:hover { transform: scale(1.12); border-color: var(--accent); background: rgba(92,226,197,.88); color: #07100e; }
+    .dialog-slide-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 13px; border-top: 1px solid var(--line); }
+    .dialog-slide-count { color: var(--accent); font-size: 10px; letter-spacing: .15em; }
+    .dialog-slide-toggle { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
+    .dialog-slide-toggle:hover { color: var(--gold); }
+    .dialog-thumbs .dialog-thumb { flex-basis: 130px; }
+    @keyframes live-pulse { 0% { box-shadow: 0 0 0 0 rgba(245,187,116,.5); } 75%,100% { box-shadow: 0 0 0 9px rgba(245,187,116,0); } }
+    @keyframes modal-pop { from { opacity: 0; transform: translateY(18px) scale(.975); filter: blur(7px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+    @keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slide-next { from { opacity: .25; transform: translateX(36px) scale(.985); filter: blur(7px); } to { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); } }
+    @keyframes slide-prev { from { opacity: .25; transform: translateX(-36px) scale(.985); filter: blur(7px); } to { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); } }
+    @media (max-width: 700px) {
+      .viewer-tabs { margin-top: 16px; }
+      .project-rail { grid-auto-columns: minmax(255px,84%); }
+      .dialog-slide-stage { height: min(48vh,430px); min-height: 210px; }
+      .dialog-slide-controls { padding: 0 8px; }
+      .dialog-slide-controls button { width: 38px; height: 38px; }
+      .brand-series { font-size: 6px; }
     }
-    .project-card:hover, .project-card.is-tilting { border-color: rgba(229,9,20,.9); }
-    .project-card:hover .project-info h3, .project-card:focus-visible .project-info h3 { color: var(--accent-light); }
-    .project-info p, .about-copy > p, .experience-card p, .skills-aside p,
-    .credential-card p, .contact-copy p { color: var(--muted); }
-    .poster-category { color: #ffd7d9; }
-    .filter { background: #141414; color: #ddd; }
-    .filter:hover, .filter[aria-pressed="true"] { border-color: var(--accent); background: rgba(229,9,20,.16); color: #fff; }
-    .experience-section { background: linear-gradient(180deg, transparent, rgba(229,9,20,.08) 45%, rgba(255,255,255,.018)); }
-    .profile-card { border-color: rgba(229,9,20,.3); background: radial-gradient(ellipse at 50% 88%, rgba(229,9,20,.16), transparent 52%), linear-gradient(145deg, #181818, #0f0f0f); }
-    .profile-card::before { border-color: rgba(255,255,255,.12); }
-    .profile-portrait::before { border-color: rgba(229,9,20,.55); box-shadow: 0 0 70px rgba(229,9,20,.2); }
-    .profile-portrait::after { border-color: rgba(255,255,255,.16); }
-    .profile-initials { color: var(--paper); }
-    .focus-item { background: rgba(20,20,20,.88); }
-    .tool-chip { background: #141414; color: #eee; box-shadow: 0 5px 14px rgba(0,0,0,.24); }
-    .tool-chip::before { background: var(--accent); }
-    .contact-panel { border-color: rgba(229,9,20,.35); background: radial-gradient(ellipse at 90% 0, rgba(229,9,20,.16), transparent 45%), linear-gradient(130deg, #171717, #0c0c0c 68%); }
-    .contact-panel::after { color: rgba(255,255,255,.035); }
-    .button { border-color: rgba(255,255,255,.2); background: #181818; color: var(--paper); }
-    .button:hover, .button:focus-visible { border-color: var(--accent); background: #242424; box-shadow: 0 12px 28px rgba(0,0,0,.35); }
-    .button.primary { border-color: var(--accent); background: var(--accent); color: #fff; }
-    .button.primary:hover, .button.primary:focus-visible { border-color: #b20710; background: #b20710; }
-    .site-nav a:hover, .site-nav a.active { color: #fff; }
-    .site-nav a::after { background: var(--accent); }
-    .site-nav.open { border-color: var(--line); background: rgba(15,15,15,.98); }
-    .site-nav a { border-color: rgba(255,255,255,.1); }
-    .section-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,.14) 18%, rgba(255,255,255,.14) 82%, transparent); }
-    .rail-arrow:hover:not(:disabled), .rail-arrow:focus-visible { border-color: var(--accent); background: var(--accent); color: #fff; box-shadow: 0 8px 18px rgba(229,9,20,.25); }
-    .rail-progress { background: rgba(255,255,255,.16); }
-    .dialog { border-color: var(--line); }
-    .dialog::backdrop { background: rgba(0,0,0,.88); }
-    .dialog-desc, .dialog-caption, .dialog-meta span { color: var(--muted); }
-    .dialog-close { border-color: var(--line); background: #181818; color: var(--paper); }
-    footer { border-color: var(--line); }
-    .footer-credit { color: #888; }
-  
-    /* Cinematic dark art direction */
-    body {
-      background:
-        radial-gradient(ellipse at 78% 3%, rgba(255,101,72,.10), transparent 32%),
-        radial-gradient(ellipse at 10% 32%, rgba(216,181,109,.055), transparent 30%),
-        #08090c;
-      color: var(--paper);
-    }
-    .opening { background: #08090c; }
-    .opening::before { border-color: rgba(216,181,109,.20); }
-    .opening::after { border-color: rgba(255,101,72,.22); }
-    .cursor-glow {
-      background: radial-gradient(circle, rgba(255,101,72,.20), rgba(216,181,109,.10) 36%, transparent 72%);
-    }
-    header, .site-header, nav, .nav-shell {
-      background-color: rgba(8,9,12,.78);
-      border-color: var(--line);
-      backdrop-filter: blur(18px);
-    }
-    section { scroll-margin-top: 92px; }
-    .hero, .hero-section, .intro-section { background: transparent; }
-    .project-card, .project-tile, .experience-card, .skill-card, .education-card,
-    .course-card, .contact-card, .timeline-card, .info-card {
-      background: linear-gradient(145deg, rgba(24,26,33,.96), rgba(13,14,18,.96));
-      border: 1px solid var(--line);
-      box-shadow: 0 20px 60px rgba(0,0,0,.22);
-    }
-    .project-card:hover, .project-tile:hover {
-      border-color: rgba(255,101,72,.56);
-      box-shadow: 0 26px 80px rgba(0,0,0,.42), 0 0 0 1px rgba(255,101,72,.08);
-      transform: translateY(-5px);
-    }
-    img { background-color: #111319; }
-    button, .filter-button, .project-filter, .chip { border-color: var(--line); }
-    button:hover, .filter-button:hover, .project-filter:hover, .chip:hover {
-      border-color: rgba(255,101,72,.65);
-    }
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 4px;
-    }
-    .progress-track { background: rgba(255,255,255,.04); }
-    .progress-bar { background: linear-gradient(90deg, var(--gold), var(--accent)); }
-    footer { border-color: var(--line); }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; }
+      .streaming-dot { animation: none; }
+      .dialog, .dialog::backdrop { animation: none; }
+      .dialog-slide-stage img.slide-next, .dialog-slide-stage img.slide-prev { animation: none; }
+      .project-card, .experience-card, .credential-card, .focus-item, .tool-chip, .button, .filter, .viewer-tabs button { transition-duration: .01ms !important; }
     }
-
   </style>
 </head>
 <body>
@@ -604,7 +642,7 @@
       <span class="opening-name opening-name-first"><span>Mayush</span></span>
       <img class="opening-portrait" src="assets/profile/mayush-portrait.png" alt="" fetchpriority="high" decoding="async">
       <span class="opening-name opening-name-last"><span>Tripathi</span></span>
-      <div class="opening-role">3D artist · Environment artist · Game designer</div>
+      <div class="opening-role">A MAYUSH ORIGINAL · THE CREATIVE SERIES</div>
     </div>
     <button class="opening-skip" id="skip-opening" type="button">Skip intro <span aria-hidden="true">↗</span></button>
   </div>
@@ -620,7 +658,7 @@
             <path d="M10 16 20 21.5 30 16M20 21.5V32" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
           </svg>
         </span>
-        <span>Mayush<span class="brand-dot">.</span></span>
+        <span>Mayush<span class="brand-dot">.</span><small class="brand-series">THE CREATIVE SERIES</small></span>
       </a>
       <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
         <span></span><span></span>
@@ -659,8 +697,13 @@
         <p class="hero-name hero-name-last"><span>Tripathi</span></p>
       </div>
       <div class="hero-content">
-        <div class="eyebrow">3D artist · environment artist · game designer</div>
-        <p class="hero-copy">Game-ready 3D assets and immersive environments, shaped through modelling, PBR texturing, and real-time workflows.</p>
+        <div class="eyebrow"><span class="streaming-dot" aria-hidden="true"></span> MAYUSH ORIGINAL · 3D WORLDS &amp; GAME ART</div>
+        <p class="hero-copy" id="hero-mode-copy">Game-ready assets, cinematic environments, and the craft behind every world — created by 3D artist Mayush Tripathi.</p>
+        <div class="viewer-tabs" role="group" aria-label="Choose what to explore">
+          <button type="button" data-hero-mode="art" aria-pressed="true">3D ART</button>
+          <button type="button" data-hero-mode="worlds" aria-pressed="false">WORLDS</button>
+          <button type="button" data-hero-mode="teaching" aria-pressed="false">TEACHING</button>
+        </div>
         <div class="hero-actions">
           <a class="button primary" href="#work"><span class="arrow" aria-hidden="true">▶</span> Explore the work</a>
           <a class="button" href="#about">Meet the artist <span class="arrow" aria-hidden="true">↓</span></a>
@@ -674,17 +717,18 @@
       <div class="section-inner">
         <div class="collection-head reveal">
           <div>
-            <div class="section-kicker">Featured collection</div>
+            <div class="section-kicker">Mayush Originals · Season 01</div>
             <h2 id="work-title">Originals by Mayush</h2>
             <p>Each project is a study in form, materials and atmosphere.</p>
           </div>
-          <div class="collection-stamp">01 — 06 <span aria-hidden="true">/</span> Selected projects</div>
+          <div class="collection-stamp">SEASON 01 <span aria-hidden="true">/</span> 07 ORIGINAL PROJECTS</div>
         </div>
         <div class="filters reveal" role="group" aria-label="Filter projects">
           <button class="filter" type="button" data-filter="all" aria-pressed="true">All projects</button>
           <button class="filter" type="button" data-filter="asset" aria-pressed="false">3D assets</button>
           <button class="filter" type="button" data-filter="character" aria-pressed="false">Characters</button>
           <button class="filter" type="button" data-filter="environment" aria-pressed="false">Environments</button>
+          <button class="filter" type="button" data-filter="design" aria-pressed="false">Poster design</button>
         </div>
         <div class="project-rail reveal" id="project-rail" aria-label="Project gallery"></div>
         <div class="rail-hint">
@@ -692,7 +736,7 @@
           <div class="rail-controls" aria-label="Project slider controls">
             <button class="rail-arrow" id="project-prev" type="button" aria-label="Previous project" disabled>←</button>
             <div class="rail-progress" id="rail-progress" role="progressbar" aria-label="Project slider position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="rail-progress-fill"></span></div>
-            <span class="rail-position" id="rail-position" aria-live="polite">01 / 06</span>
+            <span class="rail-position" id="rail-position" aria-live="polite">01 / 07</span>
             <button class="rail-arrow" id="project-next" type="button" aria-label="Next project">→</button>
           </div>
         </div>
@@ -925,6 +969,16 @@
         facts: ["Stylized prop", "Carved wood & metal", "Material storytelling"]
       },
       {
+        id: "posters", title: "Education Campaign Posters", category: "design", label: "Graphic design · poster campaign",
+        description: "Two scholarship campaign posters for Dreamway Edu Solution and Arena Animation, bringing bold dimensional type, illustrated workspace imagery and clear promotional layouts together.",
+        glyph: "35%", glow: "#315c9b",
+        images: [
+          { src: "assets/projects/dreamway-scholarship-poster.png", alt: "Dreamway Edu Solution scholarship campaign poster designed by Mayush", caption: "Dreamway Edu Solution · scholarship campaign" },
+          { src: "assets/projects/arena-scholarship-poster.png", alt: "Arena Animation scholarship campaign poster designed by Mayush", caption: "Arena Animation · scholarship campaign" }
+        ],
+        facts: ["Campaign poster design", "Dimensional typography & layout", "Dreamway Edu Solution · Arena Animation"]
+      },
+      {
         id: "street", title: "GTA V Street", category: "environment", label: "Environment · Unreal Engine 5.6.1",
         description: "A cinematic street environment made in Unreal Engine 5.6.1, designed to feel like a lived-in game world.",
         glyph: "01", glow: "#3f6670", images: [],
@@ -945,6 +999,8 @@
     const dialogArt = document.getElementById("dialog-art");
     const dialogMeta = document.getElementById("dialog-meta");
     let projectVideoObserver = null;
+    let slideshowTimer = null;
+    let dialogSlideMove = null;
     const railPrev = document.getElementById("project-prev");
     const railNext = document.getElementById("project-next");
     const railProgress = document.getElementById("rail-progress");
@@ -1083,10 +1139,10 @@
         }
         const number = document.createElement("span");
         number.className = "poster-number";
-        number.textContent = String(projects.indexOf(project) + 1).padStart(2, "0") + " / 06";
+        number.textContent = String(projects.indexOf(project) + 1).padStart(2, "0") + " / " + String(projects.length).padStart(2, "0");
         const category = document.createElement("span");
         category.className = "poster-category";
-        category.textContent = project.category === "environment" ? "Environment" : project.category === "character" ? "Character" : "3D asset";
+        category.textContent = project.category === "environment" ? "Environment" : project.category === "character" ? "Character" : project.category === "design" ? "Poster design" : "3D asset";
         poster.append(number, category);
 
         const info = document.createElement("div");
@@ -1115,6 +1171,9 @@
     }
 
     function openProject(project) {
+      if (slideshowTimer) window.clearInterval(slideshowTimer);
+      slideshowTimer = null;
+      dialogSlideMove = null;
       document.getElementById("dialog-kicker").textContent = project.label;
       document.getElementById("dialog-title").textContent = project.title;
       document.getElementById("dialog-desc").textContent = project.description;
@@ -1125,10 +1184,12 @@
         const feature = document.createElement("figure");
         feature.className = "dialog-feature";
         const video = document.createElement("video");
-        video.src = project.video.src;
+        if (project.video.src) video.src = project.video.src;
         video.controls = true;
         video.preload = "metadata";
         video.playsInline = true;
+        video.autoplay = true;
+        video.muted = true;
         video.setAttribute("aria-label", project.video.alt);
         loadProjectVideo(video, project.video);
         const caption = document.createElement("figcaption");
@@ -1139,18 +1200,88 @@
       } else if (project.images.length) {
         const feature = document.createElement("figure");
         feature.className = "dialog-feature";
+        const stage = document.createElement("div");
+        stage.className = "dialog-slide-stage";
         const featureImage = document.createElement("img");
         featureImage.src = project.images[0].src;
         featureImage.alt = project.images[0].alt;
         featureImage.id = "dialog-feature-image";
+        const controls = document.createElement("div");
+        controls.className = "dialog-slide-controls";
+        const previous = document.createElement("button");
+        previous.type = "button";
+        previous.setAttribute("aria-label", "Previous render");
+        previous.textContent = "‹";
+        const next = document.createElement("button");
+        next.type = "button";
+        next.setAttribute("aria-label", "Next render");
+        next.textContent = "›";
+        controls.append(previous, next);
+        stage.append(featureImage, controls);
+        let touchStartX = null;
+        const slideFooter = document.createElement("div");
+        slideFooter.className = "dialog-slide-footer";
+        const slideCount = document.createElement("span");
+        slideCount.className = "dialog-slide-count";
+        slideCount.setAttribute("aria-live", "polite");
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "dialog-slide-toggle";
+        toggle.setAttribute("aria-pressed", "true");
+        slideFooter.append(slideCount, toggle);
         const caption = document.createElement("figcaption");
         caption.className = "dialog-caption";
-        caption.innerHTML = "<span>" + project.images[0].caption + "</span><span>Render " + String(1).padStart(2, "0") + " / " + String(project.images.length).padStart(2, "0") + "</span>";
-        feature.append(featureImage, caption);
+        const captionTitle = document.createElement("span");
+        const captionTotal = document.createElement("span");
+        caption.append(captionTitle, captionTotal);
+        feature.append(stage, slideFooter, caption);
         dialogArt.append(feature);
+        let slideIndex = 0;
+        let thumbs = null;
+        const showSlide = function (index, direction, animate) {
+          slideIndex = (index + project.images.length) % project.images.length;
+          const image = project.images[slideIndex];
+          featureImage.classList.remove("slide-next", "slide-prev");
+          if (animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            void featureImage.offsetWidth;
+            featureImage.classList.add(direction < 0 ? "slide-prev" : "slide-next");
+          }
+          featureImage.src = image.src;
+          featureImage.alt = image.alt;
+          captionTitle.textContent = image.caption;
+          captionTotal.textContent = "Render " + String(slideIndex + 1).padStart(2, "0") + " / " + String(project.images.length).padStart(2, "0");
+          slideCount.textContent = String(slideIndex + 1).padStart(2, "0") + " / " + String(project.images.length).padStart(2, "0");
+          if (thumbs) thumbs.querySelectorAll(".dialog-thumb").forEach(function (button, buttonIndex) { button.setAttribute("aria-current", String(buttonIndex === slideIndex)); });
+        };
+        const moveSlide = function (direction) { showSlide(slideIndex + direction, direction, true); };
+        stage.addEventListener("pointerdown", function (event) {
+          if (event.pointerType === "touch" && !event.target.closest("button")) touchStartX = event.clientX;
+        }, { passive: true });
+        stage.addEventListener("pointerup", function (event) {
+          if (touchStartX === null) return;
+          const delta = event.clientX - touchStartX;
+          touchStartX = null;
+          if (Math.abs(delta) > 45) moveSlide(delta < 0 ? 1 : -1);
+        }, { passive: true });
+        dialogSlideMove = moveSlide;
+        previous.addEventListener("click", function () { moveSlide(-1); });
+        next.addEventListener("click", function () { moveSlide(1); });
+        const startSlideshow = function () {
+          if (slideshowTimer || project.images.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          slideshowTimer = window.setInterval(function () { moveSlide(1); }, 4200);
+          toggle.textContent = "Pause slideshow";
+          toggle.setAttribute("aria-pressed", "true");
+        };
+        const stopSlideshow = function () {
+          if (slideshowTimer) window.clearInterval(slideshowTimer);
+          slideshowTimer = null;
+          toggle.textContent = "Play slideshow";
+          toggle.setAttribute("aria-pressed", "false");
+        };
+        toggle.addEventListener("click", function () { slideshowTimer ? stopSlideshow() : startSlideshow(); });
 
         if (project.images.length > 1) {
-          const thumbs = document.createElement("div");
+          thumbs = document.createElement("div");
           thumbs.className = "dialog-thumbs";
           thumbs.setAttribute("aria-label", "Project renders");
           project.images.forEach(function (image, index) {
@@ -1165,15 +1296,19 @@
             thumbImage.loading = "lazy";
             thumb.append(thumbImage);
             thumb.addEventListener("click", function () {
-              featureImage.src = image.src;
-              featureImage.alt = image.alt;
-              caption.innerHTML = "<span>" + image.caption + "</span><span>Render " + String(index + 1).padStart(2, "0") + " / " + String(project.images.length).padStart(2, "0") + "</span>";
-              thumbs.querySelectorAll(".dialog-thumb").forEach(function (button) { button.setAttribute("aria-current", "false"); });
-              thumb.setAttribute("aria-current", "true");
+              const direction = index < slideIndex ? -1 : 1;
+              showSlide(index, direction, true);
             });
             thumbs.append(thumb);
           });
           dialogArt.append(thumbs);
+          showSlide(0, 1, false);
+          startSlideshow();
+        } else {
+          previous.hidden = true;
+          next.hidden = true;
+          toggle.hidden = true;
+          showSlide(0, 1, false);
         }
       } else {
         const empty = document.createElement("div");
@@ -1194,6 +1329,11 @@
         dialogMeta.append(item);
       });
       projectDialog.showModal();
+      const openedVideo = projectDialog.querySelector("video");
+      if (openedVideo && openedVideo.autoplay) {
+        const playback = openedVideo.play();
+        if (playback && typeof playback.catch === "function") playback.catch(function () {});
+      }
     }
 
     renderProjects("all");
@@ -1237,6 +1377,9 @@
 
     document.getElementById("dialog-close").addEventListener("click", function () { projectDialog.close(); });
     projectDialog.addEventListener("close", function () {
+      if (slideshowTimer) window.clearInterval(slideshowTimer);
+      slideshowTimer = null;
+      dialogSlideMove = null;
       projectDialog.querySelectorAll("video").forEach(function (video) {
         video.pause();
         if (video.dataset.objectUrl) {
@@ -1250,6 +1393,10 @@
     });
     projectDialog.addEventListener("click", function (event) {
       if (event.target === projectDialog) projectDialog.close();
+    });
+    projectDialog.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowRight" && dialogSlideMove) { event.preventDefault(); dialogSlideMove(1); }
+      if (event.key === "ArrowLeft" && dialogSlideMove) { event.preventDefault(); dialogSlideMove(-1); }
     });
 
     const header = document.getElementById("site-header");
@@ -1358,9 +1505,8 @@
     opening.hidden = false;
     document.body.classList.add("is-opening");
     skipOpening.focus({ preventScroll: true });
-    // Keep the identity splash visible even for reduced-motion visitors; CSS
-    // turns its movement into a still frame for them. Give everyone time to see it.
-    window.setTimeout(closeOpening, 4500);
+    // Keep the identity splash short, skip-ready, and animated for visitors.
+    window.setTimeout(closeOpening, 3400);
     skipOpening.addEventListener("click", closeOpening);
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && !opening.hidden) closeOpening();
@@ -1400,6 +1546,24 @@
         if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) resetHologram();
       }, { passive: true });
     }
+    const heroModeCopy = document.getElementById("hero-mode-copy");
+    const heroModeText = {
+      art: "Game-ready assets shaped through modelling, PBR texturing, and careful attention to form and material.",
+      worlds: "From a lived-in city street to a quiet mountain scene, I build real-time environments with mood and atmosphere.",
+      teaching: "3D & Multimedia Faculty at Arena Animation, Jhansi — guiding students through practical creative workflows."
+    };
+    document.querySelectorAll("[data-hero-mode]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.querySelectorAll("[data-hero-mode]").forEach(function (item) { item.setAttribute("aria-pressed", "false"); });
+        button.setAttribute("aria-pressed", "true");
+        if (!heroModeCopy) return;
+        heroModeCopy.classList.add("mode-changing");
+        window.setTimeout(function () {
+          heroModeCopy.textContent = heroModeText[button.dataset.heroMode] || heroModeText.art;
+          heroModeCopy.classList.remove("mode-changing");
+        }, 170);
+      });
+    });
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>

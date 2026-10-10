@@ -22,9 +22,9 @@ The image paths are relative, so preserve the `assets/projects/` and `assets/pro
 - Scroll reveals, reduced-motion support, and a responsive dark visual theme.
 - Profile illustration provided by Mayush.
 - CV-based profile, skills, work experience, education, courses, language, and contact details, with current location in Jhansi.
-- Vintage camera, Willys MB jeep, horse with UV/PBR views, Porsche 911 GT3 and skull studies, fantasy axe, matte painting, Photoshop poster/composite work, certificates, and nature/street environment video previews.
+- Vintage camera, Willys MB jeep, horse with UV/PBR views, Porsche 911 GT3 and skull studies, separate fantasy axe and axe-gun projects, matte painting, Photoshop poster/composite work, certificates, and nature/street environment video previews.
 
-Project images are optimized WebP files. The galleries include multiple views of the Porsche, skull, axe, vehicle and character models, plus Photoshop posters and composites. Project videos load on demand; their full controls appear when a project card is opened. The nature video is stored as two small binary parts so it can be uploaded through GitHub's browser file picker; the page joins them before playback. No M18 Smoke Grenade is included.
+Project images are optimized WebP files. The galleries include multiple views of the Porsche, skull, axe-gun, vehicle and character models, plus Photoshop posters and composites. Project videos load on demand; their full controls appear when a project card is opened. The nature video is stored as two small binary parts so it can be uploaded through GitHub's browser file picker; the page joins them before playback. No M18 Smoke Grenade is included.
 
 ## GitHub upload notes
 

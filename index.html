@@ -721,7 +721,7 @@
             <h2 id="work-title">Originals by Mayush</h2>
             <p>Each project is a study in form, materials and atmosphere.</p>
           </div>
-          <div class="collection-stamp">SEASON 01 <span aria-hidden="true">/</span> 07 ORIGINAL PROJECTS</div>
+          <div class="collection-stamp">SEASON 01 <span aria-hidden="true">/</span> 11 ORIGINAL PROJECTS</div>
         </div>
         <div class="filters reveal" role="group" aria-label="Filter projects">
           <button class="filter" type="button" data-filter="all" aria-pressed="true">All projects</button>
@@ -729,6 +729,8 @@
           <button class="filter" type="button" data-filter="character" aria-pressed="false">Characters</button>
           <button class="filter" type="button" data-filter="environment" aria-pressed="false">Environments</button>
           <button class="filter" type="button" data-filter="design" aria-pressed="false">Poster design</button>
+          <button class="filter" type="button" data-filter="artwork" aria-pressed="false">Digital art</button>
+          <button class="filter" type="button" data-filter="certificate" aria-pressed="false">Certificates</button>
         </div>
         <div class="project-rail reveal" id="project-rail" aria-label="Project gallery"></div>
         <div class="rail-hint">
@@ -736,7 +738,7 @@
           <div class="rail-controls" aria-label="Project slider controls">
             <button class="rail-arrow" id="project-prev" type="button" aria-label="Previous project" disabled>←</button>
             <div class="rail-progress" id="rail-progress" role="progressbar" aria-label="Project slider position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="rail-progress-fill"></span></div>
-            <span class="rail-position" id="rail-position" aria-live="polite">01 / 07</span>
+            <span class="rail-position" id="rail-position" aria-live="polite">01 / 11</span>
             <button class="rail-arrow" id="project-next" type="button" aria-label="Next project">→</button>
           </div>
         </div>
@@ -962,21 +964,79 @@
         facts: ["Hard-surface modeling", "Vehicle asset", "Five-view render set"]
       },
       {
+        id: "porsche", title: "Porsche 911 GT3 Study", category: "asset", label: "Vehicle · 3D model",
+        description: "A hard-surface sports-car study shown through a wireframe view, studio renders and close-up details.",
+        glyph: "GT3", glow: "#777b80",
+        images: [
+          { src: "assets/projects/porsche-gt3-front.webp", alt: "Porsche 911 GT3 front view render", caption: "Front view" },
+          { src: "assets/projects/porsche-gt3-side.webp", alt: "Porsche 911 GT3 side profile render", caption: "Side profile" },
+          { src: "assets/projects/porsche-gt3-top.webp", alt: "Porsche 911 GT3 top view render", caption: "Top view" },
+          { src: "assets/projects/porsche-gt3-wireframe.webp", alt: "Porsche 911 GT3 wireframe model view", caption: "Wireframe" },
+          { src: "assets/projects/porsche-gt3-cockpit.webp", alt: "Porsche 911 GT3 cockpit interior render", caption: "Cockpit" },
+          { src: "assets/projects/porsche-gt3-rear-detail.webp", alt: "Porsche 911 GT3 rear detail render", caption: "Rear detail" },
+          { src: "assets/projects/porsche-gt3-crest-detail.webp", alt: "Porsche crest detail on the car body", caption: "Body detail" },
+          { src: "assets/projects/porsche-gt3-headlight-detail.webp", alt: "Porsche 911 GT3 headlight detail render", caption: "Headlight detail" }
+        ],
+        facts: ["Hard-surface vehicle study", "Wireframe & studio views", "Interior and detail renders"]
+      },
+      {
         id: "axe", title: "Stylized Fantasy Axe", category: "asset", label: "3D asset",
         description: "A stylized fantasy weapon combining carved wood, wrapped fabric and engraved metal forms.",
         glyph: "AX", glow: "#70494d",
-        images: [{ src: "assets/projects/fantasy-axe-hero.webp", alt: "Stylized fantasy axe with engraved blade and red wraps", caption: "Hero render" }],
-        facts: ["Stylized prop", "Carved wood & metal", "Material storytelling"]
+        images: [
+          { src: "assets/projects/fantasy-axe-hero.webp", alt: "Stylized fantasy axe hero render", caption: "Hero render" },
+          { src: "assets/projects/fantasy-axe-textured.webp", alt: "Textured fantasy axe vertical render", caption: "Material render" },
+          { src: "assets/projects/fantasy-axe-side.webp", alt: "Fantasy axe side view render", caption: "Side view" },
+          { src: "assets/projects/fantasy-axe-clay.webp", alt: "Fantasy axe gray clay model views", caption: "Clay model" }
+        ],
+        facts: ["Stylized prop", "Carved wood & metal", "Textured and clay views"]
       },
       {
-        id: "posters", title: "Education Campaign Posters", category: "design", label: "Graphic design · poster campaign",
-        description: "Two scholarship campaign posters for Dreamway Edu Solution and Arena Animation, bringing bold dimensional type, illustrated workspace imagery and clear promotional layouts together.",
-        glyph: "35%", glow: "#315c9b",
+        id: "skull", title: "Human Skull Study", category: "character", label: "Anatomical model · 3D study",
+        description: "A detailed skull study presented from multiple angles to show its form, surface detail and sculpted anatomy.",
+        glyph: "SK", glow: "#aaa08c",
         images: [
-          { src: "assets/projects/dreamway-scholarship-poster.png", alt: "Dreamway Edu Solution scholarship campaign poster designed by Mayush", caption: "Dreamway Edu Solution · scholarship campaign" },
-          { src: "assets/projects/arena-scholarship-poster.png", alt: "Arena Animation scholarship campaign poster designed by Mayush", caption: "Arena Animation · scholarship campaign" }
+          { src: "assets/projects/skull-front.webp", alt: "Human skull model front view", caption: "Front view" },
+          { src: "assets/projects/skull-three-quarter.webp", alt: "Human skull model three-quarter view", caption: "Three-quarter view" },
+          { src: "assets/projects/skull-side.webp", alt: "Human skull model side view", caption: "Side view" },
+          { src: "assets/projects/skull-top.webp", alt: "Human skull model top view", caption: "Top view" },
+          { src: "assets/projects/skull-underside.webp", alt: "Human skull model underside view", caption: "Underside" },
+          { src: "assets/projects/skull-detail.webp", alt: "Close-up of skull model surface detail", caption: "Surface detail" }
         ],
-        facts: ["Campaign poster design", "Dimensional typography & layout", "Dreamway Edu Solution · Arena Animation"]
+        facts: ["Anatomical model study", "Six-view presentation", "Sculpted surface detail"]
+      },
+      {
+        id: "posters", title: "Photoshop Posters & Composites", category: "design", label: "Photoshop · poster design",
+        description: "A collection of poster and product-ad concepts exploring photo compositing, typography, color and cinematic layouts.",
+        glyph: "PS", glow: "#554785",
+        images: [
+          { src: "assets/projects/spider-man-2-poster.webp", alt: "Spider-Man 2 cinematic fan poster design", caption: "Cinematic fan poster" },
+          { src: "assets/projects/nature-photo-manipulation.webp", alt: "Nature double-exposure photo manipulation poster", caption: "Photo manipulation" },
+          { src: "assets/projects/tokyo-travel-poster.webp", alt: "Tokyo City travel poster composition", caption: "Travel poster" },
+          { src: "assets/projects/nike-campaign-poster.webp", alt: "Nike LD-1000 product campaign poster concept", caption: "Product campaign" },
+          { src: "assets/projects/beardo-godfather-poster.webp", alt: "Beardo Godfather fragrance campaign poster concept", caption: "Fragrance campaign" }
+        ],
+        facts: ["Photoshop compositing", "Poster layout & typography", "Campaign concepts"]
+      },
+      {
+        id: "matte-painting", title: "Castle at Night", category: "artwork", label: "Matte painting · environment art",
+        description: "A moonlit fantasy environment composition built around atmosphere, dramatic lighting and a strong cinematic silhouette.",
+        glyph: "MP", glow: "#45546b",
+        images: [{ src: "assets/projects/castle-matte-painting.webp", alt: "Moonlit castle and rider fantasy matte painting", caption: "Fantasy environment matte painting" }],
+        facts: ["Matte painting", "Atmospheric environment", "Cinematic lighting"]
+      },
+      {
+        id: "certificates", title: "Certificates & Learning", category: "certificate", label: "Training · certificates",
+        description: "Selected certificates from coursework in Blender, Unity game development and programming.",
+        glyph: "01", glow: "#668b70",
+        images: [
+          { src: "assets/projects/certificate-blender.webp", alt: "TutorialsPoint Free Blender Crash Course certificate", caption: "Blender · TutorialsPoint" },
+          { src: "assets/projects/certificate-udemy-unity.webp", alt: "Udemy Ultimate Unity Game Development course certificate", caption: "Unity Game Development · Udemy" },
+          { src: "assets/projects/certificate-udemy-cpp.webp", alt: "Udemy Object Oriented Programming in C++ certificate", caption: "Object-Oriented C++ · Udemy" },
+          { src: "assets/projects/certificate-itronix-cpp.webp", alt: "ITronix Solutions C and C++ programming certificate", caption: "C & C++ · ITronix Solutions" },
+          { src: "assets/projects/certificate-simplilearn-cpp.webp", alt: "Simplilearn Introduction to C++ certificate", caption: "Introduction to C++ · Simplilearn" }
+        ],
+        facts: ["Blender fundamentals", "Unity game development", "Programming coursework"]
       },
       {
         id: "street", title: "GTA V Street", category: "environment", label: "Environment · Unreal Engine 5.6.1",
@@ -1142,7 +1202,7 @@
         number.textContent = String(projects.indexOf(project) + 1).padStart(2, "0") + " / " + String(projects.length).padStart(2, "0");
         const category = document.createElement("span");
         category.className = "poster-category";
-        category.textContent = project.category === "environment" ? "Environment" : project.category === "character" ? "Character" : project.category === "design" ? "Poster design" : "3D asset";
+        category.textContent = project.category === "environment" ? "Environment" : project.category === "character" ? "Character" : project.category === "design" ? "Poster design" : project.category === "artwork" ? "Digital art" : project.category === "certificate" ? "Certificate" : "3D asset";
         poster.append(number, category);
 
         const info = document.createElement("div");

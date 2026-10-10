@@ -43,12 +43,13 @@
     .progress-track { position: fixed; inset: 0 0 auto; z-index: 30; height: 2px; background: transparent; }
     .progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--accent)); box-shadow: 0 0 18px rgba(238,104,71,.4); }
 
-    /* A soft pointer-following studio light; never replaces the real cursor. */
+    /* A visible pointer-following studio light; never replaces the real cursor. */
     .cursor-glow {
-      position: fixed; z-index: 8; top: 0; left: 0; width: 400px; aspect-ratio: 1; border-radius: 50%;
+      position: fixed; z-index: 40; top: 0; left: 0; width: min(520px, 76vw); aspect-ratio: 1; border-radius: 50%;
       pointer-events: none; opacity: 0; transform: translate3d(var(--cursor-x,-500px),var(--cursor-y,-500px),0) translate(-50%,-50%);
-      background: radial-gradient(circle, rgba(57,100,237,.24), rgba(238,104,71,.16) 36%, transparent 72%);
-      transition: opacity .35s ease; will-change: transform;
+      background: radial-gradient(circle, rgba(var(--accent-rgb),.3) 0%, rgba(var(--accent-rgb),.2) 18%, rgba(var(--gold-rgb),.16) 37%, rgba(var(--accent-rgb),.08) 54%, transparent 74%);
+      filter: blur(3px); mix-blend-mode: screen;
+      transition: opacity .24s ease, transform .12s ease-out; will-change: transform, opacity;
     }
     .cursor-glow.is-visible { opacity: 1; }
 
@@ -513,7 +514,6 @@
     body::selection { background: var(--accent); color: #07100e; }
     .progress-track { height: 3px; background: rgba(255,255,255,.04); }
     .progress-bar { background: linear-gradient(90deg, var(--accent), var(--gold)); box-shadow: 0 0 20px rgba(92,226,197,.5); }
-    .cursor-glow { background: radial-gradient(circle, rgba(92,226,197,.2), rgba(245,187,116,.12) 36%, transparent 72%); }
     .opening { background: radial-gradient(ellipse at 50% 84%, rgba(63,210,180,.13), transparent 42%), #070a0b; }
     .opening::before { border-color: rgba(92,226,197,.36); box-shadow: 0 0 90px rgba(92,226,197,.08); }
     .opening::after { border-color: rgba(245,187,116,.3); }

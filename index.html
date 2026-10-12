@@ -45,7 +45,7 @@
 
     /* A visible pointer-following studio light; never replaces the real cursor. */
     .cursor-glow {
-      position: fixed; z-index: 40; top: 0; left: 0; width: min(520px, 76vw); aspect-ratio: 1; border-radius: 50%;
+      position: fixed; z-index: 40; top: 0; left: 0; width: min(340px, 68vw); aspect-ratio: 1; border-radius: 50%;
       pointer-events: none; opacity: 0; transform: translate3d(var(--cursor-x,-500px),var(--cursor-y,-500px),0) translate(-50%,-50%);
       background: radial-gradient(circle, rgba(var(--accent-rgb),.3) 0%, rgba(var(--accent-rgb),.2) 18%, rgba(var(--gold-rgb),.16) 37%, rgba(var(--accent-rgb),.08) 54%, transparent 74%);
       filter: blur(3px); mix-blend-mode: screen;

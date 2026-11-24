@@ -109,6 +109,12 @@
     .profile-picker-note { margin-top: 22px; color: #71827e; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
     .site-nav-switch { padding: 8px 11px; border: 1px solid var(--line); border-radius: 999px; background: rgba(15,22,22,.8); color: var(--accent); font: inherit; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: border-color .2s ease,background .2s ease,transform .2s ease; }
     .site-nav-switch:hover, .site-nav-switch:focus-visible { transform: translateY(-2px); border-color: var(--accent); background: rgba(var(--accent-rgb),.1); outline: none; }
+    .music-toggle { position: fixed; z-index: 50; right: max(18px,calc((100vw - 1420px)/2)); bottom: max(18px,env(safe-area-inset-bottom)); display: inline-flex; align-items: center; gap: 9px; padding: 11px 15px; border: 1px solid rgba(var(--accent-rgb),.48); border-radius: 999px; background: rgba(12,18,19,.9); color: var(--paper); font: inherit; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; box-shadow: 0 10px 28px rgba(0,0,0,.3),0 0 22px rgba(var(--accent-rgb),.09); backdrop-filter: blur(12px); transition: border-color .2s ease,background .2s ease,transform .2s ease,box-shadow .2s ease; }
+    .music-toggle:hover, .music-toggle:focus-visible { transform: translateY(-2px); border-color: var(--accent); background: rgba(18,28,29,.97); box-shadow: 0 13px 32px rgba(0,0,0,.34),0 0 25px rgba(var(--accent-rgb),.16); outline: none; }
+    .music-toggle[hidden] { display: none; }
+    .music-toggle-icon { color: var(--accent); font-size: 16px; line-height: 1; }
+    .music-toggle[aria-pressed="true"] .music-toggle-icon { animation: music-note 1.4s ease-in-out infinite; }
+    @keyframes music-note { 50% { transform: translateY(-2px) rotate(-8deg); } }
 
     /* Navigation */
     .site-header {
@@ -703,13 +709,17 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
   <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+  <audio id="background-music" src="assets/audio/avengers-theme.mp3" loop preload="none"></audio>
+  <button class="music-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="Play background music" hidden>
+    <span class="music-toggle-icon" aria-hidden="true">♫</span><span id="music-toggle-label">Music off</span>
+  </button>
 
   <div class="opening" id="opening" role="dialog" aria-modal="true" aria-labelledby="profile-picker-title">
     <div class="opening-scene profile-selection">
       <div class="profile-picker">
         <div class="profile-picker-kicker">Mayush Tripathi · Portfolio</div>
         <h2 class="profile-picker-title" id="profile-picker-title">Who’s watching?</h2>
-        <p class="profile-picker-copy">Choose a view to explore the work in the way that suits you.</p>
+        <p class="profile-picker-copy">Choose a view to explore the work in the way that suits you. Music starts when you enter.</p>
         <div class="profile-options" role="group" aria-label="Choose a portfolio view">
           <button class="profile-option" type="button" data-audience="personal" aria-label="Continue as Mayush Tripathi">
             <span class="profile-avatar"><img src="assets/profile/mayush-portrait.png" alt="" fetchpriority="high" decoding="async"></span>
@@ -1081,6 +1091,24 @@
           { src: "assets/projects/porsche-gt3-headlight-detail.webp", alt: "Porsche 911 GT3 headlight detail render", caption: "Headlight detail" }
         ],
         facts: ["Hard-surface vehicle study", "Wireframe & studio views", "Interior and detail renders"]
+      },
+      {
+        id: "uh60-black-hawk", title: "Sikorsky UH-60 Black Hawk Helicopter", category: "asset", label: "Aircraft · 3D model",
+        description: "A Sikorsky UH-60 Black Hawk helicopter model presented through studio renders, detail views and wireframe angles.",
+        glyph: "UH-60", glow: "#53615e",
+        images: [
+          { src: "assets/projects/uh60-01-three-quarter.jpg", alt: "Three-quarter studio render of a Sikorsky UH-60 Black Hawk helicopter", caption: "Three-quarter view" },
+          { src: "assets/projects/uh60-02-front.jpg", alt: "Front view of the UH-60 Black Hawk helicopter model", caption: "Front view" },
+          { src: "assets/projects/uh60-03-side-profile.jpg", alt: "Side profile of the UH-60 Black Hawk helicopter model", caption: "Side profile" },
+          { src: "assets/projects/uh60-04-overhead-angle.jpg", alt: "Overhead angle of the UH-60 Black Hawk helicopter model", caption: "Overhead angle" },
+          { src: "assets/projects/uh60-05-overhead.jpg", alt: "Top view of the UH-60 Black Hawk helicopter model", caption: "Top view" },
+          { src: "assets/projects/uh60-06-upper-detail.jpg", alt: "Close view of the UH-60 Black Hawk upper fuselage and rotor assembly", caption: "Upper detail" },
+          { src: "assets/projects/uh60-07-rotor-detail.jpg", alt: "Close detail of the UH-60 Black Hawk rotor assembly", caption: "Rotor detail" },
+          { src: "assets/projects/uh60-08-wireframe-perspective.jpg", alt: "Perspective wireframe view of the UH-60 Black Hawk helicopter model", caption: "Wireframe · perspective" },
+          { src: "assets/projects/uh60-09-wireframe-underside.jpg", alt: "Underside wireframe view of the UH-60 Black Hawk helicopter model", caption: "Wireframe · underside" },
+          { src: "assets/projects/uh60-10-wireframe-rear-top.jpg", alt: "Rear and top wireframe view of the UH-60 Black Hawk helicopter model", caption: "Wireframe · rear & top" }
+        ],
+        facts: ["Military helicopter model", "Hard-surface 3D asset", "Renders & wireframe views"]
       },
       {
         id: "axe", title: "Stylized Fantasy Axe", category: "asset", label: "3D asset",
@@ -1841,6 +1869,36 @@
     }
 
     const opening = document.getElementById("opening");
+    const backgroundMusic = document.getElementById("background-music");
+    const musicToggle = document.getElementById("music-toggle");
+    const musicToggleLabel = document.getElementById("music-toggle-label");
+    let musicStartupAttempted = false;
+    backgroundMusic.volume = 0.2;
+    function setMusicToggleState(isPlaying, needsPrompt) {
+      musicToggle.hidden = false;
+      musicToggle.setAttribute("aria-pressed", String(isPlaying));
+      musicToggle.setAttribute("aria-label", isPlaying ? "Pause background music" : "Play background music");
+      musicToggleLabel.textContent = isPlaying ? "Music on" : (needsPrompt ? "Tap to play" : "Music off");
+    }
+    function attemptBackgroundMusic() {
+      musicToggle.hidden = false;
+      musicToggleLabel.textContent = "Starting music";
+      const playback = backgroundMusic.play();
+      if (playback && typeof playback.then === "function") {
+        playback.then(function () { setMusicToggleState(true, false); })
+          .catch(function () { setMusicToggleState(false, true); });
+      } else {
+        setMusicToggleState(true, false);
+      }
+    }
+    musicToggle.addEventListener("click", function () {
+      if (backgroundMusic.paused) {
+        attemptBackgroundMusic();
+      } else {
+        backgroundMusic.pause();
+        setMusicToggleState(false, false);
+      }
+    });
     function applyAudience(id) {
       const profile = audiences[id] || audiences.personal;
       activeAudience = profile;
@@ -1902,6 +1960,10 @@
     opening.querySelector('[data-audience="personal"]').focus({ preventScroll: true });
     opening.querySelectorAll("[data-audience]").forEach(function (button) {
       button.addEventListener("click", function () {
+        if (!musicStartupAttempted) {
+          musicStartupAttempted = true;
+          attemptBackgroundMusic();
+        }
         applyAudience(button.dataset.audience);
         closeAudiencePicker();
       });

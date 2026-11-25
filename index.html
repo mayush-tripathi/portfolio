@@ -718,12 +718,20 @@
       --accent-rgb: 101,212,242;
       --gold-rgb: 101,212,242;
     }
+    body[data-audience] {
+      --accent: #65d4f2 !important;
+      --accent-light: #a8e9f8 !important;
+      --gold: #65d4f2 !important;
+      --accent-rgb: 101,212,242 !important;
+      --gold-rgb: 101,212,242 !important;
+    }
+    }
     html, body { background-color: var(--bg); color: var(--paper); }
     body {
       background-image:
         radial-gradient(ellipse at 50% 0,rgba(27,79,103,.13),transparent 45%),
-        repeating-linear-gradient(0deg,transparent 0 59px,rgba(101,212,242,.018) 60px 61px),
-        repeating-linear-gradient(90deg,transparent 0 59px,rgba(101,212,242,.018) 60px 61px),
+        repeating-linear-gradient(0deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),
+        repeating-linear-gradient(90deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),
         #060a0f;
       background-attachment: fixed;
     }
@@ -786,8 +794,8 @@
     .hero {
       background:
         radial-gradient(ellipse at 50% 51%,rgba(40,131,164,.12),transparent 34%),
-        repeating-linear-gradient(0deg,transparent 0 59px,rgba(101,212,242,.018) 60px 61px),
-        repeating-linear-gradient(90deg,transparent 0 59px,rgba(101,212,242,.018) 60px 61px),
+        repeating-linear-gradient(0deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),
+        repeating-linear-gradient(90deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),
         #060a0f;
     }
     .hero::before {
@@ -818,6 +826,7 @@
     .hero-copy, .hero-note, .collection-head p, .rail-hint, .about-copy > p, .experience-card p, .contact-copy p, .contact-note { color: #9aafbe; }
     .hero-note .divider { background: var(--accent); }
     .hero-index { color: #8299a8; font-family: ui-monospace,SFMono-Regular,Consolas,monospace; }
+    .hero-name:focus:not(:focus-visible) { outline: none; }
     .viewer-tabs button { border-color: rgba(111,194,222,.22); border-radius: 0; background: rgba(8,17,25,.9); color: #a2b8c6; font-family: ui-monospace,SFMono-Regular,Consolas,monospace; }
     .viewer-tabs button:hover { border-color: rgba(101,212,242,.62); color: #e9f4fb; }
     .viewer-tabs button[aria-pressed="true"] { color: #061017; border-color: var(--accent); background: var(--accent); box-shadow: none; }
@@ -892,7 +901,7 @@
     .site-nav.open { background: rgba(6,12,19,.98); }
     .site-nav a:hover::after, .site-nav a.active::after { box-shadow: none; }
     .project-card:focus-visible, .filter:focus-visible, .viewer-tabs button:focus-visible, .rail-arrow:focus-visible, .dialog-thumb:focus-visible { outline-color: var(--accent); }
-    body[data-audience] .hero { background-image: radial-gradient(ellipse at 50% 51%,rgba(40,131,164,.12),transparent 34%),repeating-linear-gradient(0deg,transparent 0 59px,rgba(101,212,242,.018) 60px 61px),repeating-linear-gradient(90deg,transparent 0 59px,rgba(101,212,242,.018) 60px 61px),#060a0f; }
+    body[data-audience] .hero { background-image: radial-gradient(ellipse at 50% 51%,rgba(40,131,164,.12),transparent 34%),repeating-linear-gradient(0deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),repeating-linear-gradient(90deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),#060a0f; }
     body[data-audience] .hero::before { border: 0; box-shadow: none; }
     body[data-audience] .hero-hologram::before { border-color: rgba(101,212,242,.38); }
     body[data-audience] .project-card:hover, body[data-audience] .project-card.is-tilting { border-color: rgba(101,212,242,.65); }
@@ -919,9 +928,9 @@
   <div class="opening" id="opening" role="dialog" aria-modal="true" aria-labelledby="profile-picker-title">
     <div class="opening-scene profile-selection">
       <div class="profile-picker">
-        <div class="profile-picker-kicker">Mayush Tripathi · Portfolio</div>
-        <h2 class="profile-picker-title" id="profile-picker-title">Who’s watching?</h2>
-        <p class="profile-picker-copy">Choose a view to explore the work in the way that suits you. Music starts when you enter.</p>
+        <div class="profile-picker-kicker">J.A.R.V.I.S. // MAYUSH TRIPATHI</div>
+        <h2 class="profile-picker-title" id="profile-picker-title">Select your access profile</h2>
+        <p class="profile-picker-copy">Choose how to explore Mayush’s work. Your portfolio soundtrack starts when you enter.</p>
         <div class="profile-options" role="group" aria-label="Choose a portfolio view">
           <button class="profile-option" type="button" data-audience="personal" aria-label="Continue as Mayush Tripathi">
             <span class="profile-avatar"><img src="assets/profile/mayush-portrait.png" alt="" fetchpriority="high" decoding="async"></span>
@@ -940,7 +949,7 @@
             <strong>Creative</strong><small>Design · worlds · art direction</small>
           </button>
         </div>
-        <div class="profile-picker-note">Select a profile to enter</div>
+        <div class="profile-picker-note">Select profile to begin</div>
       </div>
     </div>
   </div>

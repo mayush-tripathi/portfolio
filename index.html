@@ -901,18 +901,53 @@
     .site-nav.open { background: rgba(6,12,19,.98); }
     .site-nav a:hover::after, .site-nav a.active::after { box-shadow: none; }
     .project-card:focus-visible, .filter:focus-visible, .viewer-tabs button:focus-visible, .rail-arrow:focus-visible, .dialog-thumb:focus-visible { outline-color: var(--accent); }
-    body[data-audience] .hero { background-image: radial-gradient(ellipse at 50% 51%,rgba(40,131,164,.12),transparent 34%),repeating-linear-gradient(0deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),repeating-linear-gradient(90deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),#060a0f; }
     body[data-audience] .hero::before { border: 0; box-shadow: none; }
-    body[data-audience] .hero-hologram::before { border-color: rgba(101,212,242,.38); }
+    body[data-audience] .hero { background-image: radial-gradient(ellipse at 50% 42%,rgba(255,145,48,.11),transparent 34%),radial-gradient(ellipse at 50% 51%,rgba(40,131,164,.12),transparent 38%),repeating-linear-gradient(0deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),repeating-linear-gradient(90deg,transparent 0 59px,rgba(101,212,242,.012) 60px 61px),#060a0f; }
+    body[data-audience] .hero-hologram::before { border-color: rgba(255,179,91,.52); box-shadow: 0 0 28px rgba(255,151,51,.18),inset 0 0 22px rgba(255,151,51,.08); }
+    body[data-audience] .hero-hologram::after { background: rgba(255,151,51,.2); }
+    .hero-hud-globe {
+      position: absolute; z-index: 0; top: 2%; left: 50%; width: 174%; max-width: 620px; height: auto; aspect-ratio: 1;
+      overflow: visible; transform: translateX(-50%); pointer-events: none; opacity: .92;
+      filter: drop-shadow(0 0 10px rgba(255,139,37,.22)); animation: hud-globe-breathe 5.8s ease-in-out infinite;
+    }
+    .hero-hud-globe .hud-halo { fill: url(#jarvis-globe-fill); }
+    .hero-hud-globe .hud-ring, .hero-hud-globe .hud-grid, .hero-hud-globe .hud-tick, .hero-hud-globe .hud-orbit-line {
+      fill: none; stroke: #ffad55; stroke-width: 1.15; vector-effect: non-scaling-stroke;
+    }
+    .hero-hud-globe .hud-ring { opacity: .72; }
+    .hero-hud-globe .hud-ring--dashed { stroke-dasharray: 3 9; opacity: .9; }
+    .hero-hud-globe .hud-ring--fine { stroke: #ffd095; stroke-dasharray: 1 6; opacity: .52; }
+    .hero-hud-globe .hud-grid { stroke: #ffb35f; stroke-width: 1; opacity: .45; }
+    .hero-hud-globe .hud-tick { stroke: #ffca84; stroke-width: 2; opacity: .8; }
+    .hero-hud-globe .hud-orbit-line { stroke: #ff8d31; opacity: .5; }
+    .hero-hud-globe .hud-orbit--outer { transform-origin: 320px 320px; animation: hud-orbit-spin 48s linear infinite; }
+    .hero-hud-globe .hud-orbit--inner { transform-origin: 320px 320px; animation: hud-orbit-spin 31s linear infinite reverse; }
+    .hero-hud-globe .hud-globe-shell { fill: rgba(255,142,37,.025); stroke: #ffc477; stroke-width: 1.35; opacity: .8; vector-effect: non-scaling-stroke; }
+    .hero-hud-globe .hud-sphere-grid { fill: none; stroke: #ffae5a; stroke-width: 1; opacity: .48; vector-effect: non-scaling-stroke; }
+    .hero-hud-globe .hud-sweep { fill: url(#jarvis-sweep-fill); opacity: .7; }
+    .hero-hud-globe .hud-sweep-rotor { transform-origin: 320px 320px; animation: hud-orbit-spin 7.5s linear infinite; }
+    .hero-hud-globe .hud-particle { fill: #ffd28c; filter: drop-shadow(0 0 4px #ff9a38); animation: hud-particle-pulse 2.7s ease-in-out infinite; }
+    .hero-hud-globe .hud-particle:nth-of-type(2n) { animation-delay: -1.2s; }
+    .hero-hud-globe .hud-particle:nth-of-type(3n) { animation-delay: -2s; }
+    .hero-hud-globe .hud-pulse { fill: none; stroke: #ff9738; stroke-width: 1.2; opacity: .66; vector-effect: non-scaling-stroke; transform-box: view-box; transform-origin: 50% 50%; animation: hud-core-pulse 3.4s ease-out infinite; }
+    .hero-hud-globe .hud-label { fill: #ffc47d; font: 8px ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing: 2px; opacity: .76; }
+    .hero-hologram-sheen { background: radial-gradient(ellipse at var(--holo-shine-x,50%) var(--holo-shine-y,38%),rgba(255,255,255,.5),rgba(101,212,242,.25) 20%,rgba(255,152,55,.16) 42%,transparent 74%); }
+    .hero-hologram-edge { background: linear-gradient(115deg,transparent 30%,rgba(101,212,242,.54) 45%,rgba(255,255,255,.48) 49%,rgba(255,159,65,.65) 54%,transparent 70%); }
     body[data-audience] .project-card:hover, body[data-audience] .project-card.is-tilting { border-color: rgba(101,212,242,.65); }
     @keyframes jarvis-ring-spin { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+    @keyframes hud-orbit-spin { to { transform: rotate(360deg); } }
+    @keyframes hud-globe-breathe { 0%,100% { opacity: .78; scale: .985; } 50% { opacity: 1; scale: 1.015; } }
+    @keyframes hud-particle-pulse { 0%,100% { opacity: .28; scale: .72; } 50% { opacity: 1; scale: 1.45; } }
+    @keyframes hud-core-pulse { 0% { opacity: .58; transform: scale(.88); } 100% { opacity: 0; transform: scale(1.17); } }
     @media (max-width: 700px) {
       .hero-hudline { top: 82px; padding: 8px 0; font-size: 9px; letter-spacing: .08em; }
       .hero-hudline span:last-child { display: none; }
+      .hero-hud-globe { width: 188%; top: 4%; }
       .profile-picker { padding: 24px 18px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .hero::before { animation: none; }
+      .hero-hud-globe, .hero-hud-globe *, .hero-hologram-sheen, .hero-hologram-scan, .hero-hologram-edge { animation: none !important; }
     }
   </style>
 </head>
@@ -928,9 +963,9 @@
   <div class="opening" id="opening" role="dialog" aria-modal="true" aria-labelledby="profile-picker-title">
     <div class="opening-scene profile-selection">
       <div class="profile-picker">
-        <div class="profile-picker-kicker">J.A.R.V.I.S. // MAYUSH TRIPATHI</div>
-        <h2 class="profile-picker-title" id="profile-picker-title">Select your access profile</h2>
-        <p class="profile-picker-copy">Choose how to explore Mayush’s work. Your portfolio soundtrack starts when you enter.</p>
+        <div class="profile-picker-kicker">MAYUSH TRIPATHI’S PERSONAL AI ASSISTANT</div>
+        <h2 class="profile-picker-title" id="profile-picker-title">Hi, I’m J.A.R.V.I.S.</h2>
+        <p class="profile-picker-copy">I’m here to help you explore Mayush’s projects, skills, and experience. Choose a profile and I’ll guide you to what you’re looking for.</p>
         <div class="profile-options" role="group" aria-label="Choose a portfolio view">
           <button class="profile-option" type="button" data-audience="personal" aria-label="Continue as Mayush Tripathi">
             <span class="profile-avatar"><img src="assets/profile/mayush-portrait.png" alt="" fetchpriority="high" decoding="async"></span>
@@ -949,7 +984,7 @@
             <strong>Creative</strong><small>Design · worlds · art direction</small>
           </button>
         </div>
-        <div class="profile-picker-note">Select profile to begin</div>
+        <div class="profile-picker-note">WHAT WOULD YOU LIKE TO EXPLORE?</div>
       </div>
     </div>
   </div>
@@ -997,6 +1032,45 @@
       <div class="hero-showcase" aria-label="Mayush Tripathi">
         <h1 class="hero-name hero-name-first" id="hero-title" tabindex="-1"><span>Mayush</span></h1>
         <div class="hero-hologram" id="hero-hologram" role="group" aria-label="Cursor-responsive holographic portrait of Mayush Tripathi">
+          <svg class="hero-hud-globe" viewBox="0 0 640 640" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="jarvis-globe-fill"><stop offset="0" stop-color="#ff9c3d" stop-opacity=".16"/><stop offset=".68" stop-color="#ff8a28" stop-opacity=".055"/><stop offset="1" stop-color="#ff8a28" stop-opacity="0"/></radialGradient>
+              <linearGradient id="jarvis-sweep-fill" x1=".15" y1=".85" x2=".86" y2=".14"><stop offset="0" stop-color="#ff9c3d" stop-opacity=".28"/><stop offset="1" stop-color="#ffd08b" stop-opacity="0"/></linearGradient>
+              <clipPath id="jarvis-sphere-clip"><circle cx="320" cy="320" r="164"/></clipPath>
+            </defs>
+            <circle class="hud-halo" cx="320" cy="320" r="246"/>
+            <g class="hud-orbit hud-orbit--outer">
+              <circle class="hud-ring hud-ring--dashed" cx="320" cy="320" r="238"/>
+              <circle class="hud-ring" cx="320" cy="320" r="224" stroke-dasharray="78 18 8 13"/>
+              <path class="hud-tick" d="M320 68v18 M320 554v18 M68 320h18 M554 320h18 M142 142l13 13 M485 485l13 13 M498 142l-13 13 M155 485l-13 13"/>
+              <ellipse class="hud-orbit-line" cx="320" cy="320" rx="250" ry="93" transform="rotate(-31 320 320)"/>
+              <circle class="hud-particle" cx="512" cy="179" r="3.2"/>
+              <circle class="hud-particle" cx="121" cy="424" r="2.5"/>
+              <circle class="hud-particle" cx="447" cy="536" r="2.4"/>
+            </g>
+            <g class="hud-orbit hud-orbit--inner">
+              <circle class="hud-ring hud-ring--fine" cx="320" cy="320" r="205"/>
+              <ellipse class="hud-orbit-line" cx="320" cy="320" rx="256" ry="112" transform="rotate(29 320 320)"/>
+              <path class="hud-tick" d="M204 110l7 13 M429 517l7 13 M529 203l-13 7 M110 429l-13 7"/>
+              <circle class="hud-particle" cx="150" cy="202" r="2.8"/>
+              <circle class="hud-particle" cx="488" cy="414" r="2.2"/>
+            </g>
+            <circle class="hud-pulse" cx="320" cy="320" r="172"/>
+            <circle class="hud-globe-shell" cx="320" cy="320" r="164"/>
+            <g clip-path="url(#jarvis-sphere-clip)">
+              <ellipse class="hud-sphere-grid" cx="320" cy="320" rx="163" ry="53"/>
+              <ellipse class="hud-sphere-grid" cx="320" cy="320" rx="163" ry="111"/>
+              <path class="hud-sphere-grid" d="M320 156 C268 208 268 432 320 484 M320 156 C372 208 372 432 320 484 M156 320h328"/>
+              <g class="hud-sweep-rotor"><path class="hud-sweep" d="M320 320V156 A164 164 0 0 1 454 225Z"/></g>
+              <path class="hud-ring hud-ring--fine" d="M170 266c77-34 222-34 300 0 M170 374c77 34 222 34 300 0"/>
+            </g>
+            <circle class="hud-particle" cx="320" cy="151" r="3.5"/>
+            <circle class="hud-particle" cx="464" cy="277" r="2.5"/>
+            <circle class="hud-particle" cx="217" cy="458" r="2.7"/>
+            <path class="hud-ring" d="M108 208h38l12 12 M494 430h36l9-9"/>
+            <text class="hud-label" x="94" y="198">J.A.R.V.I.S. / HOLOGRAM</text>
+            <text class="hud-label" x="449" y="449">LIVE SCAN</text>
+          </svg>
           <div class="hero-hologram-stage" id="hero-hologram-stage">
             <img class="hero-portrait" src="assets/profile/mayush-portrait.png" alt="Illustrated portrait of Mayush Tripathi" fetchpriority="high" decoding="async">
             <span class="hero-hologram-layer hero-hologram-sheen" aria-hidden="true"></span>
